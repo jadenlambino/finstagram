@@ -31,4 +31,4 @@ class User(db.Model, UserMixin):
             'email': self.email
         }
 
-    photos = db.relationship("Photos", back_populates = "user")
+    photos = db.relationship("Photo", back_populates = "user")
