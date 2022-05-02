@@ -1,9 +1,8 @@
-import {React, useEffect, useState} from "react";
+import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { uploadPhoto } from "../../store/photo";
 
 const PhotoForm = () => {
-    const user = useSelector(state => state.session.user)
     const dispatch = useDispatch()
 
     const [photoUrl, setPhotoUrl] = useState('')
@@ -13,7 +12,6 @@ const PhotoForm = () => {
         e.preventDefault();
 
         const newPhoto = {
-            userId: user.id,
             photoUrl,
             caption
         }
@@ -27,17 +25,17 @@ const PhotoForm = () => {
                 <div>
                     <label>Photo Url</label>
                     <input
-                    type="text"
-                    value={photoUrl}
-                    onChange= {(e) => setPhotoUrl(e.target.value)}
+                        type="text"
+                        value={photoUrl}
+                        onChange={(e) => setPhotoUrl(e.target.value)}
                     ></input>
                 </div>
                 <div>
                     <label>caption</label>
                     <input
-                      type="text"
-                      value={caption}
-                      onChange= {(e) => setCaption(e.target.value)}
+                        type="text"
+                        value={caption}
+                        onChange={(e) => setCaption(e.target.value)}
                     >
                     </input>
                 </div>

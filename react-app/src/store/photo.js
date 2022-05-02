@@ -14,7 +14,7 @@ const postPhoto = (photo) => ({
 const initialState = {}
 
 export const grabPhotos = () => async (dispatch) => {
-    const response = await fetch ('/api/photos/');
+    const response = await fetch('/api/photos/');
     if (response.ok) {
         const data = await response.json();
         dispatch(getPhotos(data))
@@ -23,7 +23,7 @@ export const grabPhotos = () => async (dispatch) => {
 }
 
 export const uploadPhoto = (photoData) => async (dispatch) => {
-    const response = await fetch ('/api/photos/', {
+    const response = await fetch('/api/photos/new', {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -39,16 +39,16 @@ export const uploadPhoto = (photoData) => async (dispatch) => {
     //add error handing
 }
 
-export default function reducer(state = initialState, action){
+export default function reducer(state = initialState, action) {
     let newState;
     switch (action.type) {
         case GET_PHOTOS:
-            newState = {...state}
+            newState = { ...state }
             action.photos.photos.forEach(photo => newState[photo.id] = photo)
             // console.log(action.photos)
             return newState
         case POST_PHOTO:
-            newState = {...state}
+            newState = { ...state }
             newState[action.photo.id] = action.photo
             return newState
         default:
