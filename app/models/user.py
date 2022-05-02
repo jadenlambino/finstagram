@@ -30,3 +30,5 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email
         }
+
+    photos = db.relationship("Photos", back_populates = "user")
