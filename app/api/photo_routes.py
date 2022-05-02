@@ -5,7 +5,7 @@ from app.models import User, Photo
 photo_routes = Blueprint('photos', __name__)
 
 @photo_routes.route('/', methods=["GET", "POST", "PATCH", "DELETE"])
-@login_required
+# @login_required
 def photos():
     #add following photos later
     if current_user.id:
