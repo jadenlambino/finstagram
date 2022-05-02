@@ -1,5 +1,7 @@
+from crypt import methods
 from flask import Blueprint, jsonify
 from flask_login import login_required, current_user
+from app.forms.photo_form import PhotoForm
 from app.models import User, Photo, photo
 
 photo_routes = Blueprint('photos', __name__)
@@ -8,13 +10,17 @@ photo_routes = Blueprint('photos', __name__)
 # @login_required
 def photos():
     #add following photos later
-    # if current_user.id:
-        # photos = Photo.query.filter(Photo.user_id == current_user.id).all()
-    # photos = Photo.query.all()
-    # return(response)
     photos = Photo.query.all()
-    # print (photos[0].caption)
-    # print (type(photos[0]))
     response = {"photos": [photo.to_dict() for photo in photos]}
-    # return response
     return jsonify(response)
+
+@photo_routes.route('/', methods=["POST"])
+def post_photo():
+    form = PhotoForm()
+    if form.validate_on_submit():
+        data = form.data
+        new_photo = Photo (
+            user_id = data["user_id"]
+            photo_url = data["photo_url"]
+            caption = data["caption"]
+        )

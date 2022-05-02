@@ -14,7 +14,7 @@ const postPhoto = (photo) => ({
 const initialState = {}
 
 export const grabPhotos = () => async (dispatch) => {
-    const response = await fetch ('/api/photos');
+    const response = await fetch ('/api/photos/');
     if (response.ok) {
         const data = await response.json();
         dispatch(getPhotos(data))
@@ -23,7 +23,7 @@ export const grabPhotos = () => async (dispatch) => {
 }
 
 export const uploadPhoto = (photoData) => async (dispatch) => {
-    const response = await fetch ('/api/photos', {
+    const response = await fetch ('/api/photos/', {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
