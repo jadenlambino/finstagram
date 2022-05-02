@@ -20,8 +20,8 @@ export default function reducer(state = initialState, action){
     let newState;
     switch (action.type) {
         case GET_PHOTOS:
-            newState = {...state, ...action.photos}
-            // action.photos.forEach(photo => newState[photo.id] = photo)
+            newState = {...state}
+            action.photos.photos.forEach(photo => newState[photo.id] = photo)
             console.log(action.photos)
             return newState
         default:
