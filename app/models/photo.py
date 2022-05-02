@@ -16,4 +16,8 @@ class Photo(db.Model):
             "caption": self.caption
         }
 
+    def edit_caption(self, caption):
+        self.caption = caption
+        return caption
+        
     user = db.relationship("User", back_populates="photos")

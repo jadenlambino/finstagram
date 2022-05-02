@@ -22,7 +22,7 @@ def post_photo():
 
     form = PhotoForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print('=====================', form.data)
+    # print('=====================', form.data)
     if form.validate_on_submit():
         data = form.data
         new_photo = Photo(
@@ -30,8 +30,18 @@ def post_photo():
             photo_url = data["photo_url"],
             caption = data["caption"]
         )
-        print('=====================SUBMITTED', )
+        # print('=====================SUBMITTED', )
         db.session.add(new_photo)
         db.session.commit()
         return new_photo.to_dict()
     #return {'Message': 'works'}
+
+@photo_routes.route('/<int:id>', methods=["PATCH"])
+def patch_photo(id):
+    photo = Photo.query.get(id)
+    #print('==========PHOTO', photo)
+    form = PhotoForm()
+    data = form.data
+    photo.edit_caption(data['caption'])
+    #return photo.to_dict()
+    return {'message': 'works'}

@@ -1,5 +1,6 @@
 const GET_PHOTOS = 'photo/GET_PHOTOS'
 const POST_PHOTO = 'photo/POST_PHOTO'
+const UPDATE_PHOTO = 'photo/UPDATE_PHOTO'
 
 const getPhotos = (photos) => ({
     type: GET_PHOTOS,
@@ -8,6 +9,11 @@ const getPhotos = (photos) => ({
 
 const postPhoto = (photo) => ({
     type: POST_PHOTO,
+    photo
+})
+
+const updatePhoto = (photo) => ({
+    type: UPDATE_PHOTO,
     photo
 })
 
@@ -43,6 +49,25 @@ export const uploadPhoto = (photoData) => async (dispatch) => {
     //add error handing
 }
 
+export const editPhoto = (id, caption) => async (dispatch) => {
+    const response = await fetch(`/api/photos/${id}/`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            caption
+        })
+    })
+
+    if (response.ok) {
+        const photo = await response.json()
+        dispatch(updatePhoto(photo))
+        return photo
+    }
+    //add error handing
+}
+
 export default function reducer(state = initialState, action) {
     let newState;
     switch (action.type) {
@@ -52,6 +77,10 @@ export default function reducer(state = initialState, action) {
             // console.log(action.photos)
             return newState
         case POST_PHOTO:
+            newState = { ...state }
+            newState[action.photo.id] = action.photo
+            return newState
+        case UPDATE_PHOTO:
             newState = { ...state }
             newState[action.photo.id] = action.photo
             return newState
