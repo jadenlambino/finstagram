@@ -8,7 +8,9 @@ photo_routes = Blueprint('photos', __name__)
 # @login_required
 def photos():
     #add following photos later
-    if current_user.id:
-        photos = Photo.query.filter(Photo.user_id == current_user.id).all()
-        response = jsonify(photos)
-    return(response)
+    # if current_user.id:
+        # photos = Photo.query.filter(Photo.user_id == current_user.id).all()
+    # photos = Photo.query.all()
+    # response = jsonify(photos)
+    # return(response)
+    return {"message": "good response"}

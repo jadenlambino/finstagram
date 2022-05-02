@@ -8,11 +8,7 @@ const getPhoto = (photo) => ({
 const initialState = { photo: null}
 
 export const grabPhotos = () => async (dispatch) => {
-    const response = await fetch ('/api/photos', {
-        headers: {
-            "Content-Type": 'application/json'
-        }
-    });
+    const response = await fetch ('/api/photos');
     if (response.ok) {
         const data = await response.json();
         dispatch(getPhoto(data))
