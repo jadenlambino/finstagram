@@ -15,6 +15,6 @@ def photos():
     photos = Photo.query.all()
     # print (photos[0].caption)
     # print (type(photos[0]))
-    response = {'photos': [photo.to_dict() for photo in photos]}
+    response = {"photos": [photo.to_dict() for photo in photos]}
     # return response
     return jsonify(response)

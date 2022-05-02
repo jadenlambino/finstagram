@@ -1,25 +1,29 @@
-const GET_PHOTO = 'photo/GET_PHOTO'
+const GET_PHOTOS = 'photo/GET_PHOTOS'
 
-const getPhoto = (photo) => ({
-    type: GET_PHOTO,
-    payload: photo
+const getPhotos = (photos) => ({
+    type: GET_PHOTOS,
+    photos
 });
 
-const initialState = { photo: null}
+const initialState = {}
 
 export const grabPhotos = () => async (dispatch) => {
     const response = await fetch ('/api/photos');
     if (response.ok) {
         const data = await response.json();
-        dispatch(getPhoto(data))
+        dispatch(getPhotos(data))
+        // console.log(getPhotos(data))
     }
 }
 
 export default function reducer(state = initialState, action){
+    let newState;
     switch (action.type) {
-        case GET_PHOTO:
-            return { photo: action.payload}
-
+        case GET_PHOTOS:
+            newState = {...state, ...action.photos}
+            // action.photos.forEach(photo => newState[photo.id] = photo)
+            console.log(action.photos)
+            return newState
         default:
             return state;
     }

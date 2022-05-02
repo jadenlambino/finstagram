@@ -5,6 +5,7 @@ import { grabPhotos } from "../../store/photo";
 const PhotoFeed = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user)
+    const photos = useSelector(state => state.photo.photos)
 
     useEffect(() => {
         dispatch(grabPhotos())

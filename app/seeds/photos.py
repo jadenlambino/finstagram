@@ -6,8 +6,14 @@ def seed_photos():
         photo_url = "https://www.serebii.net/swordshield/pokemon/448.png",
         caption = "Cool Pokemon!"
     )
+    demo2 = Photo (
+        user_id = 1,
+        photo_url = "https://static.wikia.nocookie.net/sonicpokemon/images/9/95/Gengar_AG_anime.png/revision/latest?cb=20130620042420",
+        caption = "I love Application Academy"
+    )
 
     db.session.add(demo)
+    db.session.add(demo2)
 
     db.session.commit()
 
