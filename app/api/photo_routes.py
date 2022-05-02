@@ -22,8 +22,7 @@ def post_photo():
 
     form = PhotoForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-
-    print('============================', current_user.id)
+    print('=====================', form.data)
     if form.validate_on_submit():
         data = form.data
         new_photo = Photo(
@@ -31,10 +30,8 @@ def post_photo():
             photo_url = data["photo_url"],
             caption = data["caption"]
         )
-        print('SUBMITTED')
-        print('============================', new_photo)
-
+        print('=====================SUBMITTED', )
         db.session.add(new_photo)
         db.session.commit()
         return new_photo.to_dict()
-    return {'Message': 'works'}
+    #return {'Message': 'works'}
