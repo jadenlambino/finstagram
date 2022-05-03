@@ -13,6 +13,12 @@ def photos():
     response = {"photos": [photo.to_dict() for photo in photos]}
     return jsonify(response)
 
+@photo_routes.route('/<int:id>')
+def get_comments(id):
+    photo = Photo.query.get(id)
+    comments = {"comments": [comment.to_dict() for comment in photo.comments]}
+    return jsonify(comments)
+
 @photo_routes.route('/', methods=["POST"])
 def post_photo():
     # if current_user.is_authenticated():
