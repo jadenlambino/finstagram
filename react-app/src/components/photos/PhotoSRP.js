@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { editPhoto, deletePhoto } from "../../store/photo";
+import { editPhoto, removePhoto } from "../../store/photo";
 
 const PhotoSRP = () => {
   const dispatch = useDispatch()
@@ -25,7 +25,7 @@ const PhotoSRP = () => {
   })
   const handleDelete = (e => {
     e.preventDefault()
-    dispatch(deletePhoto(id))
+    dispatch(removePhoto(id))
   })
 
   return (
