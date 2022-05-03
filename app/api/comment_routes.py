@@ -1,18 +1,21 @@
-from flask import Blueprint, current_user, request
+from flask import Blueprint, request
+from flask_login import current_user
 
 #comment model file not created yet
-from app.models import db, Comment
+from app.models import db, Comment, Photo
 from app.forms import CommentForm
 comment_routes = Blueprint('comments', __name__)
-
-#no need for get route bc comments are linked to posts and there's no need to look at comments
-#not associated with a post
 
 @comment_routes.route('/', methods=['POST'])
 def post_comment():
     form = CommentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    photo_id = request.json
+    #request.json returns all of the data in the request body
+    photo_id = request.json["photo_id"]
+    
+    # print('======================PHOTOID', photo_id)
+    #form only returns the data in the form 
+    # print('======================FORM', form.data)
 
     if form.validate_on_submit():
         new_comment = Comment(
@@ -20,7 +23,7 @@ def post_comment():
             photo_id = photo_id,
             body = form.body.data 
         )
-        
+        print('====================SUBMITTED')
         db.session.add(new_comment)
         db.session.commit()
         return new_comment.to_dict()
@@ -30,7 +33,7 @@ def patch_comment(id):
     comment = Comment.query.get(id)
     form = CommentForm()
     data = form.data
-    comment.edit_caption(data['body'])
+    comment.edit_comment(data['body'])
     
     db.session.commit()
 
