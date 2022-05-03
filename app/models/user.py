@@ -40,6 +40,7 @@ class User(db.Model, UserMixin):
 
     photos = db.relationship("Photo", back_populates="user")
     comments = db.relationship("Comment", back_populates="user")
+    like = db.relationship("Like", back_populates="user")
 
     followers = db.relationship(
         "User",
