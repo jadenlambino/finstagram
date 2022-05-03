@@ -2,27 +2,25 @@ import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editPhoto, grabPhotos } from "../../store/photo";
 
+import PhotoContainer from './PhotoContainer';
+
 const PhotoFeed = () => {
+<<<<<<< HEAD
 	const dispatch = useDispatch();
 	// const [editClicked, setEditClicked] = useState(false)
 	// const [caption, setCaption] = useState('')
 	const user = useSelector(state => state.session.user)
 	const photos = useSelector(state => Object.values(state.photos))
+=======
+    const dispatch = useDispatch();
+
+    const user = useSelector(state => state.session.user)
+    const photos = useSelector(state => Object.values(state.photos))
+>>>>>>> refs/remotes/origin/first_crud
 
 	useEffect(() => {
 		dispatch(grabPhotos())
 	}, [dispatch])
-
-	// const handleEdit = (e => {
-	//     e.preventDefault()
-	//     setEditClicked(true)
-	// })
-
-	// const handleSubmit = (e => {
-	//     e.preventDefault()
-	//     useparams for id on single resource page
-	//     dispatch(editPhoto(id, caption))
-	// })
 
 	return (
 		<div>
@@ -32,23 +30,7 @@ const PhotoFeed = () => {
 					<ul>
 						{photos.map(photo => (
 							<li key={photo.id}>
-								<img src={photo.photo_url} />
-								<p>{photo.caption}</p>
-								{/* <button onClick={handleEdit}>Edit</button> */}
-								{/* {editClicked && (
-										<form>
-												<label>caption</label>
-												<input
-														type='text'
-														value={photo.caption}
-														onChange={e => setCaption(e.target.value)}
-												></input>
-												<button
-														type='submit'
-														onSubmit={handleSubmit}
-												>Submit Changes</button>
-										</form>
-								)} */}
+								<PhotoContainer photo={photo} />
 							</li>
 						))}
 					</ul>
