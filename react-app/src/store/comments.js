@@ -20,7 +20,7 @@ const updateComment = (comment) => ({
 
 const deleteComment = (id) => ({
     type: DELETE_COMMENT,
-    comment
+    id
 })
 
 const initialState = {}
@@ -33,7 +33,8 @@ export const grabComments = () => async (dispatch) => {
     }
 }
 
-export const uploadComment = () => async (dispatch) => {
+export const uploadComment = (commentData) => async (dispatch) => {
+    const {photoId, userId, body} = commentData
     const response = await fetch('/api/comments/', {
         method: "POST",
         headers: {
@@ -41,7 +42,7 @@ export const uploadComment = () => async (dispatch) => {
         },
         body: JSON.stringify({
             photo_id: photoId,
-            user_id: userId
+            user_id: userId,
             body
         })
     })

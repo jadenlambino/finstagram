@@ -6,15 +6,16 @@ const CommentsFeed = ({photo}) => {
     const dispatch = useDispatch();
 
     const user = useSelector(state => state.session.user)
-	const comments = useSelector(state => Object.values(state.comments))
+	// const comments = useSelector(state => Object.values(state.comments))
 
-	useEffect(() => {
-		dispatch(grabComments())
-	}, [dispatch])
+	// useEffect(() => {
+	// 	dispatch(grabComments())
+	// }, [dispatch])
 
 	return (
 		<div>
-			{comments.length > 0 &&
+            <h1>Hello Components</h1>
+			{/* {comments.length > 0 &&
 				<>
 					<h1>Comments feed</h1>
 					<ul>
@@ -27,7 +28,7 @@ const CommentsFeed = ({photo}) => {
 						))}
 					</ul>
 				</>
-			}
+			} */}
 		</div>
 	)
 }
