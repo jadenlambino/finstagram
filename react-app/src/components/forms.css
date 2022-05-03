@@ -1,0 +1,19 @@
+form {
+  border: 1px solid black;
+  padding: 10px;
+  /* display: flex; */
+
+}
+label {
+  font-family: Arial, Helvetica, sans-serif;
+  padding-right: 5px
+
+}
+
+.form-element {
+  padding: 5px;
+}
+.form-submit {
+  background-color: lightgray;
+  height: 30px;
+}
