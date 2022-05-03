@@ -101,7 +101,7 @@ export default function reducer(state = initialState, action) {
             newState = { ...state }
             newState[action.photo.id] = action.photo
             return newState
-        case UPDATE_PHOTO:
+        case DELETE_PHOTO:
             newState = { ...state }
             delete newState[action.id]
             return newState
