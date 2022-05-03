@@ -15,7 +15,6 @@ class Following(db.Model):
             "user_id": self.user_id,
             "followed_id": self.followed_id,
         }
-        # TODO do we need any "edit like method?"
 
     user = db.relationship("User", back_populates="following")
     followed = db.relationship("User", back_populates="following")

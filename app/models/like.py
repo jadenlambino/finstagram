@@ -14,7 +14,6 @@ class Like(db.Model):
             "photo_id": self.photo_id,
             "user_id": self.user_id,
         }
-        # TODO do we need any "edit like method?"
 
     user = db.relationship("User", back_populates="likes")
     photo = db.relationship("Photo", back_populates="likes")

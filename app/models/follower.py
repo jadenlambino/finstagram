@@ -15,8 +15,6 @@ class Follower(db.Model):
             "user_id": self.user_id,
             "followers_id": self.followers_id,
         }
-        # TODO do we need any "edit like method?"
 
-    user = db.relationship("User", back_populates="follower")
-    followers = db.relationship("User", back_populates="follower")
-    # TODO is this correct??
+    user = db.relationship("User", back_populates="followers")
+    followers = db.relationship("User", back_populates="followers")
