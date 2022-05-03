@@ -5,9 +5,8 @@ from flask_login import UserMixin
 
 follows = db.Table(
     'follows',
-    followed_id=db.Column(db.Integer, db.ForeignKey("users.id")),
-    followers_id=db.Column(
-        db.Integer, db.ForeignKey("users.id"))
+    db.Column("followed_id", db.Integer, db.ForeignKey("users.id")),
+    db.Column("followers_id", db.Integer, db.ForeignKey("users.id"))
 )
 
 
@@ -40,6 +39,8 @@ class User(db.Model, UserMixin):
         }
 
     photos = db.relationship("Photo", back_populates="user")
+    comments = db.relationship("Comment", back_populates="user")
+
     followers = db.relationship(
         "User",
         secondary=follows,

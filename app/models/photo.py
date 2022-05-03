@@ -1,5 +1,6 @@
 from .db import db
 
+
 class Photo(db.Model):
     __tablename__ = 'photos'
 
@@ -19,5 +20,6 @@ class Photo(db.Model):
     def edit_caption(self, caption):
         self.caption = caption
         return caption
-        
+
     user = db.relationship("User", back_populates="photos")
+    comments = db.relationship("Comment", back_populates="photos")
