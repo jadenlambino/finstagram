@@ -3,7 +3,7 @@ import Modal from '../../../context/Modal';
 import PhotoSRP from './PhotoSRP';
 
 
-export default function PhotoModal () {
+export default function PhotoModal ({photo}) {
 
     const [showModal, setShowModal] = useState(false);
 
@@ -13,7 +13,7 @@ export default function PhotoModal () {
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <h1>Hello From Modal</h1>
-                    {/* <PhotoSRP/> */}
+                    <PhotoSRP photo={photo}/>
                 </Modal>
             )}
         </>

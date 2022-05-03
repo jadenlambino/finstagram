@@ -24,7 +24,7 @@ const PhotoFeed = () => {
 						{photos.map(photo => (
 							<li key={photo.id}>
 								<PhotoContainer photo={photo} />
-								<PhotoModal />
+								<PhotoModal  photo={photo}/>
 							</li>
 						))}
 					</ul>

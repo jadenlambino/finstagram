@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { editPhoto, removePhoto } from "../../../store/photo";
 
-const PhotoSRP = () => {
+const PhotoSRP = ({photo}) => {
   const dispatch = useDispatch()
   const [editClicked, setEditClicked] = useState(false)
   const [caption, setCaption] = useState('')
@@ -11,18 +11,18 @@ const PhotoSRP = () => {
   // const photos = useSelector(state => Object.values(state.photos))
   const id = useParams()
 
-  const handleEdit = (e => {
+  const handleEdit = (e) => {
     e.preventDefault()
     setEditClicked(true)
-  })
+  }
 
 
-  const handleSubmit = (e => {
+  const handleSubmit = (e) => {
 
     e.preventDefault()
     // useparams for id on single resource page
     dispatch(editPhoto(id, caption))
-  })
+  }
   const handleDelete = (e => {
     e.preventDefault()
     dispatch(removePhoto(id))
@@ -41,14 +41,14 @@ const PhotoSRP = () => {
           </input>
           <button
             type="submit"
-            onSubmit={handleSubmit()}>
+            onSubmit={handleSubmit}>
             Submit Changes
           </button>
         </form>
       )}
       <button>delete</button>
-      <img></img>
-      <h1>title</h1>
+      <img src={photo.photo_url}></img>
+      <h1>{photo.caption}</h1>
       <p>comments</p>
 
     </div>
