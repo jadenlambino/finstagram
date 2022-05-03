@@ -36,7 +36,7 @@ def post_photo():
         return new_photo.to_dict()
     #return {'Message': 'works'}
 
-@photo_routes.route('/<int:id>', methods=["PATCH"])
+@photo_routes.route('/<int:id>/', methods=["PATCH"])
 def patch_photo(id):
     photo = Photo.query.get(id)
     #print('==========PHOTO', photo)

@@ -56,14 +56,13 @@ export const uploadPhoto = (photoData) => async (dispatch) => {
 }
 
 export const editPhoto = (id, caption) => async (dispatch) => {
+    console.log('EDIT THUNK FUNCTION')
     const response = await fetch(`/api/photos/${id}/`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-            caption
-        })
+        body: JSON.stringify({ caption })
     })
 
     if (response.ok) {

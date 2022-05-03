@@ -17,7 +17,9 @@ const PhotoSRP = ({ photo }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    console.log('edit')
     await dispatch(editPhoto(photo.id, caption))
+    setEditClicked(false)
   }
 
   const handleDelete = (e) => {
@@ -25,14 +27,14 @@ const PhotoSRP = ({ photo }) => {
     dispatch(removePhoto(photo.id))
     history.push('/photos')
   }
-
+  // console.log('render')
   return (
     <div>
       {photo.user_id === user.id &&
         <div>
           <button onClick={handleEdit}>edit</button>
           {editClicked && (
-            <form>
+            <form onSubmit={handleSubmit}>
               <label>caption</label>
               <input
                 type="text"
@@ -41,7 +43,7 @@ const PhotoSRP = ({ photo }) => {
               </input>
               <button
                 type="submit"
-                onSubmit={handleSubmit}>
+              >
                 Submit Changes
               </button>
               {/* <h1>{photo.id}</h1> */}
