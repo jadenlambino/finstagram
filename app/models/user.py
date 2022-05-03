@@ -8,12 +8,6 @@ follows = db.Table(
     db.Column("followers_id", db.Integer, db.ForeignKey("users.id"))
 )
 
-follows = db.Table(
-    'follows',
-    db.Column("followed_id", db.Integer, db.ForeignKey("users.id")),
-    db.Column("followers_id", db.Integer, db.ForeignKey("users.id"))
-)
-
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
