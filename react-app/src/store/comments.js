@@ -1,7 +1,7 @@
-const GET_COMMENTS = 'photo/GET_COMMENTS'
-const POST_COMMENT = 'photo/POST_COMMENT'
-const UPDATE_COMMENT = 'photo/UPDATE_COMMENT'
-const DELETE_COMMENT = 'photo/DELETE_COMMENT'
+const GET_COMMENTS = 'comments/GET_COMMENTS'
+const POST_COMMENT = 'comments/POST_COMMENT'
+const UPDATE_COMMENT = 'comments/UPDATE_COMMENT'
+const DELETE_COMMENT = 'comments/DELETE_COMMENT'
 
 const getComments = (comments) => ({
     type: GET_COMMENTS,
@@ -25,8 +25,8 @@ const deleteComment = (id) => ({
 
 const initialState = {}
 
-export const grabComments = () => async (dispatch) => {
-    const response = await fetch('/api/comments/');
+export const grabComments = (id) => async (dispatch) => {
+    const response = await fetch(`/api/photos/${id}/`);
     if (response.ok) {
         const data = await response.json();
         dispatch(getComments(data))

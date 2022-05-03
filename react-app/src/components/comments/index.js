@@ -8,9 +8,9 @@ const CommentsFeed = ({photo}) => {
     const user = useSelector(state => state.session.user)
 	// const comments = useSelector(state => Object.values(state.comments))
 
-	// useEffect(() => {
-	// 	dispatch(grabComments())
-	// }, [dispatch])
+	useEffect(() => {
+		dispatch(grabComments(photo.id))
+	}, [dispatch])
 
 	return (
 		<div>
@@ -20,11 +20,9 @@ const CommentsFeed = ({photo}) => {
 					<h1>Comments feed</h1>
 					<ul>
 						{comments.map(comment => (
-                            {comment.photo_id === photo.id &&
                                 <li key={comment.id}>
-                                {comment.body}
+                                	{comment.body}
                                 </li>
-                            }
 						))}
 					</ul>
 				</>
