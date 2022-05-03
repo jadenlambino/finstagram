@@ -74,7 +74,7 @@ export const editPhoto = (id, caption) => async (dispatch) => {
 }
 
 export const removePhoto = (id) => async (dispatch) => {
-    const response = await fetch(`/api/photos/${id}`, {
+    const response = await fetch(`/api/photos/${id}/`, {
         method: 'DELETE'
     });
 

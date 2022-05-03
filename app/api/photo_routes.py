@@ -43,17 +43,17 @@ def patch_photo(id):
     form = PhotoForm()
     data = form.data
     photo.edit_caption(data['caption'])
-    
+
     db.session.commit()
 
     return photo.to_dict()
 
 
-@photo_routes.route('/<int:id>', methods=["DELETE"])
+@photo_routes.route('/<int:id>/', methods=["DELETE"])
 def delete_photo(id):
     photo = Photo.query.get(id)
 
     db.session.delete(photo)
     db.session.commit()
-    
+
     return {"Message": "Photo deleted successfully"}
