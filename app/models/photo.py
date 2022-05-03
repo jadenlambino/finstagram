@@ -19,5 +19,7 @@ class Photo(db.Model):
     def edit_caption(self, caption):
         self.caption = caption
         return caption
-        
+
     user = db.relationship("User", back_populates="photos")
+    comments = db.relationship("Comment", back_populates="photos", cascade="all, delete")
+    likes = db.relationship("Like", back_populates="photos", cascade="all, delete")

@@ -1,8 +1,7 @@
 import { useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
 
 export default function PhotoContainer({ photo }) {
-    const dispatch = useDispatch()
+
     const [comment, setComment] = useState('')
 
     return (

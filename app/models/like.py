@@ -5,7 +5,7 @@ class Like(db.Model):
     __tablename__ = 'likes'
 
     id = db.Column(db.Integer, primary_key=True)
-    photo_id = db.Column(db.String, db.ForeignKey("photos.id"), nullable=False)
+    photo_id = db.Column(db.Integer, db.ForeignKey("photos.id"), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
     def to_dict(self):
@@ -16,4 +16,4 @@ class Like(db.Model):
         }
 
     user = db.relationship("User", back_populates="likes")
-    photo = db.relationship("Photo", back_populates="likes")
+    photos = db.relationship("Photo", back_populates="likes")
