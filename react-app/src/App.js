@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import PhotoFeed from './components/photos/PhotoFeed'
 import PhotoForm from './components/photos/PhotoForm';
+import PhotoSRP from './components/photos/PhotoSRP'
 import { authenticate } from './store/session';
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -37,7 +38,7 @@ function App() {
           <SignUpForm />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+          <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
@@ -48,6 +49,9 @@ function App() {
         <Route path='/photos'>
           <PhotoFeed />
           <PhotoForm />
+        </Route>
+        <Route path='/photos/:id'>
+          <PhotoSRP />
         </Route>
       </Switch>
     </BrowserRouter>
