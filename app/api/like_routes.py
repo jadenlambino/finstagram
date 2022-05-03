@@ -1,4 +1,5 @@
-from flask import Blueprint, request, current_user
+from flask import Blueprint, request
+from flask_login import current_user
 
 from app.models import db, Like
 
