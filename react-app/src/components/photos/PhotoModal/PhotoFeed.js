@@ -2,6 +2,7 @@ import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editPhoto, grabPhotos } from "../../store/photo";
 import PhotoModal from './PhotoModal';
+import CommentsFeed from '../../comments'
 
 import PhotoContainer from './PhotoContainer';
 
@@ -25,6 +26,7 @@ const PhotoFeed = () => {
 							<li key={photo.id}>
 								<PhotoContainer photo={photo} />
 								<PhotoModal  photo={photo}/>
+								<CommentsFeed photo={photo}/>
 							</li>
 						))}
 					</ul>
