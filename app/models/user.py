@@ -2,6 +2,11 @@ from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
+follows = db.Table(
+    'follows',
+    db.Column("followed_id", db.Integer, db.ForeignKey("users.id")),
+    db.Column("followers_id", db.Integer, db.ForeignKey("users.id"))
+)
 
 follows = db.Table(
     'follows',
@@ -40,7 +45,7 @@ class User(db.Model, UserMixin):
 
     photos = db.relationship("Photo", back_populates="user")
     comments = db.relationship("Comment", back_populates="user")
-    like = db.relationship("Like", back_populates="user")
+    likes = db.relationship("Like", back_populates='user')
 
     followers = db.relationship(
         "User",

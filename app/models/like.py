@@ -16,4 +16,4 @@ class Like(db.Model):
         }
 
     user = db.relationship("User", back_populates="likes")
-    photo = db.relationship("Photo", back_populates="likes")
+    photos = db.relationship("Photo", back_populates="likes")

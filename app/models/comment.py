@@ -21,5 +21,6 @@ class Comment(db.Model):
     def edit_comment(self, body):
         self.body = body
         return body
+
     user = db.relationship("User", back_populates="comments")
-    photo = db.relationship("Photo", back_populates="comments")
+    photos = db.relationship("Photo", back_populates="comments")
