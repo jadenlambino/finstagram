@@ -7,7 +7,7 @@ class Follower(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     followers_id = db.Column(
-        db.String, db.ForeignKey("users.id"), nullable=False)
+        db.Integer, db.ForeignKey("users.id"), nullable=False)
 
     def to_dict(self):
         return {

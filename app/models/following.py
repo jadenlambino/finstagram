@@ -7,7 +7,7 @@ class Following(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     followed_id = db.Column(
-        db.String, db.ForeignKey("users.id"), nullable=False)
+        db.Integer, db.ForeignKey("users.id"), nullable=False)
 
     def to_dict(self):
         return {
@@ -18,4 +18,3 @@ class Following(db.Model):
 
     user = db.relationship("User", back_populates="following")
     followed = db.relationship("User", back_populates="following")
-    # TODO is this correct??
