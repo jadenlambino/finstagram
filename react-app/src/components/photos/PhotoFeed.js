@@ -5,18 +5,10 @@ import { editPhoto, grabPhotos } from "../../store/photo";
 import PhotoContainer from './PhotoContainer';
 
 const PhotoFeed = () => {
-<<<<<<< HEAD
 	const dispatch = useDispatch();
-	// const [editClicked, setEditClicked] = useState(false)
-	// const [caption, setCaption] = useState('')
+
 	const user = useSelector(state => state.session.user)
 	const photos = useSelector(state => Object.values(state.photos))
-=======
-    const dispatch = useDispatch();
-
-    const user = useSelector(state => state.session.user)
-    const photos = useSelector(state => Object.values(state.photos))
->>>>>>> refs/remotes/origin/first_crud
 
 	useEffect(() => {
 		dispatch(grabPhotos())
