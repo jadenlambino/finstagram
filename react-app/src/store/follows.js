@@ -2,14 +2,14 @@ const GET_FOLLOWS = 'follows/GET_FOLLOWS'
 const POST_FOLLOW = 'follows/ADD_FOLLOW'
 const DELETE_FOLLOW = 'follows/DELETE_FOLLOW'
 
-const getFollows = (follows) => ({
+const getFollows = (user) => ({
     type: GET_FOLLOWS,
-    follows
+    user
 });
 
-const postFollow = (follow) => ({
+const postFollow = (user) => ({
     type: POST_FOLLOW,
-    follow
+    user
 })
 
 const deleteFollow = (id) => ({
@@ -34,7 +34,7 @@ export const followUser = (userId) => async (dispatch) => {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            followed_id: followId,
+            user_id: userId,
         })
     });
     if (response.ok) {

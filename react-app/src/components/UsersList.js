@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from "react-redux";
 import { NavLink } from 'react-router-dom';
+// import { followUser } from "../../store/follows";
 
 function UsersList() {
+  // const dispatch = useDispatch();
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -13,10 +16,18 @@ function UsersList() {
     fetchData();
   }, []);
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   dispatch(followUser())
+
+  // }
+
   const userComponents = users.map((user) => {
     return (
       <li key={user.id}>
         <NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
+        {/* <button>Follow</button> */}
       </li>
     );
   });
