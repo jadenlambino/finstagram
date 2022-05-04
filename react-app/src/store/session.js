@@ -1,5 +1,5 @@
 import { LOAD_LIKES, POST_LIKE, DELETE_LIKE } from "./like";
-
+import { GET_FOLLOWS, POST_FOLLOW, DELETE_FOLLOW } from './follows'
 // constants
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
@@ -120,6 +120,12 @@ export default function reducer(state = initialState, action) {
       const like = newState.likes.find(like => like.id == action.id)
       const idx = newState.likes.indexOf(like)
       newState.likes.splice(idx, 1)
+      return newState
+    case GET_FOLLOWS:
+      newState = { ...state }
+      // console.log('=======================action', action.user.following)
+      newState['following'] = action.user.following
+      newState['followers'] = action.user.followers
       return newState
     default:
       return state;

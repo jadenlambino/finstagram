@@ -12,6 +12,7 @@ import PhotoForm from './components/photos/PhotoForm';
 // import PhotoSRP from './components/photos/PhotoSRP'
 import { authenticate } from './store/session';
 import { grabLikes } from './store/like';
+import { grabFollows } from './store/follows';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -20,7 +21,8 @@ function App() {
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
-      await dispatch(grabLikes())
+      await dispatch(grabLikes());
+      await dispatch(grabFollows())
       setLoaded(true);
     })();
   }, [dispatch]);
