@@ -1,17 +1,23 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 from flask_login import current_user
 
-from app.models import db, Like
+from app.models import db, Like, User
 
 like_routes = Blueprint('likes', __name__)
 
+@like_routes.route('/')
+def get_like():
+    user = User.query.get(current_user.id)
+    likes = {"likes": [like.to_dict() for like in user.likes]}
+    return jsonify(likes)
+
 @like_routes.route('/', methods=['POST'])
 def post_like():
-    like_id = request.json
+    photo_id = request.json
 
     new_like = Like(
         user_id = current_user.id,
-        like_id = like_id
+        photo_id = photo_id
     )
 
     db.session.add(new_like)
