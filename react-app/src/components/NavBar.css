@@ -25,17 +25,17 @@ li.nav-link button {
 	outline: inherit;
 
 }
-a {
+.nav-link a {
   text-decoration: none;
   color: black;
-
-
-
-}
-.nav-link{
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.nav-link{
+
   border: 1px solid black;
   text-decoration: none;
   font-size: 12pt;
