@@ -7,7 +7,7 @@ follow_routes = Blueprint('follows', __name__)
 
 @follow_routes.route('/')
 def get_follow():
-    user = User.query.get(2)
+    user = User.query.get(current_user.id)
     # print('===========================FOLLOWERS', [user for user in user.followers])
     # print('===========================FOLLOWING', [user for user in user.following])
     # return {'Message': "Follow successful"}
@@ -20,7 +20,7 @@ def get_follow():
 
 @follow_routes.route('/', methods=['POST'])
 def post_follow():
-    user_to_fol_id = request.json
+    user_to_fol_id = request.json['user_id']
     user_to_fol = User.query.get(user_to_fol_id)
     user = User.query.get(current_user.id)
 
@@ -34,11 +34,13 @@ def post_follow():
 #following, prefer latter so dont have to do get request to find follow id
 @follow_routes.route('/', methods=['DELETE'])
 def delete_follow():
-    user_followed_id = request.json
+    user_followed_id = request.json['user_id']
     user_followed = User.query.get(user_followed_id)
     user = User.query.get(current_user.id)
 
-    user.following.pop(user_followed)
+    # print('=======================FOLLOWING', user.following)
+    # print('=======================FOLLOWINGTYPE', type(user.following))
+    user.following.remove(user_followed)
     db.session.commit()
 
     return {'Message': 'Follow deleted successfully'}
