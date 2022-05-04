@@ -54,13 +54,14 @@ export const uploadComment = (commentData) => async (dispatch) => {
     //add error handing
 }
 
-export const editComment = (id, body) => async (dispatch) => {
+export const editComment = (editedComment) => async (dispatch) => {
+    const { id, comment } = editedComment
     const response = await fetch(`/api/comments/${id}/`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({ body })
+        body: JSON.stringify({ body: comment })
     })
 
     if (response.ok) {
