@@ -1,3 +1,5 @@
+import { LOAD_LIKES, POST_LIKE, DELETE_LIKE } from "./like";
+
 // constants
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
@@ -100,11 +102,25 @@ export const signUp = (firstName, lastName, username, email, password) => async 
 }
 
 export default function reducer(state = initialState, action) {
+  let newState;
   switch (action.type) {
     case SET_USER:
       return { user: action.payload }
     case REMOVE_USER:
       return { user: null }
+    case LOAD_LIKES:
+      newState = { ...state }
+      newState["likes"] = action.likes.likes
+      return newState
+    case POST_LIKE:
+      newState = { ...state }
+      newState.likes.push(action.like)
+    case DELETE_LIKE:
+      newState = { ...state }
+      const like = newState.likes.find(like => like.id == action.id)
+      const idx = newState.likes.indexOf(like)
+      // delete 
+      return newState
     default:
       return state;
   }
