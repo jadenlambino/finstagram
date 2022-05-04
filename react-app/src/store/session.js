@@ -119,7 +119,7 @@ export default function reducer(state = initialState, action) {
       newState = { ...state }
       const like = newState.likes.find(like => like.id == action.id)
       const idx = newState.likes.indexOf(like)
-      // delete 
+      newState.likes.splice(idx, 1)
       return newState
     default:
       return state;

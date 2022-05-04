@@ -2,6 +2,7 @@ import { React, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { editPhoto, removePhoto } from "../../../store/photo";
+import CommentsFeed from '../../comments/CommentsFeed';
 
 const PhotoSRP = ({ photo }) => {
   const dispatch = useDispatch()
@@ -46,7 +47,6 @@ const PhotoSRP = ({ photo }) => {
               >
                 Submit Changes
               </button>
-              {/* <h1>{photo.id}</h1> */}
             </form>
           )}
           <button onClick={handleDelete}>delete</button>
@@ -54,7 +54,7 @@ const PhotoSRP = ({ photo }) => {
       }
       <img src={photo.photo_url}></img>
       <h1>{photo.caption}</h1>
-      <p>comments</p>
+      <CommentsFeed photo={photo}/>
     </div>
   )
 }

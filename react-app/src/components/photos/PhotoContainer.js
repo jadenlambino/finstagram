@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { createLike, removeLike } from "../../store/like"
+import CommentsForm from "../comments/CommentsForm"
 
 export default function PhotoContainer({ photo }) {
     const dispatch = useDispatch()
@@ -25,13 +26,7 @@ export default function PhotoContainer({ photo }) {
             <button
                 onClick={handleLike}
             >Like</button>
-            <form>
-                <input
-                    type="text"
-                    value={comment}
-                    onChange={e => setComment(e.target.value)}
-                ></input>
-            </form>
+            <CommentsForm photo={photo}/>
         </>
     )
 }
