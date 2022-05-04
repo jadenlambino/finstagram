@@ -20,7 +20,7 @@ def user(id):
     return user.to_dict()
 
 
-@user_routes.route('/<int:id>/photos')
+@user_routes.route('/<int:id>/photos/')
 @login_required
 def user_photos(id):
     photos = Photo.query.filter_by(user_id=id)
