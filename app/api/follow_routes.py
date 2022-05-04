@@ -20,6 +20,7 @@ def get_follow():
 
 @follow_routes.route('/', methods=['POST'])
 def post_follow():
+    # print('===========================CURRENT_USER', current_user.id)
     user_to_fol_id = request.json['user_id']
     user_to_fol = User.query.get(user_to_fol_id)
     user = User.query.get(current_user.id)
@@ -28,7 +29,7 @@ def post_follow():
 
     db.session.commit()
 
-    return {'Message': "Follow successful"}
+    return jsonify({"following": user_to_fol.username})
 
 #either get the id of the follow or get the id of the user and id of the person they are
 #following, prefer latter so dont have to do get request to find follow id
@@ -38,6 +39,7 @@ def delete_follow():
     user_followed = User.query.get(user_followed_id)
     user = User.query.get(current_user.id)
 
+    # print('===========================CURRENT_USER', current_user.id)
     # print('=======================FOLLOWING', user.following)
     # print('=======================FOLLOWINGTYPE', type(user.following))
     user.following.remove(user_followed)
