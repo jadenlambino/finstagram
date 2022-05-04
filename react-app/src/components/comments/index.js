@@ -19,14 +19,15 @@ const CommentsFeed = ({photo}) => {
 				<>
 					<h1>Comments feed</h1>
 					<ul>
-						{comments.map(comment => (
-							<h1>{comment.id}</h1>
-							{comment.photo_id === photo.id &&
-                                <li key={comment.id}>
-                                	{comment.body}
-                                </li>
-							}
-						))}
+						{comments.map(comment =>
+							{if (comment.photo_id === photo.id) {
+								return (
+									<li key={comment.id}>
+										{comment.body}
+									</li>
+								)
+							}}
+						)}
 					</ul>
 				</>
 			}
