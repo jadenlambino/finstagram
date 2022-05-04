@@ -27,6 +27,7 @@ li.nav-link button {
 	cursor: pointer;
 	outline: inherit;
 
+
 }
 .nav-link a {
   text-decoration: none;
@@ -42,4 +43,7 @@ li.nav-link button {
   font-size: 12pt;
   width: 80px;
   height: 40px;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: bold;
 }
