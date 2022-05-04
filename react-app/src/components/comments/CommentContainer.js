@@ -29,9 +29,8 @@ const CommentContainer = ({ comment }) => {
     return (
         <>
             {/* <h1>{comment.id}</h1> */}
-            <li key={comment.id}>
-                {comment.body}
-                {user.id === comment.user_id &&
+            {comment.body}
+            {user.id === comment.user_id &&
                 <>
                     <form>
                         <input
@@ -44,8 +43,7 @@ const CommentContainer = ({ comment }) => {
                     </form>
                     <button onClick={handleDelete}>delete</button>
                 </>
-                }
-            </li>
+            }
         </>
     )
 }
