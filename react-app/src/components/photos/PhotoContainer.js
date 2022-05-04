@@ -6,8 +6,6 @@ import CommentsForm from "../comments/CommentsForm"
 export default function PhotoContainer({ photo }) {
     const dispatch = useDispatch()
     const likes = useSelector(state => state.session.likes)
-    const [comment, setComment] = useState('')
-
     const like = likes.find(like => like.photo_id === photo.id)
 
     const handleLike = (e) => {
@@ -18,15 +16,23 @@ export default function PhotoContainer({ photo }) {
             dispatch(createLike(photo.id))
         }
     }
-
+    console.log('render')
     return (
         <>
             <img src={photo.photo_url} />
             <p>{photo.caption}</p>
-            <button
-                onClick={handleLike}
-            >Like</button>
-            <CommentsForm photo={photo}/>
+            {like ? (
+                <button
+                    onClick={handleLike}
+                >Unlike</button>
+            ) : (
+                <button
+                    onClick={handleLike}
+                >Like</button>
+            )
+            }
+            <CommentsForm photo={photo} />
         </>
+
     )
 }
