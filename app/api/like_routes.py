@@ -13,7 +13,7 @@ def get_like():
 
 @like_routes.route('/', methods=['POST'])
 def post_like():
-    photo_id = request.json
+    photo_id = request.json['photo_id']
 
     new_like = Like(
         user_id = current_user.id,
