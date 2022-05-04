@@ -128,15 +128,28 @@ export default function reducer(state = initialState, action) {
       newState['followers'] = action.user.followers
       return newState
     case POST_FOLLOW:
-      newState = { ...state }
-      newState.following.push(action.user.following)
-      return newState
+      // newState = { ...state }
+      // console.log('==================', newState === state)
+      // console.log('==================', newState)
+      // // newState.following.push(action.user.following)
+      // newState.following.push(action.user.following)
+      // return newState
+      return {
+        ...state,
+        following: [...state.following, action.user.following]
+      }
     case DELETE_FOLLOW:
-      newState = { ...state }
-      const follow = newState.follow.find(user => user.id == action.id)
-      const followIdx = newState.likes.indexOf(follow)
-      newState.following.splice(followIdx, 1)
-      return newState
+      // newState = { ...state }
+      // const follow = newState.follow.find(user => user.id == action.id)
+      // const followIdx = newState.likes.indexOf(follow)
+      // newState.following.splice(followIdx, 1)
+      // return newState
+      // console.log('==================ACTIONID', action.id)
+      // console.log('==================', state.following.filter(user => user.id !== +action.id))
+      return {
+        ...state,
+        following: state.following.filter(user => user.id !== +action.id)
+      }
     default:
       return state;
   }
