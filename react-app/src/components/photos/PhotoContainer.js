@@ -1,4 +1,5 @@
 import { useState } from "react"
+import CommentsForm from "../comments/CommentsForm"
 
 export default function PhotoContainer({ photo }) {
 
@@ -9,13 +10,7 @@ export default function PhotoContainer({ photo }) {
             <img src={photo.photo_url} />
             <p>{photo.caption}</p>
             <button>Like</button>
-            <form>
-                <input
-                    type="text"
-                    value={comment}
-                    onChange={e => setComment(e.target.value)}
-                ></input>
-            </form>
+            <CommentsForm photo={photo}/>
         </>
     )
 }
