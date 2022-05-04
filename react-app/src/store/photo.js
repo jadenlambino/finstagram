@@ -1,4 +1,5 @@
 const GET_PHOTOS = 'photo/GET_PHOTOS'
+const GET_USER_PHOTOS = 'photo/GET_USER_PHOTOS'
 const POST_PHOTO = 'photo/POST_PHOTO'
 const UPDATE_PHOTO = 'photo/UPDATE_PHOTO'
 const DELETE_PHOTO = 'photo/DELETE_PHOTO'
@@ -6,6 +7,12 @@ const DELETE_PHOTO = 'photo/DELETE_PHOTO'
 const getPhotos = (photos) => ({
     type: GET_PHOTOS,
     photos
+});
+
+const getUserPhotos = (photos) => ({
+    type: GET_USER_PHOTOS,
+    photos
+
 });
 
 const postPhoto = (photo) => ({
@@ -33,6 +40,14 @@ export const grabPhotos = () => async (dispatch) => {
         // console.log(getPhotos(data))
     }
 }
+
+export const grabUserPhotos = (id) => async (dispatch) => {
+    const response = await fetch(`/api/users/${id}/photos/`)
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(getUserPhotos(data))
+    }
+} //where does this go?!?!?
 
 export const uploadPhoto = (photoData) => async (dispatch) => {
     const { photoUrl, caption } = photoData
@@ -91,6 +106,10 @@ export default function reducer(state = initialState, action) {
             newState = { ...state }
             action.photos.photos.forEach(photo => newState[photo.id] = photo)
             // console.log(action.photos)
+            return newState
+        case GET_USER_PHOTOS:
+            newState = {}
+            action.photos.photos.forEach(photo => newState[photo.id] = photo)
             return newState
         case POST_PHOTO:
             newState = { ...state }
