@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { editPhoto, removePhoto } from "../../../store/photo";
-import CommentsFeed from '../../comments';
+import CommentsFeed from '../../comments/CommentsFeed';
 
 const PhotoSRP = ({ photo }) => {
   const dispatch = useDispatch()

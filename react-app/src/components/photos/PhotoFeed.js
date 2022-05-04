@@ -2,7 +2,7 @@ import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editPhoto, grabPhotos } from "../../store/photo";
 import PhotoModal from './PhotoModal';
-import CommentsFeed from '../comments'
+import CommentsFeed from '../comments/CommentsFeed'
 
 import PhotoContainer from './PhotoContainer';
 
