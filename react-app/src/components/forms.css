@@ -16,6 +16,13 @@ label {
 
 }
 
+.login-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
 body {
   background-color: #eee;
 }
@@ -24,8 +31,13 @@ body {
   height: 50px;
   width: 175px;
   margin: auto;
-  position: relative;
+  /* position: relative; */
   left: 40px;
+  font-family: 'Playfair Display', serif;
+	font-size: 24px;
+	font-size: 2.4rem;
+	font-style: italic;
+	margin-bottom: 20px;
 }
 
 /* .login-form{
