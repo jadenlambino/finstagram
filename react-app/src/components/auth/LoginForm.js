@@ -32,7 +32,11 @@ const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={onLogin}>
+    <div className='login-div'>
+    <form onSubmit={onLogin} className='login-form'>
+      <div className='title'>
+        Finstagram
+      </div>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
@@ -60,6 +64,7 @@ const LoginForm = () => {
       </div>
       <button className='form-submit' type='submit'>Login</button>
     </form>
+  </div>
   );
 };
 
