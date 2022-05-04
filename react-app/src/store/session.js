@@ -118,14 +118,24 @@ export default function reducer(state = initialState, action) {
     case DELETE_LIKE:
       newState = { ...state }
       const like = newState.likes.find(like => like.id == action.id)
-      const idx = newState.likes.indexOf(like)
-      newState.likes.splice(idx, 1)
+      const likeIdx = newState.likes.indexOf(like)
+      newState.likes.splice(likeIdx, 1)
       return newState
     case GET_FOLLOWS:
       newState = { ...state }
       // console.log('=======================action', action.user.following)
       newState['following'] = action.user.following
       newState['followers'] = action.user.followers
+      return newState
+    case POST_FOLLOW:
+      newState = { ...state }
+      newState.following.push(action.user.following)
+      return newState
+    case DELETE_FOLLOW:
+      newState = { ...state }
+      const follow = newState.follow.find(user => user.id == action.id)
+      const followIdx = newState.likes.indexOf(follow)
+      newState.following.splice(followIdx, 1)
       return newState
     default:
       return state;
