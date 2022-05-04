@@ -12,16 +12,16 @@ def post_comment():
     form['csrf_token'].data = request.cookies['csrf_token']
     #request.json returns all of the data in the request body
     photo_id = request.json["photo_id"]
-    
-    # print('======================PHOTOID', photo_id)
-    #form only returns the data in the form 
-    # print('======================FORM', form.data)
+
+    print('======================PHOTOID', photo_id)
+    #form only returns the data in the form
+    print('======================FORM', form.data)
 
     if form.validate_on_submit():
         new_comment = Comment(
             user_id = current_user.id,
             photo_id = photo_id,
-            body = form.body.data 
+            body = form.body.data
         )
         print('====================SUBMITTED')
         db.session.add(new_comment)
@@ -34,7 +34,7 @@ def patch_comment(id):
     form = CommentForm()
     data = form.data
     comment.edit_comment(data['body'])
-    
+
     db.session.commit()
 
     return comment.to_dict()
@@ -46,5 +46,5 @@ def delete_comment(id):
 
     db.session.delete(comment)
     db.session.commit()
-    
+
     return {"Message": "Comment deleted successfully"}

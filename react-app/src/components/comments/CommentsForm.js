@@ -5,7 +5,7 @@ import { uploadComment } from '../../store/comments'
 const CommentsForm = ({ photo }) => {
     const dispatch = useDispatch()
 
-    const user = useSelector(state => state.session.user)
+    // const user = useSelector(state => state.session.user)
 
     const [comment, setComment] = useState("")
 
@@ -14,7 +14,6 @@ const CommentsForm = ({ photo }) => {
 
         const body = {
             photoId: photo.id,
-            userId: user.id,
             comment
         }
 

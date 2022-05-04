@@ -34,7 +34,7 @@ export const grabComments = (id) => async (dispatch) => {
 }
 
 export const uploadComment = (commentData) => async (dispatch) => {
-    const {photoId, userId, body} = commentData
+    const {photoId, comment} = commentData
     const response = await fetch('/api/comments/', {
         method: "POST",
         headers: {
@@ -42,8 +42,7 @@ export const uploadComment = (commentData) => async (dispatch) => {
         },
         body: JSON.stringify({
             photo_id: photoId,
-            user_id: userId,
-            body
+            body: comment
         })
     })
 
