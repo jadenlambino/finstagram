@@ -13,7 +13,7 @@ def photos():
     response = {"photos": [photo.to_dict() for photo in photos]}
     return jsonify(response)
 
-@photo_routes.route('/<int:id>/')
+@photo_routes.route('/<int:id>')
 def get_comments(id):
     photo = Photo.query.get(id)
     comments = {"comments": [comment.to_dict() for comment in photo.comments]}
