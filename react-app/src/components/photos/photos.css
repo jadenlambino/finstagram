@@ -1,0 +1,33 @@
+div.photo-container{
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width:fit-content;
+}
+
+img.photo{
+box-shadow: 0 0 10px black;
+
+}
+
+li.photo-li {
+  list-style: none;
+}
+
+p.caption {
+  text-align: center;
+}
+button.like {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+.like img {
+  width:20px;
+}

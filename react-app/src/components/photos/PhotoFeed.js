@@ -5,6 +5,7 @@ import PhotoModal from './PhotoModal';
 import CommentsFeed from '../comments/CommentsFeed'
 
 import PhotoContainer from './PhotoContainer';
+import "./photos.css"
 
 const PhotoFeed = () => {
 	const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const PhotoFeed = () => {
 					<h1>This is your photo feed</h1>
 					<ul>
 						{photos.map(photo => (
-							<li key={photo.id}>
+							<li key={photo.id} className="photo-li">
 								<PhotoContainer photo={photo} />
 								<PhotoModal  photo={photo}/>
 								<CommentsFeed photo={photo}/>
