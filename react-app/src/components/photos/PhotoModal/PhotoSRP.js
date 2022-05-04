@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { editPhoto, removePhoto } from "../../../store/photo";
 import CommentsFeed from '../../comments/CommentsFeed';
+import CommentsForm from "../../comments/CommentsForm";
 
 const PhotoSRP = ({ photo }) => {
   const dispatch = useDispatch()
@@ -55,6 +56,7 @@ const PhotoSRP = ({ photo }) => {
       <img src={photo.photo_url}></img>
       <h1>{photo.caption}</h1>
       <CommentsFeed photo={photo}/>
+      <CommentsForm photo={photo} />
     </div>
   )
 }

@@ -4,7 +4,7 @@ import { editPhoto, grabPhotos } from "../../store/photo";
 import PhotoModal from './PhotoModal';
 import CommentsFeed from '../comments/CommentsFeed'
 
-import PhotoContainer from './PhotoContainer';
+// import PhotoContainer from './PhotoContainer';
 import "./photos.css"
 
 const PhotoFeed = () => {
@@ -25,7 +25,7 @@ const PhotoFeed = () => {
 					<ul>
 						{photos.map(photo => (
 							<li key={photo.id} className="photo-li">
-								<PhotoContainer photo={photo} />
+								{/* <PhotoContainer photo={photo} /> */}
 								<PhotoModal  photo={photo}/>
 								<CommentsFeed photo={photo}/>
 							</li>
