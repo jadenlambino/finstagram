@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { editComment } from "../../store/comments";
+import { editComment, removeComment } from "../../store/comments";
 
 const CommentContainer = ({ comment }) => {
     const dispatch = useDispatch()
@@ -9,7 +9,7 @@ const CommentContainer = ({ comment }) => {
 
     const [newComment, setComment] = useState(comment.body)
 
-    const handleSubmit = (e) => {
+    const handleEdit = (e) => {
         e.preventDefault();
 
         const editedComment = {
@@ -20,12 +20,19 @@ const CommentContainer = ({ comment }) => {
         dispatch(editComment(editedComment))
     }
 
+    const handleDelete = (e) => {
+        e.preventDefault();
+
+        dispatch(removeComment(comment.id))
+    }
+
     return (
         <>
             {/* <h1>{comment.id}</h1> */}
             <li key={comment.id}>
                 {comment.body}
                 {user.id === comment.user_id &&
+                <>
                     <form>
                         <input
                             type="text"
@@ -33,8 +40,10 @@ const CommentContainer = ({ comment }) => {
                             onChange={(e) => setComment(e.target.value)}
                         >
                         </input>
-                        <button type="submit" onClick={handleSubmit}>edit</button>
+                        <button type="submit" onClick={handleEdit}>edit</button>
                     </form>
+                    <button onClick={handleDelete}>delete</button>
+                </>
                 }
             </li>
         </>

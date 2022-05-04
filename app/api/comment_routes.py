@@ -40,7 +40,7 @@ def patch_comment(id):
     return comment.to_dict()
 
 
-@comment_routes.route('/<int:id>', methods=["DELETE"])
+@comment_routes.route('/<int:id>/', methods=["DELETE"])
 def delete_comment(id):
     comment = Comment.query.get(id)
 
