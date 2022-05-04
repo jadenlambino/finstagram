@@ -113,20 +113,51 @@ export default function reducer(state = initialState, action) {
       newState["likes"] = action.likes.likes
       return newState
     case POST_LIKE:
-      newState = { ...state }
-      newState.likes.push(action.like)
+      // newState = { ...state }
+      // newState.likes.push(action.like)
+      return {
+        ...state,
+        likes: [...state.likes, action.like]
+      }
     case DELETE_LIKE:
-      newState = { ...state }
-      const like = newState.likes.find(like => like.id == action.id)
-      const idx = newState.likes.indexOf(like)
-      newState.likes.splice(idx, 1)
-      return newState
+      // newState = { ...state }
+      // const like = newState.likes.find(like => like.id == action.id)
+      // const likeIdx = newState.likes.indexOf(like)
+      // newState.likes.splice(likeIdx, 1)
+      // return newState
+      return {
+        ...state,
+        likes: state.likes.filter(like => like.id !== action.id)
+      }
     case GET_FOLLOWS:
       newState = { ...state }
       // console.log('=======================action', action.user.following)
       newState['following'] = action.user.following
       newState['followers'] = action.user.followers
       return newState
+    case POST_FOLLOW:
+      // newState = { ...state }
+      // console.log('==================', newState === state)
+      // console.log('==================', newState)
+      // // newState.following.push(action.user.following)
+      // newState.following.push(action.user.following)
+      // return newState
+      return {
+        ...state,
+        following: [...state.following, action.user.following]
+      }
+    case DELETE_FOLLOW:
+      // newState = { ...state }
+      // const follow = newState.follow.find(user => user.id == action.id)
+      // const followIdx = newState.likes.indexOf(follow)
+      // newState.following.splice(followIdx, 1)
+      // return newState
+      // console.log('==================ACTIONID', action.id)
+      // console.log('==================', state.following.filter(user => user.id !== +action.id))
+      return {
+        ...state,
+        following: state.following.filter(user => user.id !== +action.id)
+      }
     default:
       return state;
   }
