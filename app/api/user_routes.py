@@ -25,3 +25,16 @@ def user(id):
 def user_photos(id):
     photos = Photo.query.filter_by(user_id=id)
     return {"photos": [photo.to_dict() for photo in photos]}
+
+
+@user_routes.route("/<int:id>/follows/")
+@login_required
+def user_follows(id):
+    user = User.query.get(id)
+    # print('===========================FOLLOWERS', [user for user in user.followers])
+    # print('===========================FOLLOWING', [user for user in user.following])
+    # return {'Message': "Follow successful"}
+    follow = {
+        "followers": [user.to_dict() for user in user.followers],
+        "following": [user.to_dict() for user in user.following]
+    }

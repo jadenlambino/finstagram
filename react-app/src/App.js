@@ -9,10 +9,14 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import PhotoFeed from './components/photos/PhotoFeed'
 import PhotoForm from './components/photos/PhotoForm';
+import Splash from './components/Splash';
+import UserHome from './components/UserHome'
+
 // import PhotoSRP from './components/photos/PhotoSRP'
 import { authenticate } from './store/session';
 import { grabLikes } from './store/like';
 import { grabFollows } from './store/follows';
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -47,15 +51,16 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        {/* <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
-        </ProtectedRoute> */}
-        <ProtectedRoute>
-          <Route path='/photos'>
-            <PhotoFeed />
-            <PhotoForm />
-          </Route>
+        <ProtectedRoute path='/' exact={true} >
+          <UserHome />
         </ProtectedRoute>
+        <Route path='/splash' exact={true} >
+          <Splash />
+        </Route>
+        <Route path='/photos'>
+          <PhotoFeed />
+          <PhotoForm />
+        </Route>
       </Switch>
     </BrowserRouter>
   );
