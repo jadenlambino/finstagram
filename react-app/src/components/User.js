@@ -7,7 +7,8 @@ import PhotoModal from './photos/PhotoModal';
 import CommentsFeed from './comments/CommentsFeed'
 
 import PhotoContainer from './photos/PhotoContainer';
-import { followUser, removeFollow } from '../store/follows';
+import { followUser, grabUserFollows, removeFollow } from '../store/follows';
+import FollowsContainer from './follows/FollowsContainer';
 
 
 function User() {
@@ -43,6 +44,7 @@ function User() {
 
   useEffect(() => {
     dispatch(grabUserPhotos(userId))
+    dispatch(grabUserFollows(userId))
   }, [dispatch])
 
   if (!user) {
@@ -69,7 +71,9 @@ function User() {
           )}
         </ul>
       }
+      <FollowsContainer profileUser={user} />
       <ul>
+
         {photos.map(photo => (
           <li key={photo.id}>
             <PhotoContainer photo={photo} />
