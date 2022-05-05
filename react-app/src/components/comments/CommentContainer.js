@@ -29,7 +29,12 @@ const CommentContainer = ({ comment }) => {
     return (
         <>
             {/* <h1>{comment.id}</h1> */}
-            {comment.body}
+            <p>
+                {comment.username}
+            </p>
+            <p>
+                {comment.body}
+            </p>
             {user.id === comment.user_id &&
                 <>
                     <form>
