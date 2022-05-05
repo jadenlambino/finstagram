@@ -1,4 +1,5 @@
 from .db import db
+from .user import User
 
 class Photo(db.Model):
     __tablename__ = 'photos'
@@ -9,11 +10,14 @@ class Photo(db.Model):
     caption = db.Column(db.String(255))
 
     def to_dict(self):
+        user = User.query.get(self.user_id)
+
         return {
             "id": self.id,
             "user_id": self.user_id,
             "photo_url": self.photo_url,
-            "caption": self.caption
+            "caption": self.caption,
+            "username": user.username
         }
 
     def edit_caption(self, caption):
