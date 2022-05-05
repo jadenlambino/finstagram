@@ -51,24 +51,23 @@ function User() {
 
   return (
     <>
-      {following &&
-        <ul>
-          <li>
-            <strong>User Id</strong> {userId}
-          </li>
-          <li>
-            <strong>Username</strong> {user.username}
-          </li>
-          <li>
-            <strong>Email</strong> {user.email}
-          </li>
-          {followedUser ? (
-            <button onClick={handleFollow}>Unfollow</button>
-          ) : (
-            <button onClick={handleFollow}>Follow</button>
-          )}
-        </ul>
-      }
+      <ul>
+        <li>
+          <strong>User Id</strong> {userId}
+        </li>
+        <li>
+          <strong>Username</strong> {user.username}
+        </li>
+        <li>
+          <strong>Email</strong> {user.email}
+        </li>
+        {followedUser ? (
+          <button onClick={handleFollow}>Unfollow</button>
+        ) : (
+          <button onClick={handleFollow}>Follow</button>
+        )}
+      </ul>
+
       <ul>
         {photos.map(photo => (
           <li key={photo.id}>
