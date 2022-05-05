@@ -1,6 +1,5 @@
-
 nav ul {
-  background-color: lightgray;
+  background-color: #ffffff;
   list-style: none;
   display:flex;
   position: fixed;
@@ -8,6 +7,9 @@ nav ul {
   left: 0;
   top: 0;
   margin-top: 0;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.0975);
+  justify-content: space-around;
+  box-sizing: border-box;
 
 }
 body {
@@ -24,29 +26,23 @@ li.nav-link button {
 	cursor: pointer;
 	outline: inherit;
 
+
 }
-a {
+.nav-link a {
   text-decoration: none;
   color: black;
-
-
-
-}
-.nav-link{
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
+}
+.nav-link{
   text-decoration: none;
   font-size: 12pt;
-
   width: 80px;
   height: 40px;
-
-
-
-}
-
-.nav-link:hover {
-  background-color: darkgray;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: bold;
 }
