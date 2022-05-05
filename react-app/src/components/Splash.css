@@ -8,23 +8,26 @@
   /* justify-content:center; */
   align-items: center;
   background-color:white;
+  margin-top: 100px;
 }
-/* } */
+
 
 .splash-title{
   height: 50px;
   width: 200px;
   margin: auto;
-
-  /* position: relative; */
-  left: 40px;
+  position: relative;
+  /* left: 40px; */
   font-family: 'Playfair Display', serif;
   font-size: 24px;
   font-size: 2.4rem;
   font-style: italic;
-  /* margin-bottom: 20px; */
-  font-weight: bold;
+  top: 50px;
+
 }
+  /* margin-bottom: 20px;
+  font-weight: bold;
+  /* } */
 
 .bottom-signup{
   border: 1px solid #e6e6e6;
