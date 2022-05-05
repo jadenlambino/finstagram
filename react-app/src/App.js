@@ -26,7 +26,7 @@ function App() {
     (async () => {
       await dispatch(authenticate());
       await dispatch(grabLikes());
-      await dispatch(grabFollows())
+      await dispatch(grabFollows());
       setLoaded(true);
     })();
   }, [dispatch]);

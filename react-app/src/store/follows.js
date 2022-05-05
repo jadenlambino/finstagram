@@ -17,8 +17,6 @@ const deleteFollow = (id) => ({
     id
 })
 
-const initialState = {}
-
 export const grabFollows = () => async (dispatch) => {
     const response = await fetch('/api/follows/');
     if (response.ok) {
