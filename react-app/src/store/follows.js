@@ -3,19 +3,19 @@ export const POST_FOLLOW = 'follows/ADD_FOLLOW'
 export const DELETE_FOLLOW = 'follows/DELETE_FOLLOW'
 export const GET_USER_FOLLOWS = 'follows/GET_USER_FOLLOWS'
 
-const getFollows = (follows) => ({
+const getFollows = (users) => ({
     type: GET_FOLLOWS,
-    follows
+    users
 })
 
-const postFollow = (follows) => ({
+const postFollow = (users) => ({
     type: POST_FOLLOW,
-    follows
+    users
 })
 
-const getUserFollows = (follows) => ({
+const getUserFollows = (users) => ({
     type: GET_USER_FOLLOWS,
-    follows
+    users
 })
 
 const deleteFollow = (id) => ({
@@ -68,34 +68,5 @@ export const removeFollow = (id) => async (dispatch) => {
     })
     if (response.ok) {
         dispatch(deleteFollow(id))
-    }
-}
-
-export default function reducer(state = initialState, action) {
-    let newState;
-    switch (action.type) {
-        case GET_FOLLOWS:
-            newState = { ...state }
-            action.follows.follows.forEach(follow => newState[follow.id] = follow)
-            // console.log(action.follows)
-            return newState
-        case GET_USER_FOLLOWS:
-            newState = {}
-            action.follows.follows.forEach(follow => newState[follow.id] = follow)
-            return newState
-        case POST_FOLLOW:
-            newState = { ...state }
-            newState[action.follow.id] = action.follow
-            return newState
-        // case UPDATE_FOLLOW:
-        //     newState = { ...state }
-        //     newState[action.follow.id] = action.follow
-        //     return newState
-        case DELETE_FOLLOW:
-            newState = { ...state }
-            delete newState[action.id]
-            return newState
-        default:
-            return state;
     }
 }
