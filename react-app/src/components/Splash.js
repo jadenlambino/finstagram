@@ -9,7 +9,7 @@ import "./Splash.css"
 const Splash = props => {
   return (
     <>
-      <h1> Welcome to Finstagram</h1>
+      <h1 className='splash-title'> Welcome to Finstagram</h1>
       <LoginForm />
 
       don't have an account?&nbsp;
