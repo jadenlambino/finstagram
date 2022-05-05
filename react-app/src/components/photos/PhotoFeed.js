@@ -15,7 +15,7 @@ const PhotoFeed = () => {
 		dispatch(grabPhotos())
 	}, [dispatch])
 
-	console.log('PHOTOFEED')
+	// console.log('PHOTOFEED')
 	return (
 		<div>
 			{photos.length > 0 &&
