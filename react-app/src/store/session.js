@@ -132,20 +132,28 @@ export default function reducer(state = initialState, action) {
     case GET_FOLLOWS:
       newState = { ...state }
       // console.log('=======================action', action.user.following)
-      newState['following'] = action.user.following
-      newState['followers'] = action.user.followers
+      newState['following'] = {}
+      action.user.following.forEach(user => {
+        newState.following[user.id] = user
+      })
+      newState['followers'] = {}
+      action.user.followers.forEach(user => {
+        newState.followers[user.id] = user
+      })
       return newState
     case POST_FOLLOW:
-      // newState = { ...state }
       // console.log('==================', newState === state)
       // console.log('==================', newState)
       // // newState.following.push(action.user.following)
       // newState.following.push(action.user.following)
       // return newState
-      return {
-        ...state,
-        following: [...state.following, action.user.following]
-      }
+      // return {
+      //   ...state,
+      //   following: [...state.following, action.user.following]
+      // }
+      newState = { ...state }
+      newState.following[action.user.following.id] = action.user.following
+      return newState
     case DELETE_FOLLOW:
       // newState = { ...state }
       // const follow = newState.follow.find(user => user.id == action.id)
@@ -154,10 +162,13 @@ export default function reducer(state = initialState, action) {
       // return newState
       // console.log('==================ACTIONID', action.id)
       // console.log('==================', state.following.filter(user => user.id !== +action.id))
-      return {
-        ...state,
-        following: state.following.filter(user => user.id !== +action.id)
-      }
+      // return {
+      //   ...state,
+      //   following: state.following.filter(user => user.id !== +action.id)
+      // }
+      newState = { ...state }
+      delete newState.following[action.id]
+      return newState
     default:
       return state;
   }
