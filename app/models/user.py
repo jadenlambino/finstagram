@@ -8,6 +8,7 @@ follows = db.Table(
     db.Column("followers_id", db.Integer, db.ForeignKey("users.id"))
 )
 
+
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
@@ -33,7 +34,9 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'first_name': self.first_name,
+            'last_name': self.last_name
         }
 
     photos = db.relationship("Photo", back_populates="user")

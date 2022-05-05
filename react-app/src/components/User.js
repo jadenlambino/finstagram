@@ -7,7 +7,9 @@ import PhotoModal from './photos/PhotoModal';
 import CommentsFeed from './comments/CommentsFeed'
 
 import PhotoContainer from './photos/PhotoContainer';
-import { followUser, removeFollow } from '../store/follows';
+import { followUser, grabUserFollows, removeFollow } from '../store/follows';
+import FollowsContainer from './follows/FollowsContainer';
+import './User.css'
 
 
 function User() {
@@ -37,6 +39,7 @@ function User() {
     (async () => {
       const response = await fetch(`/api/users/${userId}`);
       const user = await response.json();
+
       setUser(user);
     })();
   }, [userId]);
@@ -52,15 +55,10 @@ function User() {
   return (
     <>
       {following &&
-        <ul>
+        <ul className='user-details'>
+
           <li>
-            <strong>User Id</strong> {userId}
-          </li>
-          <li>
-            <strong>Username</strong> {user.username}
-          </li>
-          <li>
-            <strong>Email</strong> {user.email}
+            (@{user.username}) {user.first_name} {user.last_name}
           </li>
           {followedUser ? (
             <button onClick={handleFollow}>Unfollow</button>
@@ -69,7 +67,9 @@ function User() {
           )}
         </ul>
       }
+      {/* <FollowsContainer profileUser={user} /> */}
       <ul>
+
         {photos.map(photo => (
           <li key={photo.id}>
             <PhotoContainer photo={photo} />
