@@ -18,7 +18,7 @@ const PhotoFeed = () => {
 	console.log('PHOTOFEED')
 	return (
 		<div>
-			{photos.length > 0 && loaded &&
+			{photos.length > 0 &&
 				<>
 					<h1>This is your photo feed</h1>
 					<ul>
