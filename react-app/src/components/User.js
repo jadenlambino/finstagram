@@ -38,6 +38,9 @@ function User() {
     (async () => {
       const response = await fetch(`/api/users/${userId}`);
       const user = await response.json();
+      console.log(user)
+      console.log("!!!!!!!!!!!!!!!")
+
       setUser(user);
     })();
   }, [userId]);
@@ -63,6 +66,12 @@ function User() {
           <li>
             <strong>Email</strong> {user.email}
           </li>
+          <li>
+            First Name {user.first_name}
+          </li>
+          <li>
+            Last Name {user.last_name}
+          </li>
           {followedUser ? (
             <button onClick={handleFollow}>Unfollow</button>
           ) : (
@@ -70,7 +79,7 @@ function User() {
           )}
         </ul>
       }
-      <FollowsContainer profileUser={user} />
+      {/* <FollowsContainer profileUser={user} /> */}
       <ul>
 
         {photos.map(photo => (
