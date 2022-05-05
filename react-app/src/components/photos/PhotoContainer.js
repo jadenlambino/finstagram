@@ -16,7 +16,6 @@ export default function PhotoContainer({ photo }) {
             dispatch(createLike(photo.id))
         }
     }
-    console.log('render')
     return (
         <>
             <img src={photo.photo_url} />

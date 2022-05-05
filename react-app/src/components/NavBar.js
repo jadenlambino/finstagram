@@ -7,9 +7,7 @@ import "./NavBar.css"
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user)
-  if (user) console.log('exists')
-  else console.log('does not exist')
-  console.log(user)
+
   return (
 
     <nav>
