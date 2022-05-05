@@ -5,7 +5,6 @@
   margin-right: auto;
   display:flex;
   flex-direction:column;
-  /* justify-content:center; */
   align-items: center;
   background-color:white;
   margin-top: 100px;
@@ -16,18 +15,14 @@
   width: 200px;
   margin: auto;
   position: relative;
-  /* left: 40px; */
   font-family: 'Playfair Display', serif;
-  font-size: 24px;
+  font-size: 28px;
   font-size: 2.4rem;
   font-style: italic;
   top: 50px;
   bottom: 10px;
 
 }
-  /* margin-bottom: 20px;
-  font-weight: bold;
-  /* } */
 
 .bottom-signup{
   border: 1px solid #e6e6e6;
@@ -38,7 +33,9 @@
 }
 
 .splash-bio{
-  /* margin: auto; */
   font-size:18px;
   margin-top: 100px;
+  width: 250px;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
 }
