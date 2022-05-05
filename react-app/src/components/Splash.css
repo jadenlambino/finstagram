@@ -1,6 +1,10 @@
-.splash-signup{
-  width: 250px;
-  height: 40%;
+.splash-div{
+  width: auto;
+  height: auto;
+  display:flex;
+  flex-direction:column;
+  /* justify-content:center; */
+  align-items: center;
 }
 /* } */
 
