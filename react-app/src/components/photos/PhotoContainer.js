@@ -13,7 +13,7 @@ export default function PhotoContainer({ photo }) {
 
     let followedUser
     if (Object.keys(following)) followedUser = following[photo.user_id]
-    console.log('==========FOLLOWEDUSER', followedUser)
+    // console.log('==========FOLLOWEDUSER', followedUser)
 
     const handleLike = (e) => {
         e.preventDefault()

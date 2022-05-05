@@ -1,4 +1,5 @@
-import { LOAD_LIKES, POST_LIKE, DELETE_LIKE } from "./like";
+//import used for creating a likes obj within photos
+// import { LOAD_LIKES, POST_LIKE, DELETE_LIKE } from "./like";
 
 const GET_PHOTOS = 'photo/GET_PHOTOS'
 const GET_USER_PHOTOS = 'photo/GET_USER_PHOTOS'
@@ -123,7 +124,7 @@ export default function reducer(state = initialState, action) {
             newState = { ...state }
             delete newState[action.id]
             return newState
-        case LOAD_LIKES:
+        // case LOAD_LIKES:
         // newState = { ...state }
         // const likesObj = {}
         // action.likes.likes.forEach(like => {
