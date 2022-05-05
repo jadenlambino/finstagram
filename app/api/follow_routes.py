@@ -6,18 +6,18 @@ from app.models import db, User
 follow_routes = Blueprint('follows', __name__)
 
 
-# @follow_routes.route('/')
-# def get_follow(id):
-#     user = User.query.get(id)
-#     # print('===========================FOLLOWERS', [user for user in user.followers])
-#     # print('===========================FOLLOWING', [user for user in user.following])
-#     # return {'Message': "Follow successful"}
-#     follow = {
-#         "followers": [user.to_dict() for user in user.followers],
-#         "following": [user.to_dict() for user in user.following]
-#     }
+@follow_routes.route('/')
+def get_follow():
+    user = User.query.get(current_user.id)
+    # print('===========================FOLLOWERS', [user for user in user.followers])
+    # print('===========================FOLLOWING', [user for user in user.following])
+    # return {'Message': "Follow successful"}
+    follow = {
+        "followers": [user.to_dict() for user in user.followers],
+        "following": [user.to_dict() for user in user.following]
+    }
 
-#     return jsonify(follow)
+    return jsonify(follow)
 
 
 @follow_routes.route('/', methods=['POST'])
