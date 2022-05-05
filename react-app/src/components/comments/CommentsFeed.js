@@ -4,10 +4,10 @@ import { grabComments } from "../../store/comments";
 import { editComment } from "../../store/comments";
 import CommentContainer from "./CommentContainer";
 
-const CommentsFeed = ({photo}) => {
-    const dispatch = useDispatch();
+const CommentsFeed = ({ photo }) => {
+	const dispatch = useDispatch();
 
-    // const user = useSelector(state => state.session.user)
+	// const user = useSelector(state => state.session.user)
 	const comments = useSelector(state => Object.values(state.comments))
 
 	// const [comment, setComment] = useState("")
@@ -33,12 +33,15 @@ const CommentsFeed = ({photo}) => {
 				<>
 					<h1>Comments feed</h1>
 					<ul>
-						{comments.map(comment =>
-							{if (comment.photo_id === photo.id) {
+						{comments.map(comment => {
+							if (comment.photo_id === photo.id) {
 								return (
-									<CommentContainer comment={comment}/>
+									<li key={comment.id}>
+										<CommentContainer comment={comment} />
+									</li>
 								)
-							}}
+							}
+						}
 						)}
 					</ul>
 				</>
