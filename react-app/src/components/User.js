@@ -9,6 +9,7 @@ import CommentsFeed from './comments/CommentsFeed'
 import PhotoContainer from './photos/PhotoContainer';
 import { followUser, grabUserFollows, removeFollow } from '../store/follows';
 import FollowsContainer from './follows/FollowsContainer';
+import './User.css'
 
 
 function User() {
@@ -38,8 +39,6 @@ function User() {
     (async () => {
       const response = await fetch(`/api/users/${userId}`);
       const user = await response.json();
-      console.log(user)
-      console.log("!!!!!!!!!!!!!!!")
 
       setUser(user);
     })();
@@ -56,21 +55,10 @@ function User() {
   return (
     <>
       {following &&
-        <ul>
+        <ul className='user-details'>
+
           <li>
-            <strong>User Id</strong> {userId}
-          </li>
-          <li>
-            <strong>Username</strong> {user.username}
-          </li>
-          <li>
-            <strong>Email</strong> {user.email}
-          </li>
-          <li>
-            First Name {user.first_name}
-          </li>
-          <li>
-            Last Name {user.last_name}
+            (@{user.username}) {user.first_name} {user.last_name}
           </li>
           {followedUser ? (
             <button onClick={handleFollow}>Unfollow</button>
