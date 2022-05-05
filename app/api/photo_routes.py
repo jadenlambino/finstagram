@@ -1,7 +1,10 @@
+import itertools
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.forms.photo_form import PhotoForm
-from app.models import Photo, db
+from app.models import Photo, db, User
+from itertools import chain
+
 
 photo_routes = Blueprint('photos', __name__)
 
@@ -9,7 +12,14 @@ photo_routes = Blueprint('photos', __name__)
 # @login_required
 def photos():
     #add following photos later
-    photos = Photo.query.all()
+    # print('============', current_user.get_id())
+    user = User.query.get(current_user.id)
+    following = [user for user in user.following]
+    following_photos_list =[user.photos for user in following]
+    following_photos = list(itertools.chain.from_iterable(following_photos_list))
+    photos = user.photos + following_photos
+    # print('====================USERPHOTOS', user.photos + following_photos)
+
     response = {"photos": [photo.to_dict() for photo in photos]}
     return jsonify(response)
 
@@ -28,7 +38,6 @@ def post_photo():
 
     form = PhotoForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    # print('=====================', form.data)
     if form.validate_on_submit():
         data = form.data
         new_photo = Photo(
@@ -36,16 +45,13 @@ def post_photo():
             photo_url = data["photo_url"],
             caption = data["caption"]
         )
-        # print('=====================SUBMITTED', )
         db.session.add(new_photo)
         db.session.commit()
         return new_photo.to_dict()
-    #return {'Message': 'works'}
 
 @photo_routes.route('/<int:id>/', methods=["PATCH"])
 def patch_photo(id):
     photo = Photo.query.get(id)
-    #print('==========PHOTO', photo)
     form = PhotoForm()
     data = form.data
     photo.edit_caption(data['caption'])
