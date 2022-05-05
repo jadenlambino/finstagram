@@ -24,7 +24,7 @@ const CommentsForm = ({ photo }) => {
             console.log('hello')
         }
     }
-
+    // console.log('COMMENTSFORM')
     return (
         <div>
             <ul>
@@ -36,9 +36,9 @@ const CommentsForm = ({ photo }) => {
                 <div>
                     <label>Add a Comment!</label>
                     <input
-                    type='text'
-                    value={comment}
-                    onChange={(e) => setComment(e.target.value)}
+                        type='text'
+                        value={comment}
+                        onChange={(e) => setComment(e.target.value)}
                     >
                     </input>
                 </div>

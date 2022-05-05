@@ -25,7 +25,7 @@ const CommentContainer = ({ comment }) => {
 
         dispatch(removeComment(comment.id))
     }
-
+    // console.log('COMMENTCONTAINER')
     return (
         <>
             {/* <h1>{comment.id}</h1> */}
