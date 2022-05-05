@@ -1,25 +1,38 @@
-// WE DO NOT NEED THIS FILE ANYMORE, THE PHOTO CONTAINER IS NOW INSIDE OF THE PHOTO MODAL
-
-//import { useState } from "react"
+// import { useState } from "react"
+// import { useDispatch, useSelector } from "react-redux"
+// import { createLike, removeLike } from "../../store/like"
 // import CommentsForm from "../comments/CommentsForm"
-// import "./photos.css"
 
 // export default function PhotoContainer({ photo }) {
+//     const dispatch = useDispatch()
+//     const likes = useSelector(state => state.session.likes)
+//     const like = likes.find(like => like.photo_id === photo.id)
 
-//     const [comment, setComment] = useState('')
-
+//     const handleLike = (e) => {
+//         e.preventDefault()
+//         if (like) {
+//             dispatch(removeLike(like.id))
+//         } else {
+//             dispatch(createLike(photo.id))
+//         }
+//     }
+//     console.log('render')
 //     return (
-//         <div className="photo-container">
-//             <img className="photo" src={photo.photo_url} />
-//             <p className="caption">{photo.caption}</p>
-//             <button className="like"><img src="/img/heart.png" alt="like"></img></button>
-//             <form>
-//                 <input className="new-comment"
-//                     type="text"
-//                     value={comment}
-//                     onChange={e => setComment(e.target.value)}
-//                 ></input>
-//             </form>
-//         </div>
+//         <>
+//             <img src={photo.photo_url} />
+//             <p>{photo.caption}</p>
+//             {like ? (
+//                 <button
+//                     onClick={handleLike}
+//                 >Unlike</button>
+//             ) : (
+//                 <button
+//                     onClick={handleLike}
+//                 >Like</button>
+//             )
+//             }
+//             <CommentsForm photo={photo} />
+//         </>
+
 //     )
 // }

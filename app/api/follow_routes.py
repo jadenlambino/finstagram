@@ -12,8 +12,8 @@ def get_follow():
     # print('===========================FOLLOWING', [user for user in user.following])
     # return {'Message': "Follow successful"}
     follow = {
-        "followers": [user.username for user in user.followers],
-        "following": [user.username for user in user.following]
+        "followers": [user.to_dict() for user in user.followers],
+        "following": [user.to_dict() for user in user.following]
     }
     
     return jsonify(follow)
@@ -29,7 +29,7 @@ def post_follow():
 
     db.session.commit()
 
-    return jsonify({"following": user_to_fol.username})
+    return jsonify({"following": user_to_fol.to_dict()})
 
 #either get the id of the follow or get the id of the user and id of the person they are
 #following, prefer latter so dont have to do get request to find follow id

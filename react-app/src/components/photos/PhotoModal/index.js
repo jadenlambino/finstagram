@@ -3,11 +3,24 @@ import Modal from '../../../context/Modal';
 import PhotoSRP from './PhotoSRP';
 import CommentsForm from "../../comments/CommentsForm"
 import './index.css'
+import { removeLike, createLike } from '../../../store/like';
 
 
 export default function PhotoModal ({photo}) {
 
     const [showModal, setShowModal] = useState(false);
+
+    const likes = useSelector(state => state.session.likes)
+    const like = likes.find(like => like.photo_id === photo.id)
+
+    const handleLike = (e) => {
+        e.preventDefault()
+        if (like) {
+            dispatch(removeLike(like.id))
+        } else {
+            dispatch(createLike(photo.id))
+        }
+    }
 
     return (
         <div className="photo-container">
@@ -18,7 +31,16 @@ export default function PhotoModal ({photo}) {
                 </Modal>
             )}
             <p className="caption">{photo.caption}</p>
-            <button className="like"><img src="/img/heart.png" alt="like"></img></button>
+            {like ? (
+                <button
+                    onClick={handleLike}
+                >Unlike</button>
+            ) : (
+                <button
+                    onClick={handleLike}
+                >Like</button>
+            )
+            }
             <CommentsForm photo={photo} />
         </div>
     )
