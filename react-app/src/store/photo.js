@@ -104,7 +104,7 @@ export default function reducer(state = initialState, action) {
     let newState;
     switch (action.type) {
         case GET_PHOTOS:
-            newState = { ...state }
+            newState = {}
             action.photos.photos.forEach(photo => { newState[photo.id] = photo })
             return newState
         case GET_USER_PHOTOS:
