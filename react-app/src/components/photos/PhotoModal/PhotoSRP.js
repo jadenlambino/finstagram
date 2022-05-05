@@ -4,6 +4,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { editPhoto, removePhoto } from "../../../store/photo";
 import CommentsFeed from '../../comments/CommentsFeed';
 import CommentsForm from "../../comments/CommentsForm";
+import './PhotoSRP.css'
 
 const PhotoSRP = ({ photo }) => {
   const dispatch = useDispatch()
@@ -31,7 +32,7 @@ const PhotoSRP = ({ photo }) => {
   }
   // console.log('render')
   return (
-    <div>
+    <div className="modal-container">
       {photo.user_id === user.id &&
         <div>
           <button onClick={handleEdit}>edit</button>

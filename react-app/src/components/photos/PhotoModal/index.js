@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Modal from '../../../context/Modal';
+import { useDispatch, useSelector } from "react-redux"
 import PhotoSRP from './PhotoSRP';
 import CommentsForm from "../../comments/CommentsForm"
 import './index.css'
@@ -9,7 +10,7 @@ import { removeLike, createLike } from '../../../store/like';
 export default function PhotoModal ({photo}) {
 
     const [showModal, setShowModal] = useState(false);
-
+    const dispatch = useDispatch()
     const likes = useSelector(state => state.session.likes)
     const like = likes.find(like => like.photo_id === photo.id)
 
