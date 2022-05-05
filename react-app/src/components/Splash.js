@@ -12,8 +12,8 @@ const Splash = props => {
       <div className='splash-div'>
       <h1 className='splash-title'> Welcome to Finstagram</h1>
       <LoginForm />
-      <div className='bottom-sigup'>
-      don't have an account?&nbsp;
+      <div className='bottom-signup'>
+      Don't have an account?&nbsp;
       <NavLink to='/sign-up' exact={true} className="splash-signup" activeClassName='active'>
         Sign Up
       </NavLink>
