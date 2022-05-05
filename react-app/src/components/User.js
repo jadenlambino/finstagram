@@ -44,7 +44,6 @@ function User() {
 
   useEffect(() => {
     dispatch(grabUserPhotos(userId))
-    dispatch(grabUserFollows(userId))
   }, [dispatch])
 
   if (!user) {

@@ -1,21 +1,15 @@
 export const GET_FOLLOWS = 'follows/GET_FOLLOWS'
 export const POST_FOLLOW = 'follows/ADD_FOLLOW'
 export const DELETE_FOLLOW = 'follows/DELETE_FOLLOW'
-export const GET_USER_FOLLOWS = 'follows/GET_USER_FOLLOWS'
 
-const getFollows = (users) => ({
+const getFollows = (user) => ({
     type: GET_FOLLOWS,
-    users
-})
+    user
+});
 
-const postFollow = (users) => ({
+const postFollow = (user) => ({
     type: POST_FOLLOW,
-    users
-})
-
-const getUserFollows = (users) => ({
-    type: GET_USER_FOLLOWS,
-    users
+    user
 })
 
 const deleteFollow = (id) => ({
@@ -25,18 +19,11 @@ const deleteFollow = (id) => ({
 
 const initialState = {}
 
-export const grabFollows = (id) => async (dispatch) => {
+export const grabFollows = () => async (dispatch) => {
     const response = await fetch('/api/follows/');
     if (response.ok) {
         const data = await response.json();
         dispatch(getFollows(data))
-    }
-}
-export const grabUserFollows = (id) => async (dispatch) => {
-    const response = await fetch(`/api/users/${id}/follows/`)
-    if (response.ok) {
-        const data = await response.json();
-        dispatch(getUserFollows(data))
     }
 }
 
