@@ -26,8 +26,16 @@ export default function PhotoContainer({ photo }) {
 
     return (
         <>
-            {followedUser ? (<Link to={`/users/${photo.user_id}`}>{followedUser.username}</Link>)
-                : (<Link to={`/users/${photo.user_id}`}>{user.username}</Link>)
+            {followedUser ? (
+                <div>
+                    <Link to={`/users/${photo.user_id}`}>{followedUser.username}</Link>
+                </div>
+            )
+                : (
+                    <div>
+                        <Link to={`/users/${photo.user_id}`}>{user.username}</Link>
+                    </div>
+                )
             }
 
             <img src={photo.photo_url} />
