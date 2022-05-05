@@ -4,12 +4,14 @@ import { useHistory, useParams } from "react-router-dom";
 import { editPhoto, removePhoto } from "../../../store/photo";
 import CommentsFeed from '../../comments/CommentsFeed';
 import CommentsForm from "../../comments/CommentsForm";
+import MenuAnimation from "./menu";
 import './PhotoSRP.css'
 
 const PhotoSRP = ({ photo }) => {
   const dispatch = useDispatch()
   const [editClicked, setEditClicked] = useState(false)
   const [caption, setCaption] = useState(photo.caption)
+  const [buttons, setButtons] = useState(false)
   const user = useSelector(state => state.session.user)
   const history = useHistory()
 
@@ -30,11 +32,9 @@ const PhotoSRP = ({ photo }) => {
     dispatch(removePhoto(photo.id))
     history.push('/photos')
   }
-  // console.log('render')
-  return (
-    <div className="modal-container">
-      {photo.user_id === user.id &&
-        <div>
+
+  let functionButtons = (
+    <div>
           <button onClick={handleEdit}>edit</button>
           {editClicked && (
             <form onSubmit={handleSubmit}>
@@ -46,16 +46,38 @@ const PhotoSRP = ({ photo }) => {
               </input>
               <button
                 type="submit"
-              >
+                >
                 Submit Changes
               </button>
             </form>
           )}
           <button onClick={handleDelete}>delete</button>
         </div>
-      }
+  )
+
+  const reveal = (e) => {
+    buttons ? setButtons(false) : setButtons(true)
+  }
+  // console.log('render')
+  return (
+    <div className="modal-container">
       <img src={photo.photo_url}></img>
-      <h1>{photo.caption}</h1>
+      {photo.user_id === user.id &&
+        <>
+          <input type="checkbox" id="menu-toggle" onChange={reveal}/>
+          <label htmlFor='menu-toggle' className="hamburger">
+              <span className="bun bun-top">
+                  <span className="bun-crust bun-crust-top"></span>
+              </span>
+              <span className="bun bun-bottom">
+                  <span className="bun-crust bun-crust-bottom"></span>
+              </span>
+          </label>
+
+          {buttons && functionButtons}
+        </>
+      }
+      <h3>{photo.caption}</h3>
       <CommentsFeed photo={photo}/>
       <CommentsForm photo={photo} />
     </div>
