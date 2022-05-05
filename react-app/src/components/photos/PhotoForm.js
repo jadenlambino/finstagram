@@ -7,6 +7,8 @@ const PhotoForm = () => {
 
 	const [photoUrl, setPhotoUrl] = useState('')
 	const [caption, setCaption] = useState('')
+	const [errors, setErrors] = useState([])
+
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -17,10 +19,19 @@ const PhotoForm = () => {
 		}
 
 		const response = await dispatch(uploadPhoto(newPhoto))
+		if (response.errors) {
+			setErrors(response.errors)
+			console.log('these are the errors')
+		}
 	}
 
 	return (
 		<div>
+			<ul>
+                {errors.map((error, idx) =>
+                    <li key={idx}>{error}</li>
+                )}
+            </ul>
 			<form>
 				<div>
 					<label>Photo Url</label>

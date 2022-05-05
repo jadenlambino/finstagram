@@ -43,6 +43,10 @@ def post_photo():
         db.session.add(new_photo)
         db.session.commit()
         return new_photo.to_dict()
+    if form.errors:
+        # print (form.errors)
+        return form.errors, 403
+    #return {'Message': 'works'}
 
 @photo_routes.route('/<int:id>/', methods=["PATCH"])
 def patch_photo(id):
