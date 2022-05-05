@@ -18,7 +18,8 @@ function User() {
   const [user, setUser] = useState({});
   const { userId } = useParams();
 
-  const followedUser = following?.find(user => user.id === +userId)
+  // const followedUser = following?.find(user => user.id === +userId)
+  const followedUser = following[userId]
 
   const handleFollow = (e) => {
     e.preventDefault()
