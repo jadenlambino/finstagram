@@ -27,6 +27,7 @@ const CommentsFeed = ({ photo }) => {
 	// 	dispatch(editComment())
 	// }
 
+	// console.log("COMMENTSFEED")
 	return (
 		<div>
 			{comments.length > 0 &&

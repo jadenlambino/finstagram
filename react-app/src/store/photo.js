@@ -1,5 +1,6 @@
 //import used for creating a likes obj within photos
 // import { LOAD_LIKES, POST_LIKE, DELETE_LIKE } from "./like";
+import { CLEAR_STORE } from "./users";
 
 const GET_PHOTOS = 'photo/GET_PHOTOS'
 const GET_USER_PHOTOS = 'photo/GET_USER_PHOTOS'
@@ -134,6 +135,8 @@ export default function reducer(state = initialState, action) {
         //     newState[like.photo_id]["likes"].push(like)
         // })
         // return newState
+        case CLEAR_STORE:
+            return initialState
         default:
             return state;
     }

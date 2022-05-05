@@ -24,6 +24,7 @@ export default function PhotoContainer({ photo }) {
         }
     }
 
+    // console.log("PHOTOCONTAINER")
     return (
         <>
             {followedUser ? (
