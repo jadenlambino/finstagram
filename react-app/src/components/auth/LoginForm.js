@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 import { grabLikes } from '../../store/like';
+import { grabFollows } from '../../store/follows';
 import { login } from '../../store/session';
 import '../forms.css'
 
@@ -17,6 +18,7 @@ const LoginForm = () => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     await dispatch(grabLikes())
+    await dispatch(grabFollows());
     if (data) {
       setErrors(data);
     }
