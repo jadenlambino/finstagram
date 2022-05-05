@@ -34,7 +34,7 @@ const PhotoSRP = ({ photo }) => {
   }
 
   let functionButtons = (
-    <div>
+    <div className="button-container">
           <button onClick={handleEdit}>edit</button>
           {editClicked && (
             <form onSubmit={handleSubmit}>
@@ -61,25 +61,28 @@ const PhotoSRP = ({ photo }) => {
   // console.log('render')
   return (
     <div className="modal-container">
-      <img src={photo.photo_url}></img>
-      {photo.user_id === user.id &&
-        <>
-          <input type="checkbox" id="menu-toggle" onChange={reveal}/>
-          <label htmlFor='menu-toggle' className="hamburger">
-              <span className="bun bun-top">
-                  <span className="bun-crust bun-crust-top"></span>
-              </span>
-              <span className="bun bun-bottom">
-                  <span className="bun-crust bun-crust-bottom"></span>
-              </span>
-          </label>
-
-          {buttons && functionButtons}
-        </>
-      }
-      <h3>{photo.caption}</h3>
-      <CommentsFeed photo={photo}/>
-      <CommentsForm photo={photo} />
+      <img src={photo.photo_url} className='image-container'></img>
+      <div className="info-container">
+        <div className="photo-info">
+          <h3>{photo.caption}</h3>
+          {photo.user_id === user.id &&
+            <div className="button-menu-container">
+              <input type="checkbox" id="menu-toggle" onChange={reveal}/>
+              <label htmlFor='menu-toggle' className="hamburger">
+                  <span className="bun bun-top">
+                      <span className="bun-crust bun-crust-top"></span>
+                  </span>
+                  <span className="bun bun-bottom">
+                      <span className="bun-crust bun-crust-bottom"></span>
+                  </span>
+              </label>
+              {buttons && functionButtons}
+            </div>
+          }
+        </div>
+        <CommentsFeed photo={photo}/>
+        <CommentsForm photo={photo} />
+      </div>
     </div>
   )
 }

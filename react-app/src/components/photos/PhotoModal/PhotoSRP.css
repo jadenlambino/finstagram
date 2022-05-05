@@ -3,3 +3,33 @@
     justify-content: center;
     flex-direction: row;
 }
+
+.button-menu-container {
+    display: flex;
+    justify-content: baseline;
+    flex-direction: column;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.info-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid rgba(0, 0, 0, .3);
+}
+
+.image-container {
+    width: 500px;
+    height: 500px;
+}
+
+.photo-info {
+    display: flex;
+    justify-content: space-between;
+}

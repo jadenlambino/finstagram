@@ -22,7 +22,7 @@ function App() {
     (async () => {
       await dispatch(authenticate());
       await dispatch(grabLikes());
-      await dispatch(grabFollows())
+      await dispatch(grabFollows());
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -47,13 +47,15 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
+        {/* <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
+        </ProtectedRoute> */}
+        <ProtectedRoute>
+          <Route path='/photos'>
+            <PhotoFeed />
+            <PhotoForm />
+          </Route>
         </ProtectedRoute>
-        <Route path='/photos'>
-          <PhotoFeed />
-          <PhotoForm />
-        </Route>
       </Switch>
     </BrowserRouter>
   );
