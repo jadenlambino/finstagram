@@ -11,18 +11,17 @@ photo_routes = Blueprint('photos', __name__)
 @photo_routes.route('/')
 # @login_required
 def photos():
-    #add following photos later
-    # print('============', current_user.get_id())
     user = User.query.get(current_user.id)
     following = [user for user in user.following]
     following_photos_list =[user.photos for user in following]
     following_photos = list(itertools.chain.from_iterable(following_photos_list))
     photos = user.photos + following_photos
-    # print('====================USERPHOTOS', user.photos + following_photos)
 
     response = {"photos": [photo.to_dict() for photo in photos]}
     return jsonify(response)
 
+# refactor route to grab all comments and on frontend use logic
+# to render the comments per photo
 @photo_routes.route('/<int:id>/')
 def get_comments(id):
     photo = Photo.query.get(id)
@@ -31,10 +30,6 @@ def get_comments(id):
 
 @photo_routes.route('/', methods=["POST"])
 def post_photo():
-    # if current_user.is_authenticated():
-    #     g.user = current_user.get_id()
-
-    # print('====================================', g.user)
 
     form = PhotoForm()
     form['csrf_token'].data = request.cookies['csrf_token']
