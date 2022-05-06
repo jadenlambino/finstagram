@@ -40,13 +40,13 @@ export default function PhotoModal({ photo }) {
             )}
             <p className="caption">{photo.caption}</p>
             {like ? (
-                <button
+                <button id='like-dislike'
                     onClick={handleLike}
-                >Unlike</button>
+                >❤️</button>
             ) : (
-                <button
+                <button id='like-dislike'
                     onClick={handleLike}
-                >Like</button>
+                >🤍</button>
             )
             }
 
