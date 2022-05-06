@@ -9,7 +9,7 @@ export default function PhotoContainer({ photo }) {
     // const user = useSelector(state => state.session.user)
     // const following = useSelector(state => state.session.following)
     const likes = useSelector(state => state.session.likes)
-    const like = likes.find(like => like.photo_id === photo.id)
+    const like = likes?.find(like => like.photo_id === photo.id)
 
     // let followedUser
     // if (Object.keys(following)) followedUser = following[photo.user_id]
