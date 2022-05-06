@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory, Link, useParams } from "react-router-dom";
 import { editPhoto, removePhoto } from "../../../store/photo";
 import CommentsFeed from '../../comments/CommentsFeed';
 import CommentsForm from "../../comments/CommentsForm";
@@ -14,10 +14,10 @@ const PhotoSRP = ({ photo }) => {
   const [caption, setCaption] = useState(photo.caption)
   const [buttons, setButtons] = useState(false)
   const user = useSelector(state => state.session.user)
-  const following = useSelector(state => state.session.following)
   const likes = useSelector(state => state.session.likes)
-  const like = likes.find(like => like.photo_id === photo.id)
+  const like = likes?.find(like => like.photo_id === photo.id)
   const history = useHistory()
+  const { userId } = useParams()
 
   const handleEdit = (e) => {
     e.preventDefault()
@@ -48,61 +48,53 @@ const PhotoSRP = ({ photo }) => {
 
   let functionButtons = (
     <div className="button-container">
-      <button className='modal-button-style' onClick={handleEdit}>edit</button>
-      {editClicked && (
-        <form onSubmit={handleSubmit}>
-          <label>caption</label>
-          <input
-            type="text"
-            value={caption}
-            onChange={e => setCaption(e.target.value)}>
-          </input>
-          <button
-            className='modal-button-style'
-            type="submit"
-          >
-            Submit Changes
-          </button>
-        </form>
-      )}
-      <button className='modal-button-style' onClick={handleDelete}>delete</button>
-    </div>
+          <button className='modal-button-style'onClick={handleEdit}>Edit</button>
+          {editClicked && (
+            <form onSubmit={handleSubmit}>
+              <label>Caption</label>
+              <input
+                type="text"
+                value={caption}
+                onChange={e => setCaption(e.target.value)}>
+              </input>
+              <button className='modal-button-style'
+                type="submit"
+                >
+                Submit Changes
+              </button>
+            </form>
+          )}
+          <button className='modal-button-style' onClick={handleDelete}>Delete</button>
+        </div>
   )
 
   const reveal = (e) => {
     buttons ? setButtons(false) : setButtons(true)
   }
 
-  let followedUser
-  if (Object.keys(following)) followedUser = following[photo.user_id]
-  // console.log('render')
   return (
-    <div className="modal-container">
-      <img src={photo.photo_url} className='image-container'></img>
-      <div className="info-container">
-        <div className="photo-info">
-          <h3>{photo.caption}</h3>
-          {followedUser ? (
-            <div>
-              <Link to={`/users/${photo.user_id}`}>{followedUser.username}</Link>
-            </div>
-          )
-            : (
+    <>
+      <h1>PHOTOSRP</h1>
+      <div className="modal-container">
+        <img src={photo.photo_url} className='image-container'></img>
+        <div className="info-container">
+          <div className="photo-info">
+            <h3>{photo.caption}</h3>
+            {!userId && (
               <div>
-                <Link to={`/users/${photo.user_id}`}>{user.username}</Link>
+                <Link to={`/users/${photo.user_id}`}>{photo.username}</Link>
               </div>
-            )
-          }
-          {photo.user_id === user.id &&
-            <div className="button-menu-container">
-              <input type="checkbox" id="menu-toggle" onChange={reveal} />
-              <label htmlFor='menu-toggle' className="hamburger">
-                <span className="bun bun-top">
-                  <span className="bun-crust bun-crust-top"></span>
-                </span>
-                <span className="bun bun-bottom">
-                  <span className="bun-crust bun-crust-bottom"></span>
-                </span>
+            )}
+            {photo.user_id === user.id &&
+              <div className="button-menu-container">
+                <input type="checkbox" id="menu-toggle" onChange={reveal} />
+                <label htmlFor='menu-toggle' className="hamburger">
+                  <span className="bun bun-top">
+                    <span className="bun-crust bun-crust-top"></span>
+                  </span>
+                  <span className="bun bun-bottom">
+                    <span className="bun-crust bun-crust-bottom"></span>
+                  </span>
               </label>
               {buttons && functionButtons}
             </div>
@@ -120,8 +112,9 @@ const PhotoSRP = ({ photo }) => {
         }
         <CommentsFeed photo={photo} />
         {/* <CommentsForm photo={photo} /> */}
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
