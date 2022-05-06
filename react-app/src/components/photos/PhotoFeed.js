@@ -4,7 +4,6 @@ import { editPhoto, grabPhotos } from "../../store/photo";
 import PhotoModal from './PhotoModal';
 import CommentsFeed from '../comments/CommentsFeed'
 
-
 const PhotoFeed = () => {
 	const dispatch = useDispatch();
 	const user = useSelector(state => state.session.user)
@@ -14,7 +13,6 @@ const PhotoFeed = () => {
 		dispatch(grabPhotos())
 	}, [dispatch])
 
-	// console.log('PHOTOFEED')
 	return (
 		<div>
 			{photos.length > 0 &&

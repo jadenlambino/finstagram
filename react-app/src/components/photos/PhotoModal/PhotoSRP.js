@@ -48,24 +48,24 @@ const PhotoSRP = ({ photo }) => {
 
   let functionButtons = (
     <div className="button-container">
-      <button onClick={handleEdit}>edit</button>
-      {editClicked && (
-        <form onSubmit={handleSubmit}>
-          <label>caption</label>
-          <input
-            type="text"
-            value={caption}
-            onChange={e => setCaption(e.target.value)}>
-          </input>
-          <button
-            type="submit"
-          >
-            Submit Changes
-          </button>
-        </form>
-      )}
-      <button onClick={handleDelete}>delete</button>
-    </div>
+          <button className='modal-button-style'onClick={handleEdit}>Edit</button>
+          {editClicked && (
+            <form onSubmit={handleSubmit}>
+              <label>Caption</label>
+              <input
+                type="text"
+                value={caption}
+                onChange={e => setCaption(e.target.value)}>
+              </input>
+              <button className='modal-button-style'
+                type="submit"
+                >
+                Submit Changes
+              </button>
+            </form>
+          )}
+          <button className='modal-button-style' onClick={handleDelete}>Delete</button>
+        </div>
   )
 
   const reveal = (e) => {
@@ -95,19 +95,19 @@ const PhotoSRP = ({ photo }) => {
                   <span className="bun bun-bottom">
                     <span className="bun-crust bun-crust-bottom"></span>
                   </span>
-                </label>
-                {buttons && functionButtons}
-              </div>
-            }
-          </div>
-          {like ? (
-            <button
-              onClick={handleLike}
-            >Unlike</button>
+              </label>
+              {buttons && functionButtons}
+            </div>
+          }
+        </div>
+        {like ? (
+              <button id='like-dislike'
+                  onClick={handleLike}
+              >❤️</button>
           ) : (
-            <button
-              onClick={handleLike}
-            >Like</button>
+              <button id='like-dislike'
+                  onClick={handleLike}
+              >🤍</button>
           )
           }
           <CommentsFeed photo={photo} />

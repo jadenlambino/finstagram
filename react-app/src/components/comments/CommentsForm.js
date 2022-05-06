@@ -40,7 +40,7 @@ const CommentsForm = ({ photo }) => {
                     </input>
                 </div>
                 <div>
-                    <button type='submit' onClick={handleSubmit}>Submit</button>
+                    <button type='submit' id='modal-button-style' onClick={handleSubmit}>Submit</button>
                 </div>
             </form>
         </div>
