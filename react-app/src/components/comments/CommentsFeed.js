@@ -16,10 +16,23 @@ const CommentsFeed = ({ photo }) => {
 		dispatch(grabComments(photo.id))
 	}, [dispatch])
 
+	// const handleSubmit = (e) => {
+	// 	e.preventDefault();
+
+	// 	const body = {
+	// 		id: comment.id,
+	// 		body: comment
+	// 	}
+
+	// 	dispatch(editComment())
+	// }
+
+	// console.log("COMMENTSFEED")
 	return (
 		<div>
 			{comments.length > 0 &&
 				<>
+					<h1>Comments feed</h1>
 					<ul>
 						{comments.map(comment => {
 							if (comment.photo_id === photo.id) {
