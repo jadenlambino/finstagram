@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { grabComments } from "../../store/comments";
 import { editComment } from "../../store/comments";
 import CommentContainer from "./CommentContainer";
+import CommentsForm from "./CommentsForm";
 
 const CommentsFeed = ({ photo }) => {
 	const dispatch = useDispatch();
@@ -29,11 +30,12 @@ const CommentsFeed = ({ photo }) => {
 
 	// console.log("COMMENTSFEED")
 	return (
-		<div>
+		<div className="comment-container">
 			{comments.length > 0 &&
 				<>
 					<h1>Comments feed</h1>
-					<ul>
+
+					<ul className="comments-feed">
 						{comments.map(comment => {
 							if (comment.photo_id === photo.id) {
 								return (
@@ -47,6 +49,9 @@ const CommentsFeed = ({ photo }) => {
 					</ul>
 				</>
 			}
+			<div className='comments-form'>
+				<CommentsForm photo={photo} />
+			</div>
 		</div>
 	)
 }

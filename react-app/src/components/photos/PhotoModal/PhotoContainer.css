@@ -1,0 +1,23 @@
+.photo-container {
+  width:60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+.comment-container{
+  width: 60%;
+  margin-right: 20px;
+}
+
+.photo {
+width:80%;
+}
+.caption {
+  text-align: center;
+}
+
+#comments-form{
+  width: 50%;
+  color: blue;
+}

@@ -40,32 +40,32 @@ const PhotoSRP = ({ photo }) => {
   const handleLike = (e) => {
     e.preventDefault()
     if (like) {
-        dispatch(removeLike(like.id))
+      dispatch(removeLike(like.id))
     } else {
-        dispatch(createLike(photo.id))
+      dispatch(createLike(photo.id))
     }
-}
+  }
 
   let functionButtons = (
     <div className="button-container">
-          <button onClick={handleEdit}>edit</button>
-          {editClicked && (
-            <form onSubmit={handleSubmit}>
-              <label>caption</label>
-              <input
-                type="text"
-                value={caption}
-                onChange={e => setCaption(e.target.value)}>
-              </input>
-              <button
-                type="submit"
-                >
-                Submit Changes
-              </button>
-            </form>
-          )}
-          <button onClick={handleDelete}>delete</button>
-        </div>
+      <button onClick={handleEdit}>edit</button>
+      {editClicked && (
+        <form onSubmit={handleSubmit}>
+          <label>caption</label>
+          <input
+            type="text"
+            value={caption}
+            onChange={e => setCaption(e.target.value)}>
+          </input>
+          <button
+            type="submit"
+          >
+            Submit Changes
+          </button>
+        </form>
+      )}
+      <button onClick={handleDelete}>delete</button>
+    </div>
   )
 
   const reveal = (e) => {
@@ -73,7 +73,7 @@ const PhotoSRP = ({ photo }) => {
   }
 
   let followedUser
-    if (Object.keys(following)) followedUser = following[photo.user_id]
+  if (Object.keys(following)) followedUser = following[photo.user_id]
   // console.log('render')
   return (
     <div className="modal-container">
@@ -82,43 +82,43 @@ const PhotoSRP = ({ photo }) => {
         <div className="photo-info">
           <h3>{photo.caption}</h3>
           {followedUser ? (
-                <div>
-                    <Link to={`/users/${photo.user_id}`}>{followedUser.username}</Link>
-                </div>
+            <div>
+              <Link to={`/users/${photo.user_id}`}>{followedUser.username}</Link>
+            </div>
+          )
+            : (
+              <div>
+                <Link to={`/users/${photo.user_id}`}>{user.username}</Link>
+              </div>
             )
-                : (
-                    <div>
-                        <Link to={`/users/${photo.user_id}`}>{user.username}</Link>
-                    </div>
-                )
           }
           {photo.user_id === user.id &&
             <div className="button-menu-container">
-              <input type="checkbox" id="menu-toggle" onChange={reveal}/>
+              <input type="checkbox" id="menu-toggle" onChange={reveal} />
               <label htmlFor='menu-toggle' className="hamburger">
-                  <span className="bun bun-top">
-                      <span className="bun-crust bun-crust-top"></span>
-                  </span>
-                  <span className="bun bun-bottom">
-                      <span className="bun-crust bun-crust-bottom"></span>
-                  </span>
+                <span className="bun bun-top">
+                  <span className="bun-crust bun-crust-top"></span>
+                </span>
+                <span className="bun bun-bottom">
+                  <span className="bun-crust bun-crust-bottom"></span>
+                </span>
               </label>
               {buttons && functionButtons}
             </div>
           }
         </div>
         {like ? (
-              <button
-                  onClick={handleLike}
-              >Unlike</button>
-          ) : (
-              <button
-                  onClick={handleLike}
-              >Like</button>
-          )
+          <button
+            onClick={handleLike}
+          >Unlike</button>
+        ) : (
+          <button
+            onClick={handleLike}
+          >Like</button>
+        )
         }
-        <CommentsFeed photo={photo}/>
-        <CommentsForm photo={photo} />
+        <CommentsFeed photo={photo} />
+        {/* <CommentsForm photo={photo} /> */}
       </div>
     </div>
   )

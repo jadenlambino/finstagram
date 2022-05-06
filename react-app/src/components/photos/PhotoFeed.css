@@ -1,0 +1,12 @@
+.post-container{
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  border: 1px solid black
+
+
+}
+
+.photo-li{
+  list-style: none;
+}
