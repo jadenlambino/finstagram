@@ -3,16 +3,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 .comment-container{
   width: 60%;
   margin-right: 20px;
+  height: 300px;
 }
 
 .photo {
-width:80%;
+  width:80%;
+  height: 400px;
 }
+
 .caption {
   text-align: center;
 }
@@ -20,4 +22,5 @@ width:80%;
 #comments-form{
   width: 50%;
   color: blue;
+  margin-top: 0;
 }
