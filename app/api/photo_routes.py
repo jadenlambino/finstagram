@@ -44,6 +44,9 @@ def post_photo():
         db.session.commit()
         return new_photo.to_dict()
 
+    if form.errors:
+        return form.errors, 403
+
 @photo_routes.route('/<int:id>/', methods=["PATCH"])
 def patch_photo(id):
     photo = Photo.query.get(id)
