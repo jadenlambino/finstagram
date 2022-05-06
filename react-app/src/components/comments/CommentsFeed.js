@@ -7,27 +7,12 @@ import CommentContainer from "./CommentContainer";
 const CommentsFeed = ({ photo }) => {
 	const dispatch = useDispatch();
 
-	// const user = useSelector(state => state.session.user)
 	const comments = useSelector(state => Object.values(state.comments))
-
-	// const [comment, setComment] = useState("")
 
 	useEffect(() => {
 		dispatch(grabComments(photo.id))
 	}, [dispatch])
 
-	// const handleSubmit = (e) => {
-	// 	e.preventDefault();
-
-	// 	const body = {
-	// 		id: comment.id,
-	// 		body: comment
-	// 	}
-
-	// 	dispatch(editComment())
-	// }
-
-	// console.log("COMMENTSFEED")
 	return (
 		<div>
 			{comments.length > 0 &&
