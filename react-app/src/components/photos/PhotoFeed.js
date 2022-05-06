@@ -24,7 +24,7 @@ const PhotoFeed = () => {
 					<ul>
 						{photos.map(photo => (
 							<li key={photo.id}>
-								<PhotoContainer photo={photo} />
+								{/* <PhotoContainer photo={photo} /> */}
 								<PhotoModal photo={photo} />
 								<CommentsFeed photo={photo} />
 							</li>

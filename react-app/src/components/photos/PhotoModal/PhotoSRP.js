@@ -1,14 +1,22 @@
 import { React, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { editPhoto, removePhoto } from "../../../store/photo";
 import CommentsFeed from '../../comments/CommentsFeed';
+import CommentsForm from "../../comments/CommentsForm";
+import { removeLike, createLike } from '../../../store/like';
+import './PhotoSRP.css'
+import './menu.css'
 
 const PhotoSRP = ({ photo }) => {
   const dispatch = useDispatch()
   const [editClicked, setEditClicked] = useState(false)
   const [caption, setCaption] = useState(photo.caption)
+  const [buttons, setButtons] = useState(false)
   const user = useSelector(state => state.session.user)
+  const following = useSelector(state => state.session.following)
+  const likes = useSelector(state => state.session.likes)
+  const like = likes.find(like => like.photo_id === photo.id)
   const history = useHistory()
 
   const handleEdit = (e) => {
@@ -28,11 +36,18 @@ const PhotoSRP = ({ photo }) => {
     dispatch(removePhoto(photo.id))
     history.push('/photos')
   }
-  // console.log('render')
-  return (
-    <div>
-      {photo.user_id === user.id &&
-        <div>
+
+  const handleLike = (e) => {
+    e.preventDefault()
+    if (like) {
+        dispatch(removeLike(like.id))
+    } else {
+        dispatch(createLike(photo.id))
+    }
+}
+
+  let functionButtons = (
+    <div className="button-container">
           <button onClick={handleEdit}>edit</button>
           {editClicked && (
             <form onSubmit={handleSubmit}>
@@ -44,17 +59,67 @@ const PhotoSRP = ({ photo }) => {
               </input>
               <button
                 type="submit"
-              >
+                >
                 Submit Changes
               </button>
             </form>
           )}
           <button onClick={handleDelete}>delete</button>
         </div>
-      }
-      <img src={photo.photo_url}></img>
-      <h1>{photo.caption}</h1>
-      <CommentsFeed photo={photo}/>
+  )
+
+  const reveal = (e) => {
+    buttons ? setButtons(false) : setButtons(true)
+  }
+
+  let followedUser
+    if (Object.keys(following)) followedUser = following[photo.user_id]
+  // console.log('render')
+  return (
+    <div className="modal-container">
+      <img src={photo.photo_url} className='image-container'></img>
+      <div className="info-container">
+        <div className="photo-info">
+          <h3>{photo.caption}</h3>
+          {followedUser ? (
+                <div>
+                    <Link to={`/users/${photo.user_id}`}>{followedUser.username}</Link>
+                </div>
+            )
+                : (
+                    <div>
+                        <Link to={`/users/${photo.user_id}`}>{user.username}</Link>
+                    </div>
+                )
+          }
+          {photo.user_id === user.id &&
+            <div className="button-menu-container">
+              <input type="checkbox" id="menu-toggle" onChange={reveal}/>
+              <label htmlFor='menu-toggle' className="hamburger">
+                  <span className="bun bun-top">
+                      <span className="bun-crust bun-crust-top"></span>
+                  </span>
+                  <span className="bun bun-bottom">
+                      <span className="bun-crust bun-crust-bottom"></span>
+                  </span>
+              </label>
+              {buttons && functionButtons}
+            </div>
+          }
+        </div>
+        {like ? (
+              <button
+                  onClick={handleLike}
+              >Unlike</button>
+          ) : (
+              <button
+                  onClick={handleLike}
+              >Like</button>
+          )
+        }
+        <CommentsFeed photo={photo}/>
+        <CommentsForm photo={photo} />
+      </div>
     </div>
   )
 }

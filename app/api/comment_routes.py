@@ -28,6 +28,9 @@ def post_comment():
         db.session.commit()
         return new_comment.to_dict()
 
+    if form.errors:
+        return form.errors, 403
+
 @comment_routes.route('/<int:id>/', methods=["PATCH"])
 def patch_comment(id):
     comment = Comment.query.get(id)
