@@ -19,7 +19,14 @@ Connect and share at https://finstagram-aajp.herokuapp.com/
 *  WTForms
 *  Javascript
 *  React.js
+*  Redux
+*  Node
 *  PostSQL
+*  Alembic
+*  HTML
+*  CSS
+*  Git
+*  VScode
 
 ## Technical Implementation
 As we were building Finstagram, we took into major consideration how our redux state shape was built. We wanted to ensure that the shape of the state was inclusive with all of the data that needed to be accessed through our react components. Shown below is the final product of how our Redux state was shaped.
