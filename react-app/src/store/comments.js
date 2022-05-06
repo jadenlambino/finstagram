@@ -51,12 +51,6 @@ export const uploadComment = (commentData) => async (dispatch) => {
         dispatch(postComment(comment))
         return comment
     }
-    else {
-        const errors = await response.json()
-        // Promise.reject(errors.body)
-        console.log(errors)
-        return {errors: errors.body}
-    }
     //add error handing
 }
 

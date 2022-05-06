@@ -8,9 +8,8 @@ const CommentsForm = ({ photo }) => {
     // const user = useSelector(state => state.session.user)
 
     const [comment, setComment] = useState("")
-    const [errors, setErrors] = useState([])
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault()
 
         const body = {
@@ -18,20 +17,11 @@ const CommentsForm = ({ photo }) => {
             comment
         }
 
-        const res = await dispatch(uploadComment(body))
-        if (res.errors) {
-            setErrors(res.errors)
-            console.log('hello')
-        }
+        dispatch(uploadComment(body))
     }
     // console.log('COMMENTSFORM')
     return (
         <div>
-            <ul>
-                {errors.map((error, idx) =>
-                    <li key={idx}>{error}</li>
-                )}
-            </ul>
             <form>
                 <div>
                     <label>Add a Comment!</label>

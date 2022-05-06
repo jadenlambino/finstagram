@@ -68,10 +68,6 @@ export const uploadPhoto = (photoData) => async (dispatch) => {
         const photo = await response.json()
         dispatch(postPhoto(photo))
         return photo
-    } else {
-        const errors = await response.json()
-        console.log(errors)
-        return {errors: errors.photo_url}
     }
     //add error handing
 }
