@@ -10,19 +10,12 @@ import { login } from '../store/session';
 const Splash = props => {
   const dispatch = useDispatch()
 
-  const handleDemoLogin = (e) => {
-    e.preventDefault()
-
-    dispatch(login('demo@aa.io', 'password'))
-  }
-
   return (
     <>
       <div className='splash-div'>
         <h1 className='splash-title'>Finstagram</h1>
         <h2 className='splash-bio'> Share your vision, join the Finstagram community today. </h2>
         <LoginForm />
-        <button onClick={handleDemoLogin}>Demo Login</button>
         <div className='bottom-signup'>
           Don't have an account?&nbsp;
           <NavLink to='/sign-up' exact={true} className="splash-signup" activeClassName='active'>
