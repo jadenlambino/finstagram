@@ -17,12 +17,14 @@ const LoginForm = () => {
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
-    await dispatch(grabLikes())
-    await dispatch(grabFollows());
+    // await dispatch(grabLikes())
+    // await dispatch(grabFollows());
     if (data) {
       setErrors(data);
+    } else {
+      await dispatch(grabLikes())
+      await dispatch(grabFollows());
     }
-    history.push('/photos')
   };
 
   const updateEmail = (e) => {
@@ -33,8 +35,14 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
+  const handleDemoLogin = (e) => {
+    e.preventDefault()
+
+    dispatch(login('demo@aa.io', 'password'))
+  }
+
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/photos' />;
   }
 
   return (
