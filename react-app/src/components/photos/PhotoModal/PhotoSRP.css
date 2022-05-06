@@ -3,6 +3,7 @@
     justify-content: center;
     flex-direction: row;
     padding: none;
+    height: 500px;
 }
 
 .button-menu-container {
