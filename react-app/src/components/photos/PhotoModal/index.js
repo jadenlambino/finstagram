@@ -25,30 +25,33 @@ export default function PhotoModal({ photo }) {
     }
 
     return (
-        <div className="photo-container">
-            {!userId && (
-                <div>
-                    <Link to={`/users/${photo.user_id}`}>{photo.username}</Link>
-                </div>
-            )}
-            <img className="photo" src={photo.photo_url} onClick={() => setShowModal(true)} />
-            {showModal && (
-                <Modal onClose={() => setShowModal(false)} portalClassName='modal'>
-                    <PhotoSRP photo={photo} />
-                </Modal>
-            )}
-            <p className="caption">{photo.caption}</p>
-            {like ? (
-                <button
-                    onClick={handleLike}
-                >Unlike</button>
-            ) : (
-                <button
-                    onClick={handleLike}
-                >Like</button>
-            )
-            }
-            <CommentsForm photo={photo} />
-        </div>
+        <>
+            <h1>PHOTOMODAL</h1>
+            <div className="photo-container">
+                {!userId && (
+                    <div>
+                        <Link to={`/users/${photo.user_id}`}>{photo.username}</Link>
+                    </div>
+                )}
+                <img className="photo" src={photo.photo_url} onClick={() => setShowModal(true)} />
+                {showModal && (
+                    <Modal onClose={() => setShowModal(false)} portalClassName='modal'>
+                        <PhotoSRP photo={photo} />
+                    </Modal>
+                )}
+                <p className="caption">{photo.caption}</p>
+                {!userId && (like ? (
+                    <button
+                        onClick={handleLike}
+                    >Unlike</button>
+                ) : (
+                    <button
+                        onClick={handleLike}
+                    >Like</button>
+                ))
+                }
+                {!userId && <CommentsForm photo={photo} />}
+            </div>
+        </>
     )
 }

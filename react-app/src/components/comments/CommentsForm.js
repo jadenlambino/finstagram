@@ -1,11 +1,9 @@
 import { React, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
 import { uploadComment } from '../../store/comments'
 
 const CommentsForm = ({ photo }) => {
     const dispatch = useDispatch()
-    const { userId } = useParams()
 
     const [comment, setComment] = useState("")
     const [errors, setErrors] = useState([])
@@ -25,31 +23,27 @@ const CommentsForm = ({ photo }) => {
         }
     }
     return (
-        <>
-            {!userId && (
+        <div>
+            <ul>
+                {errors.map((error, idx) =>
+                    <li key={idx}>{error}</li>
+                )}
+            </ul>
+            <form>
                 <div>
-                    <ul>
-                        {errors.map((error, idx) =>
-                            <li key={idx}>{error}</li>
-                        )}
-                    </ul>
-                    <form>
-                        <div>
-                            <label>Add a Comment!</label>
-                            <input
-                                type='text'
-                                value={comment}
-                                onChange={(e) => setComment(e.target.value)}
-                            >
-                            </input>
-                        </div>
-                        <div>
-                            <button type='submit' onClick={handleSubmit}>Submit</button>
-                        </div>
-                    </form>
+                    <label>Add a Comment!</label>
+                    <input
+                        type='text'
+                        value={comment}
+                        onChange={(e) => setComment(e.target.value)}
+                    >
+                    </input>
                 </div>
-            )}
-        </>
+                <div>
+                    <button type='submit' onClick={handleSubmit}>Submit</button>
+                </div>
+            </form>
+        </div>
     )
 }
 

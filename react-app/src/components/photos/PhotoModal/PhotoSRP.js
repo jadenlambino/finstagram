@@ -73,45 +73,48 @@ const PhotoSRP = ({ photo }) => {
   }
 
   return (
-    <div className="modal-container">
-      <img src={photo.photo_url} className='image-container'></img>
-      <div className="info-container">
-        <div className="photo-info">
-          <h3>{photo.caption}</h3>
-          {!userId && (
-            <div>
-              <Link to={`/users/${photo.user_id}`}>{photo.username}</Link>
-            </div>
-          )}
-          {photo.user_id === user.id &&
-            <div className="button-menu-container">
-              <input type="checkbox" id="menu-toggle" onChange={reveal} />
-              <label htmlFor='menu-toggle' className="hamburger">
-                <span className="bun bun-top">
-                  <span className="bun-crust bun-crust-top"></span>
-                </span>
-                <span className="bun bun-bottom">
-                  <span className="bun-crust bun-crust-bottom"></span>
-                </span>
-              </label>
-              {buttons && functionButtons}
-            </div>
+    <>
+      <h1>PHOTOSRP</h1>
+      <div className="modal-container">
+        <img src={photo.photo_url} className='image-container'></img>
+        <div className="info-container">
+          <div className="photo-info">
+            <h3>{photo.caption}</h3>
+            {!userId && (
+              <div>
+                <Link to={`/users/${photo.user_id}`}>{photo.username}</Link>
+              </div>
+            )}
+            {photo.user_id === user.id &&
+              <div className="button-menu-container">
+                <input type="checkbox" id="menu-toggle" onChange={reveal} />
+                <label htmlFor='menu-toggle' className="hamburger">
+                  <span className="bun bun-top">
+                    <span className="bun-crust bun-crust-top"></span>
+                  </span>
+                  <span className="bun bun-bottom">
+                    <span className="bun-crust bun-crust-bottom"></span>
+                  </span>
+                </label>
+                {buttons && functionButtons}
+              </div>
+            }
+          </div>
+          {like ? (
+            <button
+              onClick={handleLike}
+            >Unlike</button>
+          ) : (
+            <button
+              onClick={handleLike}
+            >Like</button>
+          )
           }
+          <CommentsFeed photo={photo} />
+          <CommentsForm photo={photo} />
         </div>
-        {like ? (
-          <button
-            onClick={handleLike}
-          >Unlike</button>
-        ) : (
-          <button
-            onClick={handleLike}
-          >Like</button>
-        )
-        }
-        <CommentsFeed photo={photo} />
-        <CommentsForm photo={photo} />
       </div>
-    </div>
+    </>
   )
 }
 
