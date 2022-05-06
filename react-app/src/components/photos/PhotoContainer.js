@@ -53,7 +53,7 @@ export default function PhotoContainer({ photo }) {
                 >Like</button>
             )
             }
-            <CommentsForm photo={photo} />
+            {/* <CommentsForm photo={photo} /> */}
         </>
 
     )
