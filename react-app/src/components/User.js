@@ -6,7 +6,7 @@ import { grabUserPhotos } from '../store/photo';
 import PhotoModal from './photos/PhotoModal';
 import CommentsFeed from './comments/CommentsFeed'
 
-import { followUser, grabUserFollows, removeFollow } from '../store/follows';
+import { followUser, removeFollow } from '../store/follows';
 import FollowsContainer from './follows/FollowsContainer';
 import './User.css'
 

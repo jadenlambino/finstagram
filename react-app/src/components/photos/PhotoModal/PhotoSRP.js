@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory, Link, useParams } from "react-router-dom";
 import { editPhoto, removePhoto } from "../../../store/photo";
 import CommentsFeed from '../../comments/CommentsFeed';
 import CommentsForm from "../../comments/CommentsForm";
@@ -17,6 +17,7 @@ const PhotoSRP = ({ photo }) => {
   const likes = useSelector(state => state.session.likes)
   const like = likes?.find(like => like.photo_id === photo.id)
   const history = useHistory()
+  const { userId } = useParams()
 
   const handleEdit = (e) => {
     e.preventDefault()
@@ -77,9 +78,11 @@ const PhotoSRP = ({ photo }) => {
       <div className="info-container">
         <div className="photo-info">
           <h3>{photo.caption}</h3>
-          <div>
-            <Link to={`/users/${photo.user_id}`}>{photo.username}</Link>
-          </div>
+          {!userId && (
+            <div>
+              <Link to={`/users/${photo.user_id}`}>{photo.username}</Link>
+            </div>
+          )}
           {photo.user_id === user.id &&
             <div className="button-menu-container">
               <input type="checkbox" id="menu-toggle" onChange={reveal} />
