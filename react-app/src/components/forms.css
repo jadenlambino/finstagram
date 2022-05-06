@@ -3,11 +3,11 @@ form {
   padding: 10px; */
   /* display: flex; */
   width: 500px;
-  height: 50%;
+  height: 100%;
   overflow: hidden;
   border: 0px solid #000;
   margin: auto;
-  margin-top: 100px;
+  margin-top: 50px;
   padding: 10px;
   background-color:white;
 
@@ -44,10 +44,6 @@ body {
   font-weight: bold;
 }
 
-/* .login-form{
-
-} */
-
 .form-element {
   width: 100%;
   margin-bottom: 5px;
@@ -56,7 +52,7 @@ body {
   box-sizing: border-box;
   border-radius: 3px;
 }
-.form-submit {
+.login-button {
   width: 100%;
   background-color: #3897f0;
   border: 1px solid #3897f0;
@@ -65,4 +61,26 @@ body {
   font-weight: bold;
   cursor: pointer;
   border-radius: 3px;
+}
+.demo-button{
+  background-color: #3897f0;
+  border: 1px solid #3897f0;
+  width: 50%;
+  padding: 5px 12px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 3px;
+  margin-top: 5px;
+}
+
+/* .demo-button{
+  margin-top:100px;
+} */
+
+.form-buttons{
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  align-items:center;
 }
