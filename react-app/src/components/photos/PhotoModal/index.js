@@ -39,7 +39,7 @@ export default function PhotoModal({ photo }) {
                         <PhotoSRP photo={photo} />
                     </Modal>
                 )}
-                <p className="caption">{photo.caption}</p>
+                {!userId && <p className="caption">{photo.caption}</p>}
                 {!userId && (like ? (
                     <button
                         onClick={handleLike}
