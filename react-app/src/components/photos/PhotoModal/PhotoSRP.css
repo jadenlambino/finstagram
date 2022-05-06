@@ -33,3 +33,27 @@
     display: flex;
     justify-content: space-between;
 }
+
+.edit-modalbutton{
+    margin-bottom: 20px;
+}
+
+#modal-button-style{
+    background-color: #3897f0;
+    border: 1px solid #3897f0;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 3px;
+    font-weight: bold;
+    margin-bottom:3px;
+}
+
+#like-dislike{
+    /* background-color: white; */
+    border: .5px none rgb(181, 177, 177);
+    border-radius: 6px;
+    font-weight: bold;
+    background: transparent;
+    font-size: 24px;
+
+}

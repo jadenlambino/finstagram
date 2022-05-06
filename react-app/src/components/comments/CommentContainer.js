@@ -47,9 +47,9 @@ const CommentContainer = ({ comment }) => {
                             onChange={(e) => setComment(e.target.value)}
                         >
                         </input>
-                        <button type="submit" onClick={handleEdit}>edit</button>
+                        <button type="submit" id='modal-button-style' onClick={handleEdit}>Edit</button>
                     </form>
-                    <button onClick={handleDelete}>delete</button>
+                    <button id='modal-button-style' onClick={handleDelete}>Delete</button>
                 </>
             }
         </>

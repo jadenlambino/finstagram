@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { editPhoto, grabPhotos } from "../../store/photo";
 import PhotoModal from './PhotoModal';
 import CommentsFeed from '../comments/CommentsFeed'
-
-import PhotoContainer from './PhotoContainer';
 import "./PhotoFeed.css"
 
 const PhotoFeed = () => {
@@ -16,7 +14,6 @@ const PhotoFeed = () => {
 		dispatch(grabPhotos())
 	}, [dispatch])
 
-	// console.log('PHOTOFEED')
 	return (
 		<div>
 			{photos.length > 0 &&
