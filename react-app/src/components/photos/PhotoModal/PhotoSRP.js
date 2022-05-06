@@ -48,23 +48,23 @@ const PhotoSRP = ({ photo }) => {
 
   let functionButtons = (
     <div className="button-container">
-          <button onClick={handleEdit}>edit</button>
+          <button id='modal-button-style'onClick={handleEdit}>Edit</button>
           {editClicked && (
             <form onSubmit={handleSubmit}>
-              <label>caption</label>
+              <label>Caption</label>
               <input
                 type="text"
                 value={caption}
                 onChange={e => setCaption(e.target.value)}>
               </input>
-              <button
+              <button id='modal-button-style'
                 type="submit"
                 >
                 Submit Changes
               </button>
             </form>
           )}
-          <button onClick={handleDelete}>delete</button>
+          <button id='modal-button-style' onClick={handleDelete}>Delete</button>
         </div>
   )
 
@@ -108,13 +108,13 @@ const PhotoSRP = ({ photo }) => {
           }
         </div>
         {like ? (
-              <button
+              <button id='like-dislike'
                   onClick={handleLike}
-              >Unlike</button>
+              >❤️</button>
           ) : (
-              <button
+              <button id='like-dislike'
                   onClick={handleLike}
-              >Like</button>
+              >🤍</button>
           )
         }
         <CommentsFeed photo={photo}/>
