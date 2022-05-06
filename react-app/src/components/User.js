@@ -13,6 +13,7 @@ import './User.css'
 
 function User() {
   const dispatch = useDispatch()
+  const currentUser = useSelector(state => state.session.user)
   const following = useSelector(state => state.session.following)
   const photos = useSelector(state => Object.values(state.photos))
   const [loaded, setLoaded] = useState(false)
@@ -57,22 +58,22 @@ function User() {
     <>
       {following &&
         <ul className='user-details'>
-
-          <li>
+          <li id='user-info'>
             (@{user.username}) {user.first_name} {user.last_name}
           </li>
-          {followedUser ? (
-            <button onClick={handleFollow}>Unfollow</button>
+          {+userId !== currentUser.id && (followedUser ? (
+            <button onClick={handleFollow} id='user-unfollow-btn'>Unfollow</button>
           ) : (
-            <button onClick={handleFollow}>Follow</button>
-          )}
+            <button onClick={handleFollow} id='user-follow-btn'>Follow</button>
+          ))}
         </ul>
       }
+
       {/* <FollowsContainer profileUser={user} /> */}
       {loaded &&
-        <ul>
+        <ul id='user-photo-container'>
           {photos.map(photo => (
-            <li key={photo.id}>
+            <li key={photo.id} className='user-photo'>
               <PhotoModal photo={photo} />
               {/* <CommentsFeed photo={photo} /> */}
             </li>
