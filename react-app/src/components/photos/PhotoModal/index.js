@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 import PhotoSRP from './PhotoSRP';
 import CommentsForm from "../../comments/CommentsForm"
 import { removeLike, createLike } from '../../../store/like';
+import "./PhotoContainer.css"
 
 
 export default function PhotoModal({ photo }) {
@@ -30,6 +31,7 @@ export default function PhotoModal({ photo }) {
             <div>
                 <Link to={`/users/${photo.user_id}`}>{photo.username}</Link>
             </div>
+
             <img className="photo" src={photo.photo_url} onClick={() => setShowModal(true)} />
             {showModal && (
                 <Modal onClose={() => setShowModal(false)} portalClassName='modal'>
@@ -47,7 +49,7 @@ export default function PhotoModal({ photo }) {
                 >🤍</button>
             )
             }
-            <CommentsForm photo={photo} />
+
         </div>
     )
 }
