@@ -18,8 +18,7 @@ const CommentsFeed = ({ photo }) => {
 		<div className="comment-container">
 			{comments.length > 0 &&
 				<>
-					<h1>Comments feed</h1>
-
+					<h3 className="comments-title">Comments</h3>
 					<ul className="comments-feed">
 						{comments.map(comment => {
 							if (comment.photo_id === photo.id) {

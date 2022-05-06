@@ -2,6 +2,8 @@
     display: flex;
     justify-content: center;
     flex-direction: row;
+    padding: none;
+    height: 500px;
 }
 
 .button-menu-container {
@@ -18,10 +20,12 @@
 
 .info-container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     border: 1px solid rgba(0, 0, 0, .3);
+    height: 500px;
+    padding-top: 0;
 }
 
 .image-container {
@@ -32,6 +36,10 @@
 .photo-info {
     display: flex;
     justify-content: space-between;
+}
+
+.comments-title {
+    text-align: center;
 }
 
 .edit-modalbutton{
@@ -55,5 +63,4 @@
     font-weight: bold;
     background: transparent;
     font-size: 24px;
-
 }

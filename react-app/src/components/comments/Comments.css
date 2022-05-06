@@ -15,8 +15,9 @@ margin: 10px;
   padding-left: 0;
 
   overflow-y: scroll;
-  height: 500px;
+  height: inherit;
 }
+
 .comments-feed li{
   list-style: none;
 }
