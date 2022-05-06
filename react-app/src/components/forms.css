@@ -53,7 +53,7 @@ body {
   border-radius: 3px;
 }
 .login-button {
-  width: 100%;
+  width: 50%;
   background-color: #3897f0;
   border: 1px solid #3897f0;
   padding: 5px 12px;
@@ -61,6 +61,7 @@ body {
   font-weight: bold;
   cursor: pointer;
   border-radius: 3px;
+  margin-top: 10px;
 }
 .demo-button{
   background-color: #3897f0;
