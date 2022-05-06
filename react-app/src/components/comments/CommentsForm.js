@@ -29,7 +29,7 @@ const CommentsForm = ({ photo }) => {
                     <li key={idx}>{error}</li>
                 )}
             </ul>
-            <form>
+            <form id='comments-form'>
                 <div>
                     <label>Add a Comment!</label>
                     <input

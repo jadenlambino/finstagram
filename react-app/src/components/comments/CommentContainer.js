@@ -1,6 +1,7 @@
 import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editComment, removeComment } from "../../store/comments";
+import "./Comments.css"
 
 const CommentContainer = ({ comment }) => {
     const dispatch = useDispatch()
@@ -29,12 +30,14 @@ const CommentContainer = ({ comment }) => {
     return (
         <>
             {/* <h1>{comment.id}</h1> */}
-            <p>
-                {comment.username}
-            </p>
-            <p>
-                {comment.body}
-            </p>
+            <div className="comment">
+                <p className="user-name">
+                    @{comment.username}
+                </p>
+                <p className="user-comment">
+                    {comment.body}
+                </p>
+            </div>
             {user.id === comment.user_id &&
                 <>
                     <form>

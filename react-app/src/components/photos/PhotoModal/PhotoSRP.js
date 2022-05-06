@@ -109,9 +109,9 @@ const PhotoSRP = ({ photo }) => {
                   onClick={handleLike}
               >🤍</button>
           )
-          }
-          <CommentsFeed photo={photo} />
-          <CommentsForm photo={photo} />
+        }
+        <CommentsFeed photo={photo} />
+        {/* <CommentsForm photo={photo} /> */}
         </div>
       </div>
     </>

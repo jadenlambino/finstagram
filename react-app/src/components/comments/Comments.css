@@ -1,0 +1,31 @@
+.comment {
+  box-shadow: 0 0 2px black;
+  padding: 10px;
+  margin: 10px;
+  background-color: white;
+
+}
+.comment p {
+margin: 10px;
+}
+
+.comments-feed {
+  box-shadow: 0 0 6px gray inset;
+  /* border-left: 1px solid black; */
+  padding-left: 0;
+
+  overflow-y: scroll;
+  height: inherit;
+}
+
+.comments-feed li{
+  list-style: none;
+}
+
+.user-name {
+  font-size: 12pt;
+  font-weight: bold;
+}
+.user-comment {
+  font-size: 20pt;
+}

@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom"
 import PhotoSRP from './PhotoSRP';
 import CommentsForm from "../../comments/CommentsForm"
 import { removeLike, createLike } from '../../../store/like';
+import "./PhotoContainer.css"
 
 
 export default function PhotoModal({ photo }) {
