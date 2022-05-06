@@ -6,7 +6,6 @@ import { grabUserPhotos } from '../store/photo';
 import PhotoModal from './photos/PhotoModal';
 import CommentsFeed from './comments/CommentsFeed'
 
-import PhotoContainer from './photos/PhotoContainer';
 import { followUser, grabUserFollows, removeFollow } from '../store/follows';
 import FollowsContainer from './follows/FollowsContainer';
 import './User.css'
@@ -74,9 +73,8 @@ function User() {
         <ul>
           {photos.map(photo => (
             <li key={photo.id}>
-              {/* <PhotoContainer photo={photo} /> */}
               <PhotoModal photo={photo} />
-              <CommentsFeed photo={photo} />
+              {/* <CommentsFeed photo={photo} /> */}
             </li>
           ))}
         </ul>

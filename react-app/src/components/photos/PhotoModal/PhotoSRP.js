@@ -14,7 +14,6 @@ const PhotoSRP = ({ photo }) => {
   const [caption, setCaption] = useState(photo.caption)
   const [buttons, setButtons] = useState(false)
   const user = useSelector(state => state.session.user)
-  const following = useSelector(state => state.session.following)
   const likes = useSelector(state => state.session.likes)
   const like = likes?.find(like => like.photo_id === photo.id)
   const history = useHistory()
