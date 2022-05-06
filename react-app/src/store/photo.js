@@ -1,3 +1,7 @@
+//import used for creating a likes obj within photos
+// import { LOAD_LIKES, POST_LIKE, DELETE_LIKE } from "./like";
+import { CLEAR_STORE } from "./users";
+
 const GET_PHOTOS = 'photo/GET_PHOTOS'
 const GET_USER_PHOTOS = 'photo/GET_USER_PHOTOS'
 const POST_PHOTO = 'photo/POST_PHOTO'
@@ -29,8 +33,6 @@ const deletePhoto = (id) => ({
     type: DELETE_PHOTO,
     id
 })
-
-const initialState = {}
 
 export const grabPhotos = () => async (dispatch) => {
     const response = await fetch('/api/photos/');
@@ -98,14 +100,14 @@ export const removePhoto = (id) => async (dispatch) => {
     }
 }
 
+const initialState = {}
 
 export default function reducer(state = initialState, action) {
     let newState;
     switch (action.type) {
         case GET_PHOTOS:
-            newState = { ...state }
-            action.photos.photos.forEach(photo => newState[photo.id] = photo)
-            // console.log(action.photos)
+            newState = {}
+            action.photos.photos.forEach(photo => { newState[photo.id] = photo })
             return newState
         case GET_USER_PHOTOS:
             newState = {}
@@ -123,6 +125,18 @@ export default function reducer(state = initialState, action) {
             newState = { ...state }
             delete newState[action.id]
             return newState
+        // case LOAD_LIKES:
+        // newState = { ...state }
+        // const likesObj = {}
+        // action.likes.likes.forEach(like => {
+        //     likesObj[like.photo_id] = 
+        // })
+        // likesArr.forEach(like => {
+        //     newState[like.photo_id]["likes"].push(like)
+        // })
+        // return newState
+        case CLEAR_STORE:
+            return initialState
         default:
             return state;
     }

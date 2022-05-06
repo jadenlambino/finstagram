@@ -19,16 +19,16 @@ const CommentsForm = ({ photo }) => {
 
         dispatch(uploadComment(body))
     }
-
+    // console.log('COMMENTSFORM')
     return (
         <div>
             <form>
                 <div>
                     <label>Add a Comment!</label>
                     <input
-                    type='text'
-                    value={comment}
-                    onChange={(e) => setComment(e.target.value)}
+                        type='text'
+                        value={comment}
+                        onChange={(e) => setComment(e.target.value)}
                     >
                     </input>
                 </div>

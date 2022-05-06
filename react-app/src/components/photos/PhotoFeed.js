@@ -8,7 +8,6 @@ import PhotoContainer from './PhotoContainer';
 
 const PhotoFeed = () => {
 	const dispatch = useDispatch();
-
 	const user = useSelector(state => state.session.user)
 	const photos = useSelector(state => Object.values(state.photos))
 
@@ -16,6 +15,7 @@ const PhotoFeed = () => {
 		dispatch(grabPhotos())
 	}, [dispatch])
 
+	// console.log('PHOTOFEED')
 	return (
 		<div>
 			{photos.length > 0 &&
@@ -25,8 +25,8 @@ const PhotoFeed = () => {
 						{photos.map(photo => (
 							<li key={photo.id}>
 								<PhotoContainer photo={photo} />
-								<PhotoModal  photo={photo}/>
-								<CommentsFeed photo={photo}/>
+								<PhotoModal photo={photo} />
+								<CommentsFeed photo={photo} />
 							</li>
 						))}
 					</ul>
