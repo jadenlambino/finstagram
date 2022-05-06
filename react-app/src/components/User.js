@@ -16,11 +16,10 @@ function User() {
   const dispatch = useDispatch()
   const following = useSelector(state => state.session.following)
   const photos = useSelector(state => Object.values(state.photos))
-
+  const [loaded, setLoaded] = useState(false)
   const [user, setUser] = useState({});
   const { userId } = useParams();
 
-  // const followedUser = following?.find(user => user.id === +userId)
   let followedUser
   if (following) followedUser = following[userId]
 
@@ -46,8 +45,9 @@ function User() {
     })();
   }, [userId]);
 
-  useEffect(() => {
-    dispatch(grabUserPhotos(userId))
+  useEffect(async () => {
+    await dispatch(grabUserPhotos(userId))
+    setLoaded(true)
   }, [dispatch])
 
   if (!user) {
@@ -70,16 +70,17 @@ function User() {
         </ul>
       }
       {/* <FollowsContainer profileUser={user} /> */}
-      <ul>
-
-        {photos.map(photo => (
-          <li key={photo.id}>
-            {/* <PhotoContainer photo={photo} /> */}
-            <PhotoModal photo={photo} />
-            <CommentsFeed photo={photo} />
-          </li>
-        ))}
-      </ul>
+      {loaded &&
+        <ul>
+          {photos.map(photo => (
+            <li key={photo.id}>
+              {/* <PhotoContainer photo={photo} /> */}
+              <PhotoModal photo={photo} />
+              <CommentsFeed photo={photo} />
+            </li>
+          ))}
+        </ul>
+      }
     </>
   )
 }
