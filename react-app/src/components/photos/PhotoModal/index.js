@@ -40,18 +40,22 @@ export default function PhotoModal({ photo }) {
                     <PhotoSRP photo={photo} />
                 </Modal>
             )}
-            <p className="caption">{photo.caption}</p>
-            {like ? (
-                <button id='like-dislike'
-                    onClick={handleLike}
-                >❤️</button>
-            ) : (
-                <button id='like-dislike'
-                    onClick={handleLike}
-                >🤍</button>
-            )
-            }
-            {!userId && <CommentsForm photo={photo} />}
+            <div className='caption-like'>
+
+
+                <p className="caption">{photo.caption}</p>
+                {like ? (
+                    <button id='like-dislike'
+                        onClick={handleLike}
+                    >❤️</button>
+                ) : (
+                    <button id='like-dislike'
+                        onClick={handleLike}
+                    >🤍</button>
+                )
+                }
+                {!userId && <CommentsForm photo={photo} />}
+            </div>
         </div>
         // </>
     )
