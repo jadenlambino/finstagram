@@ -23,6 +23,7 @@ const Splash = props => {
           </NavLink>
         </div>
       </div>
+
     </>
   )
 };

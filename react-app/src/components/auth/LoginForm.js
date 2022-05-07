@@ -5,6 +5,7 @@ import { grabLikes } from '../../store/like';
 import { grabFollows } from '../../store/follows';
 import { login } from '../../store/session';
 import '../forms.css'
+import About from '../About';
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -73,9 +74,9 @@ const LoginForm = () => {
             onChange={updatePassword}
           />
         </div>
-        <div className= 'form-buttons'>
-        <button className='login-button' id='form-submit' type='submit'>Login</button>
-        <button className='demo-button' id='form-submit' onClick={handleDemoLogin}>Demo Login</button>
+        <div className='form-buttons'>
+          <button className='login-button' id='form-submit' type='submit'>Login</button>
+          <button className='demo-button' id='form-submit' onClick={handleDemoLogin}>Demo Login</button>
         </div>
       </form>
     </>

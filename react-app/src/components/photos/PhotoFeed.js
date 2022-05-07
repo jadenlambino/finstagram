@@ -4,6 +4,7 @@ import { editPhoto, grabPhotos } from "../../store/photo";
 import PhotoModal from './PhotoModal';
 import CommentsFeed from '../comments/CommentsFeed'
 import "./PhotoFeed.css"
+import About from "../About";
 
 const PhotoFeed = () => {
 	const dispatch = useDispatch();
@@ -15,25 +16,27 @@ const PhotoFeed = () => {
 	}, [dispatch])
 
 	return (
-		<div>
-			{photos.length > 0 &&
-				<>
-					<h1>This is your photo feed</h1>
-					<div className="feed-container">
-						<ul>
-							{photos.map(photo => (
-								<li className="photo-li" key={photo.id}>
-									<div className="post-container">
-										<PhotoModal photo={photo} />
-										<CommentsFeed photo={photo} />
-									</div>
-								</li>
-							))}
-						</ul>
-					</div>
-				</>
-			}
-		</div>
+		<>
+			<div>
+				{photos.length > 0 &&
+					<>
+						<h1>This is your photo feed</h1>
+						<div className="feed-container">
+							<ul>
+								{photos.map(photo => (
+									<li className="photo-li" key={photo.id}>
+										<div className="post-container">
+											<PhotoModal photo={photo} />
+											<CommentsFeed photo={photo} />
+										</div>
+									</li>
+								))}
+							</ul>
+						</div>
+					</>
+				}
+			</div>
+		</>
 	)
 }
 
