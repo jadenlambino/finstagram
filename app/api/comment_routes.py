@@ -37,6 +37,7 @@ def patch_comment(id):
     form = CommentForm()
     data = form.data
 
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         comment.edit_comment(data['body'])
     
