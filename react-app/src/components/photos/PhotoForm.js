@@ -41,7 +41,7 @@ const PhotoForm = () => {
 					></input>
 				</div>
 				<div>
-					<label>caption</label>
+					<label>Caption</label>
 					<input
 						type="text"
 						value={caption}
@@ -50,7 +50,7 @@ const PhotoForm = () => {
 					</input>
 				</div>
 				<div>
-					<button type="submit" onClick={handleSubmit}>Submit</button>
+					<button type="submit" className='button-style' onClick={handleSubmit}>Submit</button>
 				</div>
 			</form>
 		</div>
