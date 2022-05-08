@@ -20,7 +20,6 @@
     transition: transform .18s
     cubic-bezier(0.04, 0.04,
     0.12, 0.96) .15s;
-    color: blue;
 }
 
 .bun-crust {
