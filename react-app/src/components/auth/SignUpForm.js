@@ -115,7 +115,7 @@ const SignUpForm = () => {
           value={repeatPassword}
         ></input>
       </div>
-      <button className='form-submit' type='submit'>Sign Up</button>
+      <button className='button-style' type='submit'>Sign Up</button>
     </form>
   );
 };
