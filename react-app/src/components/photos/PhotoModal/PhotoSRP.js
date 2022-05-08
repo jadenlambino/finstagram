@@ -77,28 +77,14 @@ const PhotoSRP = ({ photo }) => {
   if (Object.keys(following)) followedUser = following[photo.user_id]
   // console.log('render')
   return (
-<<<<<<< Updated upstream
-    <div className="modal-container">
-      <img src={photo.photo_url} className='image-container'></img>
-      <div className="info-container">
-        <div className="photo-info">
-          <h3>{photo.caption}</h3>
-          {followedUser ? (
-            <div>
-              <Link to={`/users/${photo.user_id}`}>{followedUser.username}</Link>
-            </div>
-          )
-            : (
-=======
-    <>
+    <div>
       {/* <h1>PHOTOSRP</h1> */}
       <div className="modal-container">
         <img src={photo.photo_url} className='image-container'></img>
         <div className="info-container">
           <div className="photo-info">
             <h3>{photo.caption}</h3>
-            {!userId && (
->>>>>>> Stashed changes
+            {!user.id && (
               <div>
                 <Link to={`/users/${photo.user_id}`}>{user.username}</Link>
               </div>
@@ -132,6 +118,7 @@ const PhotoSRP = ({ photo }) => {
         <CommentsFeed photo={photo} />
         {/* <CommentsForm photo={photo} /> */}
       </div>
+    </div>
     </div>
   )
 }

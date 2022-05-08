@@ -1,6 +1,8 @@
 import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { uploadPhoto } from "../../store/photo";
+import Popup from 'reactjs-popup'
+import 'reactjs-popup/dist/index.css';
 
 const PhotoForm = () => {
 	const dispatch = useDispatch()
@@ -8,6 +10,7 @@ const PhotoForm = () => {
 	const [photoUrl, setPhotoUrl] = useState('')
 	const [caption, setCaption] = useState('')
 	const [errors, setErrors] = useState([])
+	const [openPhotoError, setPhotoError] = useState(false)
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -20,17 +23,23 @@ const PhotoForm = () => {
 		const response = await dispatch(uploadPhoto(newPhoto))
 		if (response.errors) {
 			setErrors(response.errors)
-			console.log('these are the errors')
+			setPhotoError(true)
+			console.log(response.errors)
 		}
 	}
 
+	const closeModal = () => setPhotoError(false)
+
+	const deeznuts = (
+		errors.map(error => <p>{error}</p>)
+	)
+
 	return (
 		<div>
-			<ul>
-                {errors.map((error, idx) =>
-                    <li key={idx}>{error}</li>
-                )}
-            </ul>
+			<Popup open={openPhotoError} closeOnDocumentClick onClose={closeModal}>
+				<h1>ERROR!!!!!!!!!</h1>
+                {deeznuts}
+        	</Popup>
 			<form>
 				<div>
 					<label>Photo Url</label>

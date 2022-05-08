@@ -1,6 +1,7 @@
 import { React, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { uploadComment } from '../../store/comments'
+import TestPopup from '../popup'
 
 const CommentsForm = ({ photo }) => {
     const dispatch = useDispatch()

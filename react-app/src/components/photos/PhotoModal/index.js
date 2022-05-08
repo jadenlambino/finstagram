@@ -49,11 +49,6 @@ export default function PhotoModal({ photo }) {
                 >🤍</button>
             )
             }
-<<<<<<< Updated upstream
-
-=======
-            {/* {!userId && <CommentsForm photo={photo} />} */}
->>>>>>> Stashed changes
         </div>
     )
 }
