@@ -37,7 +37,7 @@ const PhotoForm = () => {
 	)
 
 	return (
-		<Popup trigger={<button className="button" id='modal-button-style'>Add Photo</button>} modal nested>
+		<Popup trigger={<button className="button" id='modal-button-style'>Add Photo</button>} modal nested onClose={closeModal}>
 			<Popup open={openPhotoError} closeOnDocumentClick onClose={closeModal} nested position="top center">
 				{/* <a className="close" onClick={closeModal}>close</a> */}
 				<h1>ERROR!!!!!!!!!</h1>
@@ -63,7 +63,7 @@ const PhotoForm = () => {
 					</input>
 				</div>
 				<div>
-					<button type="submit" className='button-style' onClick={handleSubmit}>Submit</button>
+					<button type="submit" className='button-style' id='modal-button-style' onClick={handleSubmit}>Submit</button>
 				</div>
 			</form>
 		</Popup>
