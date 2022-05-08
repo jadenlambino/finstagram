@@ -23,6 +23,7 @@ const PhotoFeed = () => {
 				{photos.length > 0 &&
 					<>
 						<h1>This is your photo feed</h1>
+						<PhotoForm />
 						<div className="feed-container">
 							<ul>
 								{photos.map(photo => (

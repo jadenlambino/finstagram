@@ -25,6 +25,8 @@ const PhotoForm = () => {
 			setErrors(response.errors)
 			setPhotoError(true)
 			console.log(response.errors)
+		} else {
+			closeModal()
 		}
 	}
 
