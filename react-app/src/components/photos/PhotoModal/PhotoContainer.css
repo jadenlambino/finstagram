@@ -1,5 +1,4 @@
 .photo-container {
-  width:60%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,12 +10,18 @@
 }
 
 .photo {
-  width:80%;
+  width:400px;
   height: 400px;
+  object-fit: scale-down;
+  margin: 10px;
+
 }
 
 .caption {
   text-align: center;
+}
+.caption-like{
+  display: flex;
 }
 
 #comments-form{

@@ -5,6 +5,7 @@ import { grabLikes } from '../../store/like';
 import { grabFollows } from '../../store/follows';
 import { login } from '../../store/session';
 import '../forms.css'
+import About from '../About';
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);

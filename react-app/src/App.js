@@ -16,6 +16,8 @@ import UserHome from './components/UserHome'
 import { authenticate } from './store/session';
 import { grabLikes } from './store/like';
 import { grabFollows } from './store/follows';
+import About from './components/About';
+import './components/About.css'
 
 
 function App() {
@@ -62,6 +64,7 @@ function App() {
           <PhotoForm />
         </Route>
       </Switch>
+      <About />
     </BrowserRouter>
   );
 }
