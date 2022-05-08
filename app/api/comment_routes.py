@@ -36,7 +36,12 @@ def patch_comment(id):
     comment = Comment.query.get(id)
     form = CommentForm()
     data = form.data
-    comment.edit_comment(data['body'])
+
+    if form.validate_on_submit():
+        comment.edit_comment(data['body'])
+    
+    if form.errors:
+        return form.errors, 403
 
     db.session.commit()
 
