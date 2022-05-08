@@ -20,3 +20,7 @@
 // }
 
 // export default TestPopup
+
+//<Popup trigger={<button className="button">Add Photo</button>} modal>
+{/* <PhotoForm />
+</Popup> */}

@@ -28,9 +28,11 @@ export default function PhotoModal({ photo }) {
 
     return (
         <div className="photo-container">
-            <div>
-                <Link to={`/users/${photo.user_id}`}>{photo.username}</Link>
-            </div>
+            <span>
+                <h1>
+                    <Link to={`/users/${photo.user_id}`} className='p-user'>{photo.username}</Link>
+                </h1>
+            </span>
 
             <img className="photo" src={photo.photo_url} onClick={() => setShowModal(true)} />
             {showModal && (
@@ -38,7 +40,7 @@ export default function PhotoModal({ photo }) {
                     <PhotoSRP photo={photo} />
                 </Modal>
             )}
-            <p className="caption">{photo.caption}</p>
+            <h1 className="caption">{photo.caption}</h1>
             {like ? (
                 <button id='like-dislike'
                     onClick={handleLike}

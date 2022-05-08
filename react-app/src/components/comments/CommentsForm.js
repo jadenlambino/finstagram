@@ -13,6 +13,7 @@ const CommentsForm = ({ photo }) => {
     const [comment, setComment] = useState("")
     const [errors, setErrors] = useState([])
     const [commentError, setCommentError] = useState(false)
+    const [open, setOpen] = useState(false)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -28,6 +29,8 @@ const CommentsForm = ({ photo }) => {
             setErrors(res.errors)
             setCommentError(true)
             console.log('hello')
+        } else {
+            close()
         }
     }
 
@@ -39,26 +42,31 @@ const CommentsForm = ({ photo }) => {
 		errors.map(error => <p>{error}</p>)
 	)
 
+    const close = () => setOpen(false)
+
     return (
         <>
-            <Popup open={commentError} closeOnDocumentClick onClose={closeModal}>
-				<h1>ERROR!!!!!!!!!</h1>
-                {deeznuts}
-        	</Popup>
-            <form className='comments-form'>
-                <div>
-                    <label>Add a Comment!</label>
-                    <input
-                        type='text'
-                        value={comment}
-                        onChange={(e) => setComment(e.target.value)}
-                    >
-                    </input>
-                </div>
-                <div>
-                    <button type='submit' id='modal-button-style' onClick={handleSubmit}>Submit</button>
-                </div>
-            </form>
+            <button open={open} onClick={() => setOpen(open => !open)} id='modal-button-style' className='c-add'>Add Comment</button>
+            <Popup open={open} modal closeOnDocumentClick onClose={close} nested>
+                <Popup open={commentError} closeOnDocumentClick onClose={closeModal} nested position='top center'>
+                    <h1>ERROR!!!!!!!!!</h1>
+                    {deeznuts}
+                </Popup>
+                <form className='comments-form'>
+                    <div>
+                        <label>Add a Comment!</label>
+                        <input
+                            type='text'
+                            value={comment}
+                            onChange={(e) => setComment(e.target.value)}
+                        >
+                        </input>
+                    </div>
+                    <div>
+                        <button type='submit' id='modal-button-style' onClick={handleSubmit}>Submit</button>
+                    </div>
+                </form>
+            </Popup>
         </>
     )
 }

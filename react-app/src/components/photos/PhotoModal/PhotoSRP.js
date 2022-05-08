@@ -7,6 +7,7 @@ import CommentsForm from "../../comments/CommentsForm";
 import { removeLike, createLike } from '../../../store/like';
 import './PhotoSRP.css'
 import './menu.css'
+import Popup from "reactjs-popup";
 
 const PhotoSRP = ({ photo }) => {
   const dispatch = useDispatch()
@@ -48,7 +49,7 @@ const PhotoSRP = ({ photo }) => {
 
   let functionButtons = (
     <div className="button-container">
-      <button className='modal-button-style' onClick={handleEdit}>edit</button>
+      <button className='modal-button-style' id='modal-button-style' onClick={handleEdit}>edit</button>
       {editClicked && (
         <form onSubmit={handleSubmit}>
           <label>caption</label>
@@ -59,13 +60,14 @@ const PhotoSRP = ({ photo }) => {
           </input>
           <button
             className='modal-button-style'
+            id='modal-button-style'
             type="submit"
           >
             Submit Changes
           </button>
         </form>
       )}
-      <button className='modal-button-style' onClick={handleDelete}>delete</button>
+      <button className='modal-button-style' id='modal-button-style' onClick={handleDelete}>delete</button>
     </div>
   )
 
@@ -82,41 +84,44 @@ const PhotoSRP = ({ photo }) => {
       <div className="modal-container">
         <img src={photo.photo_url} className='image-container'></img>
         <div className="info-container">
-          <div className="photo-info">
-            <h3>{photo.caption}</h3>
-            {!user.id && (
-              <div>
-                <Link to={`/users/${photo.user_id}`}>{user.username}</Link>
+          <div className="c-cont">
+            <div className="photo-info">
+              <h3>{photo.caption}</h3>
+              {!user.id && (
+                <div>
+                  <Link to={`/users/${photo.user_id}`}>{user.username}</Link>
+                </div>
+              )
+            }
+            {photo.user_id === user.id &&
+              <div className="button-menu-container">
+                <input type="checkbox" id="menu-toggle" onClick={reveal} />
+                <label htmlFor='menu-toggle' className="hamburger">
+                  <span className="bun bun-top">
+                    <span className="bun-crust bun-crust-top"></span>
+                  </span>
+                  <span className="bun bun-bottom">
+                    <span className="bun-crust bun-crust-bottom"></span>
+                  </span>
+                </label>
+                <Popup open={buttons} closeOnDocumentClick>
+                  {functionButtons}
+                </Popup>
               </div>
+            }
+            </div>
+          {like ? (
+                <button id='like-dislike'
+                    onClick={handleLike}
+                >❤️</button>
+            ) : (
+                <button id='like-dislike'
+                    onClick={handleLike}
+                >🤍</button>
             )
           }
-          {photo.user_id === user.id &&
-            <div className="button-menu-container">
-              <input type="checkbox" id="menu-toggle" onChange={reveal} />
-              <label htmlFor='menu-toggle' className="hamburger">
-                <span className="bun bun-top">
-                  <span className="bun-crust bun-crust-top"></span>
-                </span>
-                <span className="bun bun-bottom">
-                  <span className="bun-crust bun-crust-bottom"></span>
-                </span>
-              </label>
-              {buttons && functionButtons}
-            </div>
-          }
-        </div>
-        {like ? (
-              <button id='like-dislike'
-                  onClick={handleLike}
-              >❤️</button>
-          ) : (
-              <button id='like-dislike'
-                  onClick={handleLike}
-              >🤍</button>
-          )
-        }
+          </div>
         <CommentsFeed photo={photo} />
-        {/* <CommentsForm photo={photo} /> */}
       </div>
     </div>
     </div>

@@ -1,5 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Popup from 'reactjs-popup'
 import { editComment, removeComment } from "../../store/comments";
 import "./Comments.css"
 
@@ -39,6 +40,7 @@ const CommentContainer = ({ comment }) => {
                     type="text"
                     value={newComment}
                     onChange={(e) => setComment(e.target.value)}
+                    className='c-input'
                 >
                 </input>
                 <button type="submit" id='modal-button-style' onClick={handleEdit}>Edit</button>
@@ -62,7 +64,9 @@ const CommentContainer = ({ comment }) => {
                 {user.id === comment.user_id &&
                     <div>
                         <button className='open' onClick={reveal}></button>
-                        {buttons && commentButtons}
+                        <Popup open={buttons}>
+                            {commentButtons}
+                        </Popup>
                     </div>
                 }
             </div>
