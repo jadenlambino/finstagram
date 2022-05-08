@@ -2,6 +2,8 @@ import { React, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { uploadComment } from '../../store/comments'
 import TestPopup from '../popup'
+import Popup from 'reactjs-popup'
+import 'reactjs-popup/dist/index.css';
 
 const CommentsForm = ({ photo }) => {
     const dispatch = useDispatch()
@@ -10,6 +12,7 @@ const CommentsForm = ({ photo }) => {
 
     const [comment, setComment] = useState("")
     const [errors, setErrors] = useState([])
+    const [commentError, setCommentError] = useState(false)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -23,19 +26,25 @@ const CommentsForm = ({ photo }) => {
         const res = await dispatch(uploadComment(body))
         if (res.errors) {
             setErrors(res.errors)
+            setCommentError(true)
             console.log('hello')
         }
     }
 
     const clear = () => setComment("")
 
+    const closeModal = () => setCommentError(false)
+
+    const deeznuts = (
+		errors.map(error => <p>{error}</p>)
+	)
+
     return (
         <>
-            <ul>
-                {errors.map((error, idx) =>
-                    <li key={idx}>{error}</li>
-                )}
-            </ul>
+            <Popup open={commentError} closeOnDocumentClick onClose={closeModal}>
+				<h1>ERROR!!!!!!!!!</h1>
+                {deeznuts}
+        	</Popup>
             <form className='comments-form'>
                 <div>
                     <label>Add a Comment!</label>
