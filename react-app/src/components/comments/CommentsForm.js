@@ -8,8 +8,6 @@ import 'reactjs-popup/dist/index.css';
 const CommentsForm = ({ photo }) => {
     const dispatch = useDispatch()
 
-    // const user = useSelector(state => state.session.user)
-
     const [comment, setComment] = useState("")
     const [errors, setErrors] = useState([])
     const [commentError, setCommentError] = useState(false)
@@ -38,19 +36,19 @@ const CommentsForm = ({ photo }) => {
 
     const closeModal = () => setCommentError(false)
 
-    const deeznuts = (
+    const errMsg = (
 		errors.map(error => <p>{error}</p>)
 	)
 
     const close = () => setOpen(false)
-
+    
     return (
         <>
             <button open={open} onClick={() => setOpen(open => !open)} id='modal-button-style' className='c-add'>Add Comment</button>
             <Popup open={open} modal closeOnDocumentClick onClose={close} nested>
                 <Popup open={commentError} closeOnDocumentClick onClose={closeModal} nested position='top center'>
                     <h1>ERROR!!!!!!!!!</h1>
-                    {deeznuts}
+                    {errMsg}
                 </Popup>
                 <form className='comments-form'>
                     <div>

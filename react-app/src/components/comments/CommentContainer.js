@@ -11,8 +11,10 @@ const CommentContainer = ({ comment }) => {
 
     const [newComment, setComment] = useState(comment.body)
     const [buttons, setButtons] = useState(false)
+    const [errors, setErrors] = useState([])
 
-    const handleEdit = (e) => {
+
+    const handleEdit = async (e) => {
         e.preventDefault();
 
         const editedComment = {
@@ -20,7 +22,12 @@ const CommentContainer = ({ comment }) => {
             comment: newComment
         }
 
-        dispatch(editComment(editedComment))
+        let res = await dispatch(editComment(editedComment))
+        console.log(res)
+        if (res.errors) {
+            setErrors(res.errors)
+            console.log("!!!!!!!!!!!!!!!" + res)
+        }
     }
 
     const handleDelete = (e) => {
@@ -35,6 +42,11 @@ const CommentContainer = ({ comment }) => {
 
     let commentButtons = (
         <div className="comment-funcs">
+            <ul>
+                {errors?.map((error, idx) =>
+                    <li key={idx}>{error}</li>
+                )}
+            </ul>
             <form>
                 <input
                     type="text"

@@ -1,0 +1,25 @@
+.about-us{
+  width: 100%;
+  position: relative;
+  bottom: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px
+
+}
+.about-us p{
+  font-weight: bold;
+  margin: 0
+}
+.about-us ul{
+  display: flex;
+  margin: 0;
+
+
+  list-style: none;
+}
+.about-us ul li{
+  padding: 10px;
+}

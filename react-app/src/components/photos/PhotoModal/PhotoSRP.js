@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory, Link, useParams } from "react-router-dom";
 import { editPhoto, removePhoto } from "../../../store/photo";
 import CommentsFeed from '../../comments/CommentsFeed';
 import CommentsForm from "../../comments/CommentsForm";
@@ -15,10 +15,10 @@ const PhotoSRP = ({ photo }) => {
   const [caption, setCaption] = useState(photo.caption)
   const [buttons, setButtons] = useState(false)
   const user = useSelector(state => state.session.user)
-  const following = useSelector(state => state.session.following)
   const likes = useSelector(state => state.session.likes)
-  const like = likes.find(like => like.photo_id === photo.id)
+  const like = likes?.find(like => like.photo_id === photo.id)
   const history = useHistory()
+  const { userId } = useParams()
 
   const handleEdit = (e) => {
     e.preventDefault()
@@ -49,35 +49,30 @@ const PhotoSRP = ({ photo }) => {
 
   let functionButtons = (
     <div className="button-container">
-      <button className='modal-button-style' id='modal-button-style' onClick={handleEdit}>edit</button>
-      {editClicked && (
-        <form onSubmit={handleSubmit}>
-          <label>caption</label>
-          <input
-            type="text"
-            value={caption}
-            onChange={e => setCaption(e.target.value)}>
-          </input>
-          <button
-            className='modal-button-style'
-            id='modal-button-style'
-            type="submit"
-          >
-            Submit Changes
-          </button>
-        </form>
-      )}
-      <button className='modal-button-style' id='modal-button-style' onClick={handleDelete}>delete</button>
-    </div>
+          <button className='modal-button-style'onClick={handleEdit}>Edit</button>
+          {editClicked && (
+            <form onSubmit={handleSubmit}>
+              <label>Caption</label>
+              <input
+                type="text"
+                value={caption}
+                onChange={e => setCaption(e.target.value)}>
+              </input>
+              <button className='modal-button-style'
+                type="submit"
+                >
+                Submit Changes
+              </button>
+            </form>
+          )}
+          <button className='modal-button-style' onClick={handleDelete}>Delete</button>
+        </div>
   )
 
   const reveal = (e) => {
     buttons ? setButtons(false) : setButtons(true)
   }
 
-  let followedUser
-  if (Object.keys(following)) followedUser = following[photo.user_id]
-  // console.log('render')
   return (
     <div>
       {/* <h1>PHOTOSRP</h1> */}
