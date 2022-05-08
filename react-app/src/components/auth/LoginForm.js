@@ -36,10 +36,12 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
-  const handleDemoLogin = (e) => {
+  const handleDemoLogin = async (e) => {
     e.preventDefault()
 
-    dispatch(login('demo@aa.io', 'password'))
+    await dispatch(login('demo@aa.io', 'password'))
+    await dispatch(grabLikes())
+    await dispatch(grabFollows());
   }
 
   if (user) {
