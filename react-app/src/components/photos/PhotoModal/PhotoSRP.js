@@ -49,7 +49,7 @@ const PhotoSRP = ({ photo }) => {
 
   let functionButtons = (
     <div className="button-container">
-          <button className='modal-button-style'onClick={handleEdit}>Edit</button>
+          <button className='modal-button-style' id='modal-button-style' onClick={handleEdit}>Edit</button>
           {editClicked && (
             <form onSubmit={handleSubmit}>
               <label>Caption</label>
@@ -60,12 +60,13 @@ const PhotoSRP = ({ photo }) => {
               </input>
               <button className='modal-button-style'
                 type="submit"
+                id='modal-button-style'
                 >
                 Submit Changes
               </button>
             </form>
           )}
-          <button className='modal-button-style' onClick={handleDelete}>Delete</button>
+          <button className='modal-button-style' id='modal-button-style' onClick={handleDelete}>Delete</button>
         </div>
   )
 
