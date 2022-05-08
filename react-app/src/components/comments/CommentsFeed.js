@@ -2,6 +2,7 @@ import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { grabComments } from "../../store/comments";
 import { editComment } from "../../store/comments";
+import Popup from "reactjs-popup";
 import CommentContainer from "./CommentContainer";
 import CommentsForm from "./CommentsForm";
 
@@ -33,9 +34,7 @@ const CommentsFeed = ({ photo }) => {
 					</ul>
 				</>
 			}
-			<div className='comments-form'>
-				<CommentsForm photo={photo} />
-			</div>
+			<CommentsForm photo={photo} />
 		</div>
 	)
 }

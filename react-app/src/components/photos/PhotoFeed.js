@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { editPhoto, grabPhotos } from "../../store/photo";
 import PhotoModal from './PhotoModal';
 import CommentsFeed from '../comments/CommentsFeed'
+import PhotoForm from "./PhotoForm";
+import Popup from "reactjs-popup";
 import "./PhotoFeed.css"
 import About from "../About";
 
@@ -21,6 +23,7 @@ const PhotoFeed = () => {
 				{photos.length > 0 &&
 					<>
 						<h1>This is your photo feed</h1>
+						<PhotoForm />
 						<div className="feed-container">
 							<ul>
 								{photos.map(photo => (

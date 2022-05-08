@@ -1,10 +1,16 @@
-.comment {
+.single-comment-container {
   box-shadow: 0 0 2px black;
   padding: 10px;
   margin: 10px;
   background-color: white;
-
+  display: flex;
+  flex-direction: row;
 }
+
+.comment {
+  width: 90%;
+}
+
 .comment p {
 margin: 10px;
 }
@@ -15,7 +21,7 @@ margin: 10px;
   padding-left: 0;
 
   overflow-y: scroll;
-  height: inherit;
+  height: 500px;
 }
 
 .comments-feed li{
@@ -26,6 +32,46 @@ margin: 10px;
   font-size: 12pt;
   font-weight: bold;
 }
+
 .user-comment {
   font-size: 20pt;
+}
+
+.comment-funcs {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-direction: column;
+}
+
+.c-input {
+  width: 300px;
+}
+
+.c-add {
+  height: 30px;
+}
+
+.open {
+  background-image: url("./ellipsis.png");
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 16px;
+  background-color: transparent;
+  border: none;
+}
+
+/* .comments-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 552.5px;
+  margin-top: 10px;
+} */
+
+.c-cont {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
 }

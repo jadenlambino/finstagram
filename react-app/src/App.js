@@ -61,7 +61,6 @@ function App() {
         </Route>
         <Route path='/photos'>
           <PhotoFeed />
-          <PhotoForm />
         </Route>
       </Switch>
       <About />

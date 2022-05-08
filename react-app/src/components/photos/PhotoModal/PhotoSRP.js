@@ -7,6 +7,7 @@ import CommentsForm from "../../comments/CommentsForm";
 import { removeLike, createLike } from '../../../store/like';
 import './PhotoSRP.css'
 import './menu.css'
+import Popup from "reactjs-popup";
 
 const PhotoSRP = ({ photo }) => {
   const dispatch = useDispatch()
@@ -73,21 +74,23 @@ const PhotoSRP = ({ photo }) => {
   }
 
   return (
-    <>
-      <h1>PHOTOSRP</h1>
+    <div>
+      {/* <h1>PHOTOSRP</h1> */}
       <div className="modal-container">
         <img src={photo.photo_url} className='image-container'></img>
         <div className="info-container">
-          <div className="photo-info">
-            <h3>{photo.caption}</h3>
-            {!userId && (
-              <div>
-                <Link to={`/users/${photo.user_id}`}>{photo.username}</Link>
-              </div>
-            )}
+          <div className="c-cont">
+            <div className="photo-info">
+              <h3>{photo.caption}</h3>
+              {!user.id && (
+                <div>
+                  <Link to={`/users/${photo.user_id}`}>{user.username}</Link>
+                </div>
+              )
+            }
             {photo.user_id === user.id &&
               <div className="button-menu-container">
-                <input type="checkbox" id="menu-toggle" onChange={reveal} />
+                <input type="checkbox" id="menu-toggle" onClick={reveal} />
                 <label htmlFor='menu-toggle' className="hamburger">
                   <span className="bun bun-top">
                     <span className="bun-crust bun-crust-top"></span>
@@ -95,26 +98,28 @@ const PhotoSRP = ({ photo }) => {
                   <span className="bun bun-bottom">
                     <span className="bun-crust bun-crust-bottom"></span>
                   </span>
-              </label>
-              {buttons && functionButtons}
+                </label>
+                <Popup open={buttons} closeOnDocumentClick>
+                  {functionButtons}
+                </Popup>
+              </div>
+            }
             </div>
+          {like ? (
+                <button id='like-dislike'
+                    onClick={handleLike}
+                >❤️</button>
+            ) : (
+                <button id='like-dislike'
+                    onClick={handleLike}
+                >🤍</button>
+            )
           }
-        </div>
-        {like ? (
-              <button id='like-dislike'
-                  onClick={handleLike}
-              >❤️</button>
-          ) : (
-              <button id='like-dislike'
-                  onClick={handleLike}
-              >🤍</button>
-          )
-        }
+          </div>
         <CommentsFeed photo={photo} />
-        {/* <CommentsForm photo={photo} /> */}
-        </div>
       </div>
-    </>
+    </div>
+    </div>
   )
 }
 

@@ -3,7 +3,7 @@
     justify-content: center;
     flex-direction: row;
     padding: none;
-    height: 500px;
+    height: 600px;
 }
 
 .button-menu-container {
@@ -23,19 +23,19 @@
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    border: 1px solid rgba(0, 0, 0, .3);
+    /* border: 1px solid rgba(0, 0, 0, .3); */
     height: 500px;
     padding-top: 0;
 }
 
 .image-container {
-    width: 500px;
-    height: 500px;
+    width: 600px;
+    height: 600px;
 }
 
 .photo-info {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .comments-title {
