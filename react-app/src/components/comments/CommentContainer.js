@@ -9,6 +9,7 @@ const CommentContainer = ({ comment }) => {
     const user = useSelector(state => state.session.user)
 
     const [newComment, setComment] = useState(comment.body)
+    const [buttons, setButtons] = useState(false)
 
     const handleEdit = (e) => {
         e.preventDefault();
@@ -26,32 +27,45 @@ const CommentContainer = ({ comment }) => {
 
         dispatch(removeComment(comment.id))
     }
-    // console.log('COMMENTCONTAINER')
+
+    const reveal = (e) => {
+        buttons ? setButtons(false) : setButtons(true)
+    }
+
+    let commentButtons = (
+        <div className="comment-funcs">
+            <form>
+                <input
+                    type="text"
+                    value={newComment}
+                    onChange={(e) => setComment(e.target.value)}
+                >
+                </input>
+                <button type="submit" id='modal-button-style' onClick={handleEdit}>Edit</button>
+            </form>
+            <button id='modal-button-style' onClick={handleDelete}>Delete</button>
+        </div>
+    )
+
     return (
         <>
             {/* <h1>{comment.id}</h1> */}
-            <div className="comment">
-                <p className="user-name">
-                    @{comment.username}
-                </p>
-                <p className="user-comment">
-                    {comment.body}
-                </p>
+            <div className="single-comment-container">
+                <div className="comment">
+                    <p className="user-name">
+                        @{comment.username}
+                    </p>
+                    <p className="user-comment">
+                        {comment.body}
+                    </p>
+                </div>
+                {user.id === comment.user_id &&
+                    <div>
+                        <button className='open' onClick={reveal}></button>
+                        {buttons && commentButtons}
+                    </div>
+                }
             </div>
-            {user.id === comment.user_id &&
-                <>
-                    <form>
-                        <input
-                            type="text"
-                            value={newComment}
-                            onChange={(e) => setComment(e.target.value)}
-                        >
-                        </input>
-                        <button type="submit" id='modal-button-style' onClick={handleEdit}>Edit</button>
-                    </form>
-                    <button id='modal-button-style' onClick={handleDelete}>Delete</button>
-                </>
-            }
         </>
     )
 }

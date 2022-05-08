@@ -11,7 +11,8 @@ const CommentsForm = ({ photo }) => {
     const [errors, setErrors] = useState([])
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
+        clear()
 
         const body = {
             photoId: photo.id,
@@ -24,15 +25,17 @@ const CommentsForm = ({ photo }) => {
             console.log('hello')
         }
     }
-    // console.log('COMMENTSFORM')
+
+    const clear = () => setComment("")
+
     return (
-        <div>
+        <>
             <ul>
                 {errors.map((error, idx) =>
                     <li key={idx}>{error}</li>
                 )}
             </ul>
-            <form id='comments-form'>
+            <form className='comments-form'>
                 <div>
                     <label>Add a Comment!</label>
                     <input
@@ -46,7 +49,7 @@ const CommentsForm = ({ photo }) => {
                     <button type='submit' id='modal-button-style' onClick={handleSubmit}>Submit</button>
                 </div>
             </form>
-        </div>
+        </>
     )
 }
 

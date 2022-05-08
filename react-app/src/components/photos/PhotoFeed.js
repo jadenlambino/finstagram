@@ -17,10 +17,10 @@ const PhotoFeed = () => {
 	return (
 		<div>
 			{photos.length > 0 &&
-				<>
+				<div className="photo-feed">
 					<h1>This is your photo feed</h1>
 					<div className="feed-container">
-						<ul>
+						<ul className="p-ul">
 							{photos.map(photo => (
 								<li className="photo-li" key={photo.id}>
 									<div className="post-container">
@@ -31,7 +31,7 @@ const PhotoFeed = () => {
 							))}
 						</ul>
 					</div>
-				</>
+				</div>
 			}
 		</div>
 	)

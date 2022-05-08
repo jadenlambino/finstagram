@@ -33,7 +33,7 @@ const CommentsFeed = ({ photo }) => {
 					</ul>
 				</>
 			}
-			<div className='comments-form'>
+			<div id='comments-form'>
 				<CommentsForm photo={photo} />
 			</div>
 		</div>

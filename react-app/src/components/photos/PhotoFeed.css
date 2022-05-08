@@ -1,12 +1,26 @@
 .post-container{
-  width: 80%;
+  width: 100%;
   display: flex;
   justify-content: center;
   border: 1px solid black
+}
 
-
+.p-ul {
+  padding: 0;
 }
 
 .photo-li{
   list-style: none;
+  padding-bottom: 20px;
+}
+
+.photo-feed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.feed-container {
+  width: 90%;
 }
