@@ -10,6 +10,10 @@
   margin-top: 100px;
   padding: 10px;
   background-color:white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 
 }
 label {
@@ -76,6 +80,7 @@ body {
   display: flex;
   margin-bottom: 8px;
   flex-direction:column;
+  min-width: 300px;
   align-items: center;
 }
 
