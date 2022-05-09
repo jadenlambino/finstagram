@@ -11,6 +11,7 @@ const PhotoForm = () => {
 	const [caption, setCaption] = useState('')
 	const [errors, setErrors] = useState([])
 	const [openPhotoError, setPhotoError] = useState(false)
+	const [open, setOpen] = useState(false)
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -26,47 +27,58 @@ const PhotoForm = () => {
 			setPhotoError(true)
 			console.log(response.errors)
 		} else {
-			closeModal()
+			openModal()
+			clear()
 		}
 	}
 
 	const closeModal = () => setPhotoError(false)
 
-	const deeznuts = (
+	const openModal = () => setOpen(!open)
+
+	const clear = () => {
+		setPhotoUrl('');
+		setCaption('')
+	}
+
+	const errMsg = (
 		errors.map(error => <p>{error}</p>)
 	)
 
 	return (
-		<Popup trigger={<button className="button" id='modal-button-style'>Add Photo</button>} modal nested onClose={closeModal}>
-			<Popup open={openPhotoError} closeOnDocumentClick onClose={closeModal} nested position="top center">
-				{/* <a className="close" onClick={closeModal}>close</a> */}
-				<h1>ERROR!!!!!!!!!</h1>
-                {deeznuts}
-        	</Popup>
-			<h1>Add a Photo!</h1>
-			<form className="p-form">
-				<div>
-					<label>Photo Url</label>
-					<input
-						type="text"
-						value={photoUrl}
-						onChange={(e) => setPhotoUrl(e.target.value)}
-					></input>
-				</div>
-				<div>
-					<label>Caption</label>
-					<input
-						type="text"
-						value={caption}
-						onChange={(e) => setCaption(e.target.value)}
-					>
-					</input>
-				</div>
-				<div>
-					<button type="submit" className='button-style' id='modal-button-style' onClick={handleSubmit}>Submit</button>
-				</div>
-			</form>
-		</Popup>
+		<>
+			<button className="button" id='modal-button-style' onClick={openModal}>Add Photo</button>
+			<Popup open={open} modal nested onClose={closeModal}>
+				<Popup open={openPhotoError} closeOnDocumentClick onClose={closeModal} nested position="top center">
+					{/* <a className="close" onClick={closeModal}>close</a> */}
+					<h1>ERROR!!!!!!!!!</h1>
+					{errMsg}
+				</Popup>
+				<h1>Add a Photo!</h1>
+				<form className="p-form">
+					<div>
+						<label>Photo Url</label>
+						<input
+							type="text"
+							value={photoUrl}
+							onChange={(e) => setPhotoUrl(e.target.value)}
+						></input>
+					</div>
+					<div>
+						<label>Caption</label>
+						<input
+							type="text"
+							value={caption}
+							onChange={(e) => setCaption(e.target.value)}
+						>
+						</input>
+					</div>
+					<div>
+						<button type="submit" className='button-style' id='modal-button-style' onClick={handleSubmit}>Submit</button>
+					</div>
+				</form>
+			</Popup>
+		</>
 	)
 }
 

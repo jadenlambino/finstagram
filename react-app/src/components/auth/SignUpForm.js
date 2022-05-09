@@ -55,10 +55,10 @@ const SignUpForm = () => {
 
   return (
     <>
-      <form onSubmit={onSignUp}>
+      <form onSubmit={onSignUp} className='ls-form'>
         <div>
           {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
+            <div key={ind} className="error">{error}</div>
           ))}
         </div>
         <div className='form-element'>
@@ -117,7 +117,7 @@ const SignUpForm = () => {
             value={repeatPassword}
           ></input>
         </div>
-        <button className='form-submit' type='submit'>Sign Up</button>
+        <button className='form-submit' id='form-submit' type='submit'>Sign Up</button>
       </form>
     </>
   );
