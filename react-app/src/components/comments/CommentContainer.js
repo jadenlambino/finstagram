@@ -27,6 +27,8 @@ const CommentContainer = ({ comment }) => {
         if (res.errors) {
             setErrors(res.errors)
             console.log("!!!!!!!!!!!!!!!" + res)
+        } else {
+            reveal()
         }
     }
 
