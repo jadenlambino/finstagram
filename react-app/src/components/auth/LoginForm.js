@@ -56,9 +56,11 @@ const LoginForm = () => {
             <div key={ind} className='error'>{error}</div>
           ))}
         </div>
-        <div className='form-element'>
-          <label htmlFor='email'>Email</label>
+        <div >
+          {/* <label htmlFor='email'>Email</label> */}
           <input
+            className='login-input'
+
             name='email'
             type='text'
             placeholder='Email'
@@ -66,9 +68,10 @@ const LoginForm = () => {
             onChange={updateEmail}
           />
         </div>
-        <div className='form-element'>
-          <label htmlFor='password'>Password</label>
+        <div >
+          {/* <label htmlFor='password'>Password</label> */}
           <input
+            className='login-input'
             name='password'
             type='password'
             placeholder='Password'
@@ -76,10 +79,15 @@ const LoginForm = () => {
             onChange={updatePassword}
           />
         </div>
-        <div className='form-buttons'>
-          <button className='login-button' id='form-submit' type='submit'>Login</button>
-          <button className='demo-button' id='form-submit' onClick={handleDemoLogin}>Demo Login</button>
+        {/* <div className='form-buttons'> */}
+        <button id='login-button' className='form-submit' type='submit'>Log In</button>
+        <div id='divider-div' className='flex-row'>
+          <div className='divider'></div>
+          <div id='or'>OR</div>
+          <div className='divider'></div>
         </div>
+        <button id='demo-button' className='form-submit' onClick={handleDemoLogin}>Demo User</button>
+        {/* </div> */}
       </form>
     </>
   );
