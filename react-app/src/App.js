@@ -71,14 +71,14 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
-          <UserHome />
+          <PhotoFeed />
         </ProtectedRoute>
         {/* <Route path='/splash' exact={true} >
           <Splash />
         </Route> */}
-        <Route path='/photos'>
+        {/* <Route path='/photos'>
           <PhotoFeed />
-        </Route>
+        </Route> */}
       </Switch>
       <About />
     </BrowserRouter>
