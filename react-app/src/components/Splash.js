@@ -4,17 +4,17 @@ import { Link } from 'react-router-dom';
 import "./Splash.css"
 
 const Splash = props => {
-  const images = [
-    'https://www.instagram.com/static/images/homepage/screenshots/screenshot1.png/fdfe239b7c9f.png',
-    'https://www.instagram.com/static/images/homepage/screenshots/screenshot2.png/4d62acb667fb.png',
-    'https://www.instagram.com/static/images/homepage/screenshots/screenshot3.png/94edb770accf.png',
-    'https://www.instagram.com/static/images/homepage/screenshots/screenshot4.png/a4fd825e3d49.png'
-  ]
+  // const images = [
+  //   'https://www.instagram.com/static/images/homepage/screenshots/screenshot1.png/fdfe239b7c9f.png',
+  //   'https://www.instagram.com/static/images/homepage/screenshots/screenshot2.png/4d62acb667fb.png',
+  //   'https://www.instagram.com/static/images/homepage/screenshots/screenshot3.png/94edb770accf.png',
+  //   'https://www.instagram.com/static/images/homepage/screenshots/screenshot4.png/a4fd825e3d49.png'
+  // ]
   const [imgNum, setImgNum] = useState(0)
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setImgNum(prevNum => ++prevNum % images.length)
+      setImgNum(prevNum => ++prevNum % 4)
     }, 5000)
 
     return () => clearInterval(interval)
