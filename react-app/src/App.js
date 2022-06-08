@@ -18,6 +18,7 @@ import { grabLikes } from './store/like';
 import { grabFollows } from './store/follows';
 import About from './components/About';
 import './components/About.css'
+import SignUpPage from './components/SignUpPage';
 
 
 function App() {
@@ -48,7 +49,7 @@ function App() {
           <LoginForm />
         </Route>
         <Route path='/sign-up' exact={true}>
-          <SignUpForm />
+          <SignUpPage />
         </Route>
       </BrowserRouter>
     )
