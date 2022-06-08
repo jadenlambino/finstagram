@@ -44,9 +44,9 @@ const LoginForm = () => {
     await dispatch(grabFollows());
   }
 
-  if (user) {
-    return <Redirect to='/photos' />;
-  }
+  // if (user) {
+  //   return <Redirect to='/photos' />;
+  // }
 
   return (
     <>

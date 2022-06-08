@@ -29,7 +29,7 @@ const NavBar = () => {
         {user && (
           <>
             <li className='nav-link'>
-              <NavLink to='/photos' exact={true} activeClassName='active'>
+              <NavLink to='/' exact={true} activeClassName='active'>
                 Home
               </NavLink>
             </li>
