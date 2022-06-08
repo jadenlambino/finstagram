@@ -21,7 +21,7 @@ const LoginForm = () => {
     // await dispatch(grabLikes())
     // await dispatch(grabFollows());
     if (data) {
-      setErrors(data);
+      setErrors(['The information you entered is incorrect']);
     } else {
       await dispatch(grabLikes())
       await dispatch(grabFollows());

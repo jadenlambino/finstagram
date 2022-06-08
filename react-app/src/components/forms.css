@@ -1,18 +1,11 @@
+.error {
+  font-size: 15px;
+  color: red;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
 .ls-form {
-  /* width: 500px;
-  height: 50%;
-  overflow: hidden;
-  border: 1px solid #000;
-  margin: auto;
-  margin-top: 100px;
-  padding: 10px;
-  background-color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column; */
   text-align: center;
-  /* margin-top: px; */
 }
 
 /* LOGIN FORM */
@@ -20,6 +13,7 @@
   width: 258px;
   height: 15px;
   padding: 9px 0px 7px 8px;
+  margin-top: 10px;
   margin-bottom: 8px;
   background-color: #FAFAFA;
   border: 1px solid #dbdbdb;
