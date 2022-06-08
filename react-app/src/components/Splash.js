@@ -34,7 +34,7 @@ const Splash = props => {
       <div id='login-container' className='flex-column'>
         <div className='splash-div'>
           <h1 className='splash-title'>Finstagram</h1>
-          <h2 className='splash-bio'> Share your vision, join the Finstagram community today. </h2>
+          <h2 className='splash-bio'> Share your vision; join the Finstagram community today. </h2>
           <LoginForm />
         </div>
         <div className='bottom-signup'>
@@ -44,7 +44,7 @@ const Splash = props => {
           </Link>
         </div>
       </div>
-    </div>
+    </div >
   )
 };
 
