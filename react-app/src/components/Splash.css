@@ -72,6 +72,21 @@
   margin-top: 30px;
 }
 
-#phone-image {
+.phone-image {
   margin: 27px 0px 0px 157px;
+}
+
+#ease-in {
+  opacity: 1;
+  transition: opacity 1.5s ease-in;
+}
+
+#ease-out {
+  opacity: 0;
+  transition: opacity 1.5s ease-out;
+}
+
+.hidden {
+  position: absolute;
+  /* left: 246px; */
 }
