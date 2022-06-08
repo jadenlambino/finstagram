@@ -60,7 +60,6 @@ const LoginForm = () => {
           {/* <label htmlFor='email'>Email</label> */}
           <input
             className='login-input'
-
             name='email'
             type='text'
             placeholder='Email'

@@ -54,72 +54,76 @@ const SignUpForm = () => {
   }
 
   return (
-    <>
-      <form onSubmit={onSignUp} className='ls-form'>
-        <div>
-          {errors.map((error, ind) => (
-            <div key={ind} className="error">{error}</div>
-          ))}
-        </div>
-        <div className='form-element'>
-          <label>First Name</label>
-          <input
-            type='text'
-            name='firstname'
-            onChange={updateFirstName}
-            value={firstName}
-          >
-          </input>
-        </div>
-        <div className='form-element'>
-          <label>Last Name</label>
-          <input
-            type='text'
-            name='firstname'
-            onChange={updateLastName}
-            value={lastName}
-          >
-          </input>
-        </div>
-        <div className='form-element'>
-          <label>User Name</label>
-          <input
-            type='text'
-            name='username'
-            onChange={updateUsername}
-            value={username}
-          ></input>
-        </div>
-        <div className='form-element'>
-          <label>Email</label>
-          <input
-            type='text'
-            name='email'
-            onChange={updateEmail}
-            value={email}
-          ></input>
-        </div>
-        <div className='form-element'>
-          <label>Password</label>
-          <input
-            type='password'
-            name='password'
-            onChange={updatePassword}
-            value={password}
-          ></input>
-        </div>
-        <div className='form-element'>
-          <label>Repeat Password</label>
-          <input
-            type='password'
-            name='repeat_password'
-            onChange={updateRepeatPassword}
-            value={repeatPassword}
-          ></input>
-        </div>
-        <button className='form-submit' id='form-submit' type='submit'>Sign Up</button>
-      </form>
-    </>
+    <form onSubmit={onSignUp} className='ls-form'>
+      <div>
+        {errors.map((error, ind) => (
+          <div key={ind} className="sign-up-error">{error}</div>
+        ))}
+      </div>
+      <div className='form-element'>
+        <input
+          className='sign-up-input'
+          type='text'
+          name='firstname'
+          placeholder='First Name'
+          onChange={updateFirstName}
+          value={firstName}
+        >
+        </input>
+      </div>
+      <div className='form-element'>
+        <input
+          className='sign-up-input'
+          type='text'
+          name='firstname'
+          placeholder='Last Name'
+          onChange={updateLastName}
+          value={lastName}
+        >
+        </input>
+      </div>
+      <div className='form-element'>
+        <input
+          className='sign-up-input'
+          type='text'
+          name='username'
+          placeholder='Username'
+          onChange={updateUsername}
+          value={username}
+        ></input>
+      </div>
+      <div className='form-element'>
+        <input
+          className='sign-up-input'
+          type='text'
+          name='email'
+          placeholder='Email'
+          onChange={updateEmail}
+          value={email}
+        ></input>
+      </div>
+      <div className='form-element'>
+        <input
+          className='sign-up-input'
+          type='password'
+          name='password'
+          placeholder='Password'
+          onChange={updatePassword}
+          value={password}
+        ></input>
+      </div>
+      <div className='form-element'>
+        <input
+          className='sign-up-input'
+          type='password'
+          name='repeat_password'
+          placeholder='Confirm Password'
+          onChange={updateRepeatPassword}
+          value={repeatPassword}
+        ></input>
+      </div>
+      <button className='form-submit' id='form-submit' type='submit'>Sign Up</button>
+    </form>
   );
 };
 
