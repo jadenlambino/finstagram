@@ -21,7 +21,7 @@ const LoginForm = () => {
     // await dispatch(grabLikes())
     // await dispatch(grabFollows());
     if (data) {
-      setErrors(data);
+      setErrors(['The information you entered is incorrect']);
     } else {
       await dispatch(grabLikes())
       await dispatch(grabFollows());
@@ -44,9 +44,9 @@ const LoginForm = () => {
     await dispatch(grabFollows());
   }
 
-  if (user) {
-    return <Redirect to='/photos' />;
-  }
+  // if (user) {
+  //   return <Redirect to='/photos' />;
+  // }
 
   return (
     <>
@@ -60,7 +60,6 @@ const LoginForm = () => {
           {/* <label htmlFor='email'>Email</label> */}
           <input
             className='login-input'
-
             name='email'
             type='text'
             placeholder='Email'
@@ -80,7 +79,11 @@ const LoginForm = () => {
           />
         </div>
         {/* <div className='form-buttons'> */}
-        <button id='login-button' className='form-submit' type='submit'>Log In</button>
+        {email && password ?
+          <button id='login-button' className='form-submit' type='submit'>Log In</button>
+          :
+          <button id='login-button' className='form-submit disabled-button' disabled='true' type='submit'>Log In</button>
+        }
         <div id='divider-div' className='flex-row'>
           <div className='divider'></div>
           <div id='or'>OR</div>

@@ -53,7 +53,7 @@
   width: 250px;
   font-family: 'Playfair Display', serif;
   font-style: italic;
-  margin-bottom: 30px;
+  /* margin-bottom: 25px; */
 }
 
 #sign-up-splash {
@@ -70,4 +70,23 @@
 
 #login-container {
   margin-top: 30px;
+}
+
+.phone-image {
+  margin: 27px 0px 0px 157px;
+}
+
+#ease-in {
+  opacity: 1;
+  transition: opacity 1.5s ease-in;
+}
+
+#ease-out {
+  opacity: 0;
+  transition: opacity 1.5s ease-out;
+}
+
+.hidden {
+  position: absolute;
+  /* left: 246px; */
 }
