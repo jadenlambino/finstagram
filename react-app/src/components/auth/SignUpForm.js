@@ -122,7 +122,11 @@ const SignUpForm = () => {
           value={repeatPassword}
         ></input>
       </div>
-      <button className='form-submit' id='form-submit' type='submit'>Sign Up</button>
+      {firstName && lastName && username && email && password && repeatPassword ?
+        <button className='form-submit' id='form-submit' type='submit'>Sign Up</button>
+        :
+        <button id='login-button' className='form-submit disabled-button' disabled='true' type='submit'>Sign Up</button>
+      }
     </form>
   );
 };
