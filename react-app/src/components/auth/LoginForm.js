@@ -80,7 +80,11 @@ const LoginForm = () => {
           />
         </div>
         {/* <div className='form-buttons'> */}
-        <button id='login-button' className='form-submit' type='submit'>Log In</button>
+        {email && password ?
+          <button id='login-button' className='form-submit' type='submit'>Log In</button>
+          :
+          <button id='login-button' className='form-submit disabled-button' disabled='true' type='submit'>Log In</button>
+        }
         <div id='divider-div' className='flex-row'>
           <div className='divider'></div>
           <div id='or'>OR</div>

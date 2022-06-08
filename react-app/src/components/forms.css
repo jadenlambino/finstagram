@@ -97,6 +97,12 @@ body {
   align-items: center;
 }
 
+.disabled-button {
+  background-color: #3897f0a2;
+  border: 1px solid #3897f0a2;
+  cursor: initial;
+}
+
 #login-button {
   margin-top: 6px;
   margin-bottom: 10px;
