@@ -62,6 +62,9 @@ function User() {
             @{user.username}
             {/* {user.first_name} {user.last_name} */}
           </li>
+          <li id='user-name'>
+            {user.first_name} {user.last_name}
+          </li>
           {+userId !== currentUser.id && (followedUser ? (
             <button onClick={handleFollow} className='user-follow' id='user-unfollow-btn'>Unfollow</button>
           ) : (
