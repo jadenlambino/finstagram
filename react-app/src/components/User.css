@@ -34,3 +34,13 @@ ul {
   margin: 3px;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
 }
+
+.user-follow{
+  background-color: #3897f0;
+  border: 1px solid #3897f0;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 3px;
+  font-weight: bold;
+  margin-bottom: 3px;
+}
