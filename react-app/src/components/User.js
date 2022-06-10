@@ -59,12 +59,16 @@ function User() {
       {following &&
         <ul className='user-details'>
           <li id='user-info'>
-            (@{user.username}) {user.first_name} {user.last_name}
+            @{user.username}
+            {/* {user.first_name} {user.last_name} */}
+          </li>
+          <li id='user-name'>
+            {user.first_name} {user.last_name}
           </li>
           {+userId !== currentUser.id && (followedUser ? (
-            <button onClick={handleFollow} id='user-unfollow-btn'>Unfollow</button>
+            <button onClick={handleFollow} className='user-follow' id='user-unfollow-btn'>Unfollow</button>
           ) : (
-            <button onClick={handleFollow} id='user-follow-btn'>Follow</button>
+            <button onClick={handleFollow} className='user-follow'  id='user-follow-btn'>Follow</button>
           ))}
         </ul>
       }
