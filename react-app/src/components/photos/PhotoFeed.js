@@ -31,7 +31,7 @@ const PhotoFeed = () => {
 									<li className="photo-li" key={photo.id}>
 										<div className="post-container">
 											<PhotoModal photo={photo} />
-											<CommentsFeed photo={photo} />
+											{/* <CommentsFeed photo={photo} /> */}
 										</div>
 									</li>
 								))}
