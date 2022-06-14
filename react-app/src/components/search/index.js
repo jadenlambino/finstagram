@@ -1,6 +1,7 @@
 import {React, useEffect, useState} from 'react';
 import Popup from 'reactjs-popup';
-import NavLink from 'react-router-dom';
+import Select from 'react-select'
+import {NavLink, Redirect} from 'react-router-dom';
 
 const SearchBar = () => {
 
@@ -16,24 +17,28 @@ const SearchBar = () => {
       fetchData();
     }, []);
 
+    const options = users.map(user => {
+        return {value: user.username, label: user.username}
+    })
+
     return (
-        <form>
-            <input
-            type='text'
-            onChange={(e) => setSearch(e.target.value)}
-            value = {search}
-            >
-            </input>
-            <Popup
-            // trigger={search.length > 1}
-            position='bottom center'
-            closeOnDocumentClick
-            >
-                {users.filter(user => user.username.toLowerCase().includes(search.toLowerCase())).map(user => (
-                    <h2>{user.username}</h2>
-                ))}
-            </Popup>
-        </form>
+        // original working search function
+        // <form>
+        //     <input
+        //     type='text'
+        //     onChange={(e) => setSearch(e.target.value)}
+        //     value = {search}
+        //     >
+        //     </input>
+        //         {users.filter(user => user.username.toLowerCase().includes(search.toLowerCase())).map(user => (
+        //             <h2>{user.username}</h2>
+        //         ))}
+        // </form>
+
+        <Select
+        options={options}
+        // selectOption={<Redirect to={`/users/${user.id}`} />}
+        />
     )
 }
 
