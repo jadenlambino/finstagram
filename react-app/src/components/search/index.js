@@ -1,4 +1,6 @@
 import {React, useEffect, useState} from 'react';
+import Popup from 'reactjs-popup';
+import NavLink from 'react-router-dom';
 
 const SearchBar = () => {
 
@@ -22,9 +24,15 @@ const SearchBar = () => {
             value = {search}
             >
             </input>
-            {search.length > 1 && users.filter(user => user.username.toLowerCase().includes(search.toLowerCase())).map(user => (
-                <h2>{user.username}</h2>
-            ))}
+            <Popup
+            // trigger={search.length > 1}
+            position='bottom center'
+            closeOnDocumentClick
+            >
+                {users.filter(user => user.username.toLowerCase().includes(search.toLowerCase())).map(user => (
+                    <h2>{user.username}</h2>
+                ))}
+            </Popup>
         </form>
     )
 }
