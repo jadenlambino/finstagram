@@ -19,6 +19,7 @@ import { grabFollows } from './store/follows';
 import About from './components/About';
 import './components/About.css'
 import SignUpPage from './components/SignUpPage';
+import './index.css'
 
 
 function App() {

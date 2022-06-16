@@ -68,16 +68,16 @@ function User() {
           {+userId !== currentUser.id && (followedUser ? (
             <button onClick={handleFollow} className='user-follow' id='user-unfollow-btn'>Unfollow</button>
           ) : (
-            <button onClick={handleFollow} className='user-follow'  id='user-follow-btn'>Follow</button>
+            <button onClick={handleFollow} className='user-follow' id='user-follow-btn'>Follow</button>
           ))}
         </ul>
       }
 
       {/* <FollowsContainer profileUser={user} /> */}
       {loaded &&
-        <ul id='user-photo-container'>
+        <ul className='p-ul'>
           {photos.map(photo => (
-            <li key={photo.id} className='user-photo'>
+            <li key={photo.id} className='post-container'>
               <PhotoModal photo={photo} />
               {/* <CommentsFeed photo={photo} /> */}
             </li>

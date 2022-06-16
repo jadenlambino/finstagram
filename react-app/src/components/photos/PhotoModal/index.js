@@ -28,14 +28,14 @@ export default function PhotoModal({ photo }) {
     return (
         // <>
         //     <h1>PHOTOMODAL</h1>
-        <div className="photo-container">
-        {!userId && (
-            <span>
-                <h1>
-                    <Link to={`/users/${photo.user_id}`} className='p-user'>{photo.username}</Link>
-                </h1>
-            </span>
-           )}
+        <>
+            {/* {!userId && (
+                <span>
+                    <h1>
+                        <Link to={`/users/${photo.user_id}`} className='p-user'>{photo.username}</Link>
+                    </h1>
+                </span>
+            )} */}
             <img className="photo" src={photo.photo_url} onClick={() => setShowModal(true)} />
             {showModal && (
                 <Modal onClose={() => setShowModal(false)} portalClassName='modal'>
@@ -43,7 +43,7 @@ export default function PhotoModal({ photo }) {
                 </Modal>
             )}
 
-            <h1 className="caption">{photo.caption}</h1>
+            {/* <h1 className="caption">{photo.caption}</h1>
             {like ? (
                 <button id='like-dislike'
                     onClick={handleLike}
@@ -53,8 +53,8 @@ export default function PhotoModal({ photo }) {
                     onClick={handleLike}
                 >🤍</button>
             )
-            }
-        </div>
+            } */}
+        </>
         // </>
     )
 }
