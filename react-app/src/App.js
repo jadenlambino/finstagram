@@ -8,9 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import PhotoFeed from './components/photos/PhotoFeed'
-import PhotoForm from './components/photos/PhotoForm';
 import Splash from './components/Splash';
-import UserHome from './components/UserHome'
 
 // import PhotoSRP from './components/photos/PhotoSRP'
 import { authenticate } from './store/session';

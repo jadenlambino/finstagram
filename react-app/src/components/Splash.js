@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
 import LoginForm from './auth/LoginForm';
 import { Link } from 'react-router-dom';
 import SplashPhone from './SplashPhone'
 import "./Splash.css"
-import SignUpForm from './auth/SignUpForm';
+
 
 const Splash = props => {
 
