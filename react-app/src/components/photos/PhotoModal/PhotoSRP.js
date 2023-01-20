@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link, useParams } from "react-router-dom";
 import { editPhoto, removePhoto } from "../../../store/photo";
 import CommentsFeed from '../../comments/CommentsFeed';
-import CommentsForm from "../../comments/CommentsForm";
 import { removeLike, createLike } from '../../../store/like';
 import './PhotoSRP.css'
 import './menu.css'
@@ -18,7 +17,6 @@ const PhotoSRP = ({ photo }) => {
   const likes = useSelector(state => state.session.likes)
   const like = likes?.find(like => like.photo_id === photo.id)
   const history = useHistory()
-  const { userId } = useParams()
 
   const handleEdit = (e) => {
     e.preventDefault()
@@ -49,25 +47,25 @@ const PhotoSRP = ({ photo }) => {
 
   let functionButtons = (
     <div className="button-container">
-          <button className='modal-button-style' id='modal-button-style' onClick={handleEdit}>Edit</button>
-          {editClicked && (
-            <form onSubmit={handleSubmit}>
-              <label>Caption</label>
-              <input
-                type="text"
-                value={caption}
-                onChange={e => setCaption(e.target.value)}>
-              </input>
-              <button className='modal-button-style'
-                type="submit"
-                id='modal-button-style'
-                >
-                Submit Changes
-              </button>
-            </form>
-          )}
-          <button className='modal-button-style' id='modal-button-style' onClick={handleDelete}>Delete</button>
-        </div>
+      <button className='modal-button-style' id='modal-button-style' onClick={handleEdit}>Edit</button>
+      {editClicked && (
+        <form onSubmit={handleSubmit}>
+          <label>Caption</label>
+          <input
+            type="text"
+            value={caption}
+            onChange={e => setCaption(e.target.value)}>
+          </input>
+          <button className='modal-button-style'
+            type="submit"
+            id='modal-button-style'
+          >
+            Submit Changes
+          </button>
+        </form>
+      )}
+      <button className='modal-button-style' id='modal-button-style' onClick={handleDelete}>Delete</button>
+    </div>
   )
 
   const reveal = (e) => {
@@ -88,38 +86,38 @@ const PhotoSRP = ({ photo }) => {
                   <Link to={`/users/${photo.user_id}`}>{user.username}</Link>
                 </div>
               )
-            }
-            {photo.user_id === user.id &&
-              <div className="button-menu-container">
-                <input type="checkbox" id="menu-toggle" onClick={reveal} />
-                <label htmlFor='menu-toggle' className="hamburger">
-                  <span className="bun bun-top">
-                    <span className="bun-crust bun-crust-top"></span>
-                  </span>
-                  <span className="bun bun-bottom">
-                    <span className="bun-crust bun-crust-bottom"></span>
-                  </span>
-                </label>
-                <Popup open={buttons} closeOnDocumentClick>
-                  {functionButtons}
-                </Popup>
-              </div>
-            }
+              }
+              {photo.user_id === user.id &&
+                <div className="button-menu-container">
+                  <input type="checkbox" id="menu-toggle" onClick={reveal} />
+                  <label htmlFor='menu-toggle' className="hamburger">
+                    <span className="bun bun-top">
+                      <span className="bun-crust bun-crust-top"></span>
+                    </span>
+                    <span className="bun bun-bottom">
+                      <span className="bun-crust bun-crust-bottom"></span>
+                    </span>
+                  </label>
+                  <Popup open={buttons} closeOnDocumentClick>
+                    {functionButtons}
+                  </Popup>
+                </div>
+              }
             </div>
-          {like ? (
-                <button id='like-dislike'
-                    onClick={handleLike}
-                >❤️</button>
+            {like ? (
+              <button id='like-dislike'
+                onClick={handleLike}
+              >❤️</button>
             ) : (
-                <button id='like-dislike'
-                    onClick={handleLike}
-                >🤍</button>
+              <button id='like-dislike'
+                onClick={handleLike}
+              >🤍</button>
             )
-          }
+            }
           </div>
-        <CommentsFeed photo={photo} />
+          <CommentsFeed photo={photo} />
+        </div>
       </div>
-    </div>
     </div>
   )
 }

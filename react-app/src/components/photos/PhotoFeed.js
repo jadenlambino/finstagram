@@ -1,16 +1,12 @@
 import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { editPhoto, grabPhotos } from "../../store/photo";
-import PhotoModal from './PhotoModal';
-import CommentsFeed from '../comments/CommentsFeed'
+import { grabPhotos } from "../../store/photo";
+import "./PhotoFeed.css";
 import PhotoForm from "./PhotoForm";
-import Popup from "reactjs-popup";
-import "./PhotoFeed.css"
-import About from "../About";
+import PhotoModal from './PhotoModal';
 
 const PhotoFeed = () => {
 	const dispatch = useDispatch();
-	const user = useSelector(state => state.session.user)
 	const photos = useSelector(state => Object.values(state.photos))
 	const [open, setOpen] = useState(false)
 
