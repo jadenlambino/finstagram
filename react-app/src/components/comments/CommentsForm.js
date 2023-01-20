@@ -1,7 +1,6 @@
 import { React, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { uploadComment } from '../../store/comments'
-import TestPopup from '../popup'
 import Popup from 'reactjs-popup'
 import 'reactjs-popup/dist/index.css';
 
@@ -37,11 +36,11 @@ const CommentsForm = ({ photo }) => {
     const closeModal = () => setCommentError(false)
 
     const errMsg = (
-		errors.map(error => <p>{error}</p>)
-	)
+        errors.map(error => <p>{error}</p>)
+    )
 
     const close = () => setOpen(false)
-    
+
     return (
         <>
             <button open={open} onClick={() => setOpen(open => !open)} id='modal-button-style' className='c-add'>Add Comment</button>

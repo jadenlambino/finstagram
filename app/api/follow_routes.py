@@ -8,6 +8,7 @@ follow_routes = Blueprint('follows', __name__)
 
 @follow_routes.route('/')
 def get_follow():
+    print(current_user)
     user = User.query.get(current_user.id)
     # print('===========================FOLLOWERS', [user for user in user.followers])
     # print('===========================FOLLOWING', [user for user in user.following])

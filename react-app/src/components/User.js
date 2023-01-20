@@ -4,10 +4,8 @@ import { useParams } from 'react-router-dom';
 
 import { grabUserPhotos } from '../store/photo';
 import PhotoModal from './photos/PhotoModal';
-import CommentsFeed from './comments/CommentsFeed'
 
 import { followUser, removeFollow } from '../store/follows';
-import FollowsContainer from './follows/FollowsContainer';
 import './User.css'
 
 
@@ -45,10 +43,10 @@ function User() {
     })();
   }, [userId]);
 
-  useEffect(async () => {
+  useEffect(() => async () => {
     await dispatch(grabUserPhotos(userId))
     setLoaded(true)
-  }, [dispatch])
+  }, [dispatch, userId])
 
   if (!user) {
     return null;
